@@ -1,0 +1,54 @@
+﻿l_english:
+ # ── TRANSFER ──────────────────────────────────────────────────────
+ iram_exodos_activate_transfer:0 "Exodos: Transfer"
+ iram_exodos_activate_transfer_desc:0 "By decree of the state, the people shall be moved. Deploy the Origin and Destination units to mark the source and destination territories, then confirm the operation. Both units must be stationary and positioned in territories under your control. Cost is paid upon confirmation. (Operation will be cancelled if a unit is destroyed or either territory is lost.)"
+ iram_exodos_confirm_transfer:0 "Exodos: Confirm Transfer"
+ iram_exodos_confirm_transfer_desc:0 "The order is given. The people will march for ten months. Costs: 2000 gold, 5000 manpower, 20 tyranny. Both units must be stationary before the operation can begin."
+
+
+ # ── OPTIMIZE ──────────────────────────────────────────────────────
+
+
+ # ── GATHER GLOBAL ─────────────────────────────────────────
+ iram_exodos_gather_global:0 "Exodos: Global Concentrate"
+ iram_exodos_gather_global_desc:0 "Concentrates the population of each area's territories into its province capital.\n\nPartially controlled provinces and capitals without city rank are skipped. Processes 10 provinces per month.\n\nSecondary cities in the area are not affected — their pops are not concentrated.\n\nTHIS OPERATION MAY TAKE SEVERAL MONTHS. SAVE YOUR GAME AND CREATE A BACKUP.\n\n| For a slave optimization cycle: Concentrate → Distribute → wait for slave conversion → Concentrate → Optimize. This is step 1 — or step 3 if you already ran Distribute."
+
+ # ── CANCEL ALL ────────────────────────────────────────────────────
+ iram_exodos_cancel_all:0 "Cancel All"
+ iram_exodos_cancel_all_desc:0 "Rescinds all active state decrees. Clears any ongoing operation — Exodos, transfers, and any residual state from previous mod installations. Costs already paid will not be refunded. Use as a first step when migrating from a previous installation."
+
+ # ── FAILURE EVENT ─────────────────────────────────────────────────
+ iram.1.t:0 "The Exodos Has Failed"
+ iram.1.d:0 "The movement of the people has been brought to an abrupt end. The state's efforts have come to nothing."
+ iram.1.ok:0 "So be it."
+
+ # ── CUSTOM TOOLTIPS ───────────────────────────────────────────────
+ iram_tt_unit_stopped:0 "The units must reach their destination before the operation can begin. (Unit still moving)"
+ iram_tt_owner:0 "Both territories must be under the authority of the state. (Territory not owned)"
+
+
+ # ── OPTIMIZE GLOBAL ───────────────────────────────────────────────
+ # ── DISTRIBUTE GLOBAL ────────────────────────────────────────────
+ iram_exodos_distribute_global:0 "Global Distribute"
+ iram_exodos_distribute_global_desc:0 "Distributes population from each area's province capital to its territories.\n\nProvinces without a qualifying capital or insufficient population are skipped. Processes 5 provinces per month.\n\nSecondary cities in the area are not affected — they do not receive population.\n\nTHIS OPERATION MAY TAKE SEVERAL MONTHS. SAVE YOUR GAME AND CREATE A BACKUP.\n\n| For a slave optimization cycle: Concentrate → Distribute → wait for slave conversion → Concentrate → Optimize. This is step 2."
+
+ # ── AUTOMATIC BUILDER ────────────────────────────────────────────
+ iram_exodos_constructor_auto:0 "Automatic Builder"
+ iram_exodos_constructor_auto_desc:0 "Rebuilds all settlements in the empire according to their trade good. Demolishes whatever is there and constructs the optimal building for each trade good.\n\nNever touches fortresses or cities.\n\nSecondary cities in the area are not affected.\n\nINSTANT. THIS ACTION IS IRREVERSIBLE. SAVE YOUR GAME AND CREATE A BACKUP.\n\n| For a slave optimization cycle run the Builder before starting. The cycle is: Concentrate → Distribute → wait for slave conversion → Concentrate → Optimize."
+
+ # ── OPTIMIZE GLOBAL ───────────────────────────────────────────────
+ iram_exodos_optimize_global:0 "Global Optimize"
+ iram_exodos_optimize_global_desc:0 "Distributes the slaves accumulated in each area's province capital to its territories based on actual building demand: up to 10 for mines and farming settlements, up to 15 for slave estates.\n\nProvinces where the capital does not have enough slaves to cover its territories are skipped. Processes 5 provinces per month.\n\nSecondary cities in the area are not affected — they do not receive slaves.\n\nTHIS OPERATION MAY TAKE SEVERAL MONTHS. SAVE YOUR GAME AND CREATE A BACKUP.\n\n| For a slave optimization cycle: Concentrate → Distribute → wait for slave conversion → Concentrate → Optimize. This is step 4."
+ iram.2.t:0 "Global Distribute — Operation Complete"
+ iram.2.d:0 "Population distribution from province capitals to territories has concluded. Areas skipped due to lost territory or insufficient pops were not modified."
+ iram.2.ok:0 "So be it."
+
+ # ── OPTIMIZE GLOBAL — COMPLETE ────────────────────────────────────
+ iram.3.t:0 "Global Optimize — Operation Complete"
+ iram.3.d:0 "Slave optimization across areas has concluded. Areas skipped due to insufficient slaves or lost territory were not modified."
+ iram.3.ok:0 "So be it."
+
+ # ── GATHER GLOBAL — COMPLETE ─────────────────────────────────────
+ iram.4.t:0 "Global Gather — Operation Complete"
+ iram.4.d:0 "Global population concentration in province capitals has concluded. Areas skipped due to lost territory or insufficient pops were not modified."
+ iram.4.ok:0 "So be it."

@@ -1,0 +1,177 @@
+﻿country_decisions = {
+
+    # ================================================================
+    # HEREDERO DEL RIVAL — hijo varon
+    # ================================================================
+
+    iram_bom_heir_son = {
+        potential = {
+            is_ai = no
+            has_variable = iram_bom_menu_heir
+        }
+
+        allow = {
+            is_ai = no
+            custom_tooltip = iram_tt_bom_rival_unico
+            any_character = {
+                is_ruler = yes
+                num_of_rivals >= 1
+                NOT = { num_of_rivals >= 2 }
+                any_rival = {
+                    employer = ROOT
+                    is_male = yes
+                    age >= 16
+                }
+            }
+        }
+
+        effect = {
+            every_character = {
+                limit = { is_ruler = yes }
+                every_rival = {
+                    limit = {
+                        employer = ROOT
+                        is_male = yes
+                        age >= 16
+                    }
+                    save_scope_as = iram_rival
+                    if = {
+                        limit = { is_married = yes }
+                        spouse = { save_scope_as = iram_rival_spouse }
+                    }
+                }
+            }
+            if = {
+                limit = { exists = scope:iram_rival_spouse }
+                create_character = {
+                    age = 0
+                    female = no
+                    save_scope_as = iram_newborn
+                    family = scope:iram_rival.family
+                    religion = scope:iram_rival.religion
+                    culture = scope:iram_rival.culture
+                    father = scope:iram_rival
+                    mother = scope:iram_rival_spouse
+                }
+            }
+            else = {
+                create_character = {
+                    age = 0
+                    female = no
+                    save_scope_as = iram_newborn
+                    family = scope:iram_rival.family
+                    religion = scope:iram_rival.religion
+                    culture = scope:iram_rival.culture
+                    father = scope:iram_rival
+                }
+            }
+            scope:iram_newborn = {
+                if = { limit = { scope:iram_rival = { has_trait = antigonids  } } add_trait = antigonids  }
+                if = { limit = { scope:iram_rival = { has_trait = antipatrid  } } add_trait = antipatrid  }
+                if = { limit = { scope:iram_rival = { has_trait = lagids      } } add_trait = lagids      }
+                if = { limit = { scope:iram_rival = { has_trait = seleucids   } } add_trait = seleucids   }
+                if = { limit = { scope:iram_rival = { has_trait = argeads     } } add_trait = argeads     }
+                if = { limit = { scope:iram_rival = { has_trait = aeacidae    } } add_trait = aeacidae    }
+                if = { limit = { scope:iram_rival = { has_trait = alcimachid  } } add_trait = alcimachid  }
+                # Matrilineal — madre (todos los traits, igual que argeads en vanilla)
+                if = { limit = { exists = scope:iram_rival_spouse  scope:iram_rival_spouse = { has_trait = antigonids  } } add_trait = antigonids  }
+                if = { limit = { exists = scope:iram_rival_spouse  scope:iram_rival_spouse = { has_trait = antipatrid  } } add_trait = antipatrid  }
+                if = { limit = { exists = scope:iram_rival_spouse  scope:iram_rival_spouse = { has_trait = lagids      } } add_trait = lagids      }
+                if = { limit = { exists = scope:iram_rival_spouse  scope:iram_rival_spouse = { has_trait = seleucids   } } add_trait = seleucids   }
+                if = { limit = { exists = scope:iram_rival_spouse  scope:iram_rival_spouse = { has_trait = argeads     } } add_trait = argeads     }
+                if = { limit = { exists = scope:iram_rival_spouse  scope:iram_rival_spouse = { has_trait = aeacidae    } } add_trait = aeacidae    }
+                if = { limit = { exists = scope:iram_rival_spouse  scope:iram_rival_spouse = { has_trait = alcimachid  } } add_trait = alcimachid  }
+            }
+        }
+
+        ai_will_do = { factor = 0 }
+    }
+
+    # ================================================================
+    # HEREDERO DEL RIVAL — hija mujer
+    # ================================================================
+
+    iram_bom_heir_daughter = {
+        potential = {
+            is_ai = no
+            has_variable = iram_bom_menu_heir
+        }
+
+        allow = {
+            is_ai = no
+            custom_tooltip = iram_tt_bom_rival_unico
+            any_character = {
+                is_ruler = yes
+                num_of_rivals >= 1
+                NOT = { num_of_rivals >= 2 }
+                any_rival = {
+                    employer = ROOT
+                    is_male = yes
+                    age >= 16
+                }
+            }
+        }
+
+        effect = {
+            every_character = {
+                limit = { is_ruler = yes }
+                every_rival = {
+                    limit = {
+                        employer = ROOT
+                        is_male = yes
+                        age >= 16
+                    }
+                    save_scope_as = iram_rival
+                    if = {
+                        limit = { is_married = yes }
+                        spouse = { save_scope_as = iram_rival_spouse }
+                    }
+                }
+            }
+            if = {
+                limit = { exists = scope:iram_rival_spouse }
+                create_character = {
+                    age = 0
+                    female = yes
+                    save_scope_as = iram_newborn
+                    family = scope:iram_rival.family
+                    religion = scope:iram_rival.religion
+                    culture = scope:iram_rival.culture
+                    father = scope:iram_rival
+                    mother = scope:iram_rival_spouse
+                }
+            }
+            else = {
+                create_character = {
+                    age = 0
+                    female = yes
+                    save_scope_as = iram_newborn
+                    family = scope:iram_rival.family
+                    religion = scope:iram_rival.religion
+                    culture = scope:iram_rival.culture
+                    father = scope:iram_rival
+                }
+            }
+            scope:iram_newborn = {
+                # Patrilineal — padre
+                if = { limit = { scope:iram_rival = { has_trait = antigonids  } } add_trait = antigonids  }
+                if = { limit = { scope:iram_rival = { has_trait = antipatrid  } } add_trait = antipatrid  }
+                if = { limit = { scope:iram_rival = { has_trait = lagids      } } add_trait = lagids      }
+                if = { limit = { scope:iram_rival = { has_trait = seleucids   } } add_trait = seleucids   }
+                if = { limit = { scope:iram_rival = { has_trait = argeads     } } add_trait = argeads     }
+                if = { limit = { scope:iram_rival = { has_trait = aeacidae    } } add_trait = aeacidae    }
+                if = { limit = { scope:iram_rival = { has_trait = alcimachid  } } add_trait = alcimachid  }
+                # Matrilineal — madre (todos los traits, igual que argeads en vanilla)
+                if = { limit = { exists = scope:iram_rival_spouse  scope:iram_rival_spouse = { has_trait = antigonids  } } add_trait = antigonids  }
+                if = { limit = { exists = scope:iram_rival_spouse  scope:iram_rival_spouse = { has_trait = antipatrid  } } add_trait = antipatrid  }
+                if = { limit = { exists = scope:iram_rival_spouse  scope:iram_rival_spouse = { has_trait = lagids      } } add_trait = lagids      }
+                if = { limit = { exists = scope:iram_rival_spouse  scope:iram_rival_spouse = { has_trait = seleucids   } } add_trait = seleucids   }
+                if = { limit = { exists = scope:iram_rival_spouse  scope:iram_rival_spouse = { has_trait = argeads     } } add_trait = argeads     }
+                if = { limit = { exists = scope:iram_rival_spouse  scope:iram_rival_spouse = { has_trait = aeacidae    } } add_trait = aeacidae    }
+                if = { limit = { exists = scope:iram_rival_spouse  scope:iram_rival_spouse = { has_trait = alcimachid  } } add_trait = alcimachid  }
+            }
+        }
+
+        ai_will_do = { factor = 0 }
+    }
+}

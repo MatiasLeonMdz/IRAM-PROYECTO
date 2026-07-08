@@ -1,0 +1,28 @@
+﻿\xef\xbb\xbfcountry_decisions = {
+
+    # ================================================================
+    # GATHER GLOBAL
+    # ================================================================
+
+    exodos_confirm_gather_global = {
+        potential = {
+            is_ai = no
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            NOT = { has_variable = exodos_operation_active }
+            tyranny <= 90
+        }
+        effect = {
+            add_tyranny = 100
+            every_character = {
+                limit = { is_ruler = yes }
+                add_popularity = -100
+            }
+            set_variable = { name = exodos_global_active value = 1 }
+            set_variable = { name = exodos_operation_active value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+}

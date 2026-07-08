@@ -1,0 +1,29 @@
+﻿country_decisions = {
+
+    tlv_confirm = {
+        potential = {
+            is_ai = no
+            is_republic = yes
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            is_republic = yes
+            tyranny <= 60
+            stability >= 50
+            treasury >= 2000
+            current_ruler = { popularity >= 50 }
+        }
+        effect = {
+            add_tyranny = 40
+            add_stability = -50
+            add_treasury = -2000
+            switch_government_type_event_clearup_effect = yes
+            republic_to_monarchy_law_variable_effect = yes
+            change_government = dictatorship
+            republic_to_monarchy_law_change_effect = yes
+            trigger_event = { id = tlv.2 days = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+}

@@ -1,0 +1,236 @@
+﻿country_decisions = {
+
+    # ================================================================
+    # NIVEL 0 — Siempre visibles
+    # potential = { is_ai = no }
+    # ================================================================
+
+    iram_01_menu_open = {
+        potential = {
+            is_ai = no
+            NOT = { has_variable = iram_menu_open }
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            always = yes
+        }
+        effect = {
+            set_variable = { name = iram_menu_open value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    # ================================================================
+    # NIVEL 1 — Visible con iram_menu_open
+    # potential = { is_ai = no; has_variable = iram_menu_open }
+    # ================================================================
+
+    iram_03_menu_management = {
+        potential = {
+            is_ai = no
+            has_variable = iram_menu_open
+            NOT = { has_variable = iram_menu_management_open }
+            NOT = { has_variable = iram_menu_behavior_open }
+            NOT = { has_variable = iram_menu_political_open }
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            NOT = { has_variable = exodos_operation_active }
+        }
+        effect = {
+            set_variable = { name = iram_menu_management_open value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    iram_04_menu_behavior = {
+        potential = {
+            is_ai = no
+            has_variable = iram_menu_open
+            NOT = { has_variable = iram_menu_management_open }
+            NOT = { has_variable = iram_menu_behavior_open }
+            NOT = { has_variable = iram_menu_political_open }
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            always = yes
+        }
+        effect = {
+            set_variable = { name = iram_menu_behavior_open value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    iram_05_menu_political = {
+        potential = {
+            is_ai = no
+            has_variable = iram_menu_open
+            NOT = { has_variable = iram_menu_management_open }
+            NOT = { has_variable = iram_menu_behavior_open }
+            NOT = { has_variable = iram_menu_political_open }
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            always = yes
+        }
+        effect = {
+            set_variable = { name = iram_menu_political_open value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    iram_06_cerrar_menu = {
+        potential = {
+            is_ai = no
+            has_variable = iram_menu_open
+            NOT = { has_variable = iram_menu_management_open }
+            NOT = { has_variable = iram_menu_behavior_open }
+            NOT = { has_variable = iram_menu_political_open }
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            always = yes
+        }
+        effect = {
+            iram_cleanup_menu = yes
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    # ================================================================
+    # iram_11 — Distribute Global (STUB — pendiente codear)
+    # ================================================================
+
+    iram_11_distribute_global = {
+        potential = {
+            is_ai = no
+            has_variable = iram_menu_management_open
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            always = no
+        }
+        effect = {
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    # ================================================================
+    # iram_12 — Constructor Automático (STUB — pendiente codear)
+    # ================================================================
+
+    iram_12_constructor_auto = {
+        potential = {
+            is_ai = no
+            has_variable = iram_menu_management_open
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            always = no
+        }
+        effect = {
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    # ================================================================
+    # NIVEL 2 — Cierre de categorias
+    # ================================================================
+
+    iram_07_cerrar_management = {
+        potential = {
+            is_ai = no
+            has_variable = iram_menu_management_open
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            always = yes
+        }
+        effect = {
+            remove_variable = iram_menu_management_open
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    iram_14_cerrar_behavior = {
+        potential = {
+            is_ai = no
+            has_variable = iram_menu_behavior_open
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            always = yes
+        }
+        effect = {
+            remove_variable = iram_menu_behavior_open
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    iram_19_cerrar_political = {
+        potential = {
+            is_ai = no
+            has_variable = iram_menu_political_open
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            always = yes
+        }
+        effect = {
+            remove_variable = iram_menu_political_open
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    # ================================================================
+    # SUBMENU HEREDERO DEL RIVAL
+    # ================================================================
+
+    iram_20_rival_heir_open = {
+        potential = {
+            is_ai = no
+            has_variable = iram_menu_political_open
+            NOT = { has_variable = iram_rival_heir_open }
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            custom_tooltip = iram_tt_rival_none
+            any_character = {
+                is_ruler = yes
+                num_of_rivals >= 1
+                NOT = { num_of_rivals >= 2 }
+            }
+        }
+        effect = {
+            set_variable = { name = iram_rival_heir_open value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    iram_21_cerrar_rival_heir = {
+        potential = {
+            is_ai = no
+            has_variable = iram_rival_heir_open
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            always = yes
+        }
+        effect = {
+            remove_variable = iram_rival_heir_open
+        }
+        ai_will_do = { factor = 0 }
+    }
+}

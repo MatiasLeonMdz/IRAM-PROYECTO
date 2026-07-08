@@ -1,0 +1,78 @@
+﻿country_decisions = {
+
+    exodos_cancel_all = {
+        potential = { is_ai = no }
+        highlight = { scope:province = { always = yes } }
+        allow = { always = yes }
+        effect = {
+
+            # ── VARIABLES DE PAÍS — v4 ────────────────────────────────
+            remove_variable = exodos_operation_active
+            remove_variable = exodos_gather_active
+            remove_variable = exodos_distribute_active
+            remove_variable = exodos_transfer_active
+            remove_variable = exodos_optimize_active
+            remove_variable = exodos_optimize_gather_done
+            remove_variable = exodos_optimize_count
+            remove_variable = exodos_anchor_province
+            remove_variable = exodos_destination_province
+            remove_variable = exodos_pulse_counter
+
+            # ── VARIABLES LEGACY — v3 y anteriores ───────────────────
+            remove_variable = exodos_gather_pending
+            remove_variable = exodos_distribute_pending
+            remove_variable = exodos_transfer_pending
+            remove_variable = exodos_optimize_pending
+
+            # ── VARIABLES ONE-SHOT ────────────────────────────────────
+            # tgl_purchased y bom_ego_sum_X_used NO se limpian aquí
+            # cancel_all no resetea one-shots — son decisiones del jugador
+
+            # ── SLAVE DISTRIBUTOR (EN DESARROLLO) ────────────────────
+            # Cuando se implemente, descomentar:
+            # remove_variable = exodos_slave_dist_pending
+            # remove_variable = exodos_slave_dist_active
+            # remove_variable = exodos_slave_dist_count
+            # remove_variable = exodos_slave_dist_gather_done
+            # Y agregar en el bloque de unidades: has_variable = exodos_unit_slave_dist
+
+            # ── VARIABLES DE PROVINCE ─────────────────────────────────
+            every_owned_province = {
+                limit = {
+                    OR = {
+                        has_variable = exodos_is_anchor
+                        has_variable = exodos_is_destination
+                    }
+                }
+                remove_variable = exodos_is_anchor
+                remove_variable = exodos_is_destination
+            }
+
+            # ── UNIDADES — v4 ─────────────────────────────────────────
+            every_unit = {
+                limit = {
+                    OR = {
+                        has_variable = exodos_unit_anchor
+                        has_variable = exodos_unit_destination
+                    }
+                }
+                destroy_unit = yes
+            }
+
+            # ── UNIDADES — legacy v3 y anteriores ────────────────────
+            every_unit = {
+                limit = {
+                    OR = {
+                        has_variable = exodos_unit_concentrate
+                        has_variable = exodos_unit_distribute
+                        has_variable = exodos_unit_optimize
+                        has_variable = exodos_unit_transfer_origin
+                        has_variable = exodos_unit_transfer_dest
+                    }
+                }
+                destroy_unit = yes
+            }
+        }
+        ai_will_do = { factor = 0 }
+    }
+}

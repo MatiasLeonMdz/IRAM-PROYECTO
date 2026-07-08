@@ -1,0 +1,1870 @@
+﻿monthly_country_pulse = {
+    effect = {
+        if = {
+            limit = {
+                is_ai = no
+                has_variable = exodos_operation_active
+            }
+
+            # ── 1. CHEQUEOS DE ERROR ──────────────────────────────────
+
+            # Unidad Optimize destruida (solo cuando optimize_active está seteado)
+            if = {
+                limit = {
+                    has_variable = exodos_optimize_active
+                    NOT = { any_unit = { has_variable = exodos_unit_optimize } }
+                }
+                trigger_event = { id = exodos.1 }
+            }
+
+            # Unidad legacy destruida (solo cuando optimize NO está activo)
+            else_if = {
+                limit = {
+                    NOT = { has_variable = exodos_optimize_active }
+                    NOT = { has_variable = exodos_global_active }
+                    NOT = { has_variable = exodos_distribute_global_active }
+                    NOT = { has_variable = exodos_optimize_global_active }
+                    NOT = {
+                        any_unit = {
+                            OR = {
+                                has_variable = exodos_unit_concentrate
+                                has_variable = exodos_unit_distribute
+                                has_variable = exodos_unit_transfer_origin
+                                has_variable = exodos_unit_transfer_dest
+                            }
+                        }
+                    }
+                }
+                trigger_event = { id = exodos.1 }
+            }
+
+            # Ancla perdida (solo operaciones con ancla — no Global)
+            else_if = {
+                limit = {
+                    NOT = { has_variable = exodos_global_active }
+                    NOT = { has_variable = exodos_distribute_global_active }
+                    NOT = { has_variable = exodos_optimize_global_active }
+                    var:exodos_anchor_province = {
+                        NOT = { owner = ROOT }
+                    }
+                }
+                trigger_event = { id = exodos.1 }
+            }
+
+            # Destino perdido (solo Transfer)
+            else_if = {
+                limit = {
+                    has_variable = exodos_transfer_active
+                    var:exodos_destination_province = {
+                        NOT = { owner = ROOT }
+                    }
+                }
+                trigger_event = { id = exodos.1 }
+            }
+
+            # Provincia no 100% propia (solo Optimize)
+            else_if = {
+                limit = {
+                    has_variable = exodos_optimize_active
+                    var:exodos_anchor_province = {
+                        area = {
+                            any_area_province = {
+                                NOT = { owner = ROOT }
+                            }
+                        }
+                    }
+                }
+                trigger_event = { id = exodos.1 }
+            }
+
+            # Provincia no 100% propia (solo Gather legacy)
+            else_if = {
+                limit = {
+                    has_variable = exodos_gather_active
+                    var:exodos_anchor_province = {
+                        area = {
+                            any_area_province = {
+                                NOT = { owner = ROOT }
+                            }
+                        }
+                    }
+                }
+                trigger_event = { id = exodos.1 }
+            }
+
+            # Provincia no 100% propia (solo Distribute legacy)
+            else_if = {
+                limit = {
+                    has_variable = exodos_distribute_active
+                    var:exodos_anchor_province = {
+                        area = {
+                            any_area_province = {
+                                NOT = { owner = ROOT }
+                            }
+                        }
+                    }
+                }
+                trigger_event = { id = exodos.1 }
+            }
+
+            else = {
+
+                # ── 2. OPTIMIZE — FASE GATHER ─────────────────────────
+                if = {
+                    limit = {
+                        has_variable = exodos_optimize_active
+                        NOT = { has_variable = exodos_optimize_gather_done }
+                    }
+
+                    var:exodos_anchor_province = {
+                        save_scope_as = exodos_dest
+                        area = {
+                            every_area_province = {
+                                limit = {
+                                    owner = ROOT
+                                    total_population >= 2
+                                    NOT = { has_variable = exodos_is_anchor }
+                                }
+                                while = {
+                                    count = 30
+                                    limit = { total_population >= 2 }
+                                    random_pops_in_province = {
+                                        move_pop = scope:exodos_dest
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    if = {
+                        limit = {
+                            var:exodos_anchor_province = {
+                                area = {
+                                    NOT = {
+                                        any_area_province = {
+                                            NOT = { has_variable = exodos_is_anchor }
+                                            total_population >= 2
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        set_variable = { name = exodos_optimize_gather_done value = 1 }
+                    }
+                }
+
+                # ── 3. OPTIMIZE — FASE DISTRIBUTE — rango 04 (45–107 pops) ──
+                else_if = {
+                    limit = {
+                        has_variable = exodos_optimize_active
+                        has_variable = exodos_optimize_gather_done
+                        var:exodos_optimize_count = 4
+                    }
+
+                    var:exodos_anchor_province = {
+                        save_scope_as = exodos_origin
+                        area = {
+                            every_area_province = {
+                                limit = {
+                                    owner = ROOT
+                                    total_population >= 1
+                                    NOT = { has_variable = exodos_is_anchor }
+                                }
+                                save_scope_as = exodos_dist_target
+                                while = {
+                                    count = 4
+                                    limit = {
+                                        scope:exodos_origin = {
+                                            total_population >= 2
+                                        }
+                                    }
+                                    scope:exodos_origin = {
+                                        random_pops_in_province = {
+                                            move_pop = scope:exodos_dist_target
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    exodos_cleanup_effect = yes
+                }
+
+                # ── 3. OPTIMIZE — FASE DISTRIBUTE — rango 09 (108–171 pops) ──
+                else_if = {
+                    limit = {
+                        has_variable = exodos_optimize_active
+                        has_variable = exodos_optimize_gather_done
+                        var:exodos_optimize_count = 9
+                    }
+
+                    var:exodos_anchor_province = {
+                        save_scope_as = exodos_origin
+                        area = {
+                            every_area_province = {
+                                limit = {
+                                    owner = ROOT
+                                    total_population >= 1
+                                    NOT = { has_variable = exodos_is_anchor }
+                                }
+                                save_scope_as = exodos_dist_target
+                                while = {
+                                    count = 9
+                                    limit = {
+                                        scope:exodos_origin = {
+                                            total_population >= 2
+                                        }
+                                    }
+                                    scope:exodos_origin = {
+                                        random_pops_in_province = {
+                                            move_pop = scope:exodos_dist_target
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    exodos_cleanup_effect = yes
+                }
+
+                # ── 3. OPTIMIZE — FASE DISTRIBUTE — rango 14 (172–235 pops) ──
+                else_if = {
+                    limit = {
+                        has_variable = exodos_optimize_active
+                        has_variable = exodos_optimize_gather_done
+                        var:exodos_optimize_count = 14
+                    }
+
+                    var:exodos_anchor_province = {
+                        save_scope_as = exodos_origin
+                        area = {
+                            every_area_province = {
+                                limit = {
+                                    owner = ROOT
+                                    total_population >= 1
+                                    NOT = { has_variable = exodos_is_anchor }
+                                }
+                                save_scope_as = exodos_dist_target
+                                while = {
+                                    count = 14
+                                    limit = {
+                                        scope:exodos_origin = {
+                                            total_population >= 2
+                                        }
+                                    }
+                                    scope:exodos_origin = {
+                                        random_pops_in_province = {
+                                            move_pop = scope:exodos_dist_target
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    exodos_cleanup_effect = yes
+                }
+
+                # ── 3. OPTIMIZE — FASE DISTRIBUTE — rango 19 (236–300 pops) ──
+                else_if = {
+                    limit = {
+                        has_variable = exodos_optimize_active
+                        has_variable = exodos_optimize_gather_done
+                        var:exodos_optimize_count = 19
+                    }
+
+                    var:exodos_anchor_province = {
+                        save_scope_as = exodos_origin
+                        area = {
+                            every_area_province = {
+                                limit = {
+                                    owner = ROOT
+                                    total_population >= 1
+                                    NOT = { has_variable = exodos_is_anchor }
+                                }
+                                save_scope_as = exodos_dist_target
+                                while = {
+                                    count = 19
+                                    limit = {
+                                        scope:exodos_origin = {
+                                            total_population >= 2
+                                        }
+                                    }
+                                    scope:exodos_origin = {
+                                        random_pops_in_province = {
+                                            move_pop = scope:exodos_dist_target
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    exodos_cleanup_effect = yes
+                }
+
+                # ── 4. GATHER legacy ──────────────────────────────────
+                else_if = {
+                    limit = { has_variable = exodos_gather_active }
+
+                    var:exodos_anchor_province = {
+                        save_scope_as = exodos_dest
+                        area = {
+                            every_area_province = {
+                                limit = {
+                                    owner = ROOT
+                                    total_population >= 2
+                                    NOT = { has_variable = exodos_is_anchor }
+                                }
+                                while = {
+                                    count = 20
+                                    limit = { total_population >= 2 }
+                                    random_pops_in_province = {
+                                        move_pop = scope:exodos_dest
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    if = {
+                        limit = {
+                            var:exodos_anchor_province = {
+                                area = {
+                                    NOT = {
+                                        any_area_province = {
+                                            NOT = { has_variable = exodos_is_anchor }
+                                            total_population >= 2
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        exodos_cleanup_effect = yes
+                    }
+                }
+
+                # ── 5. TRANSFER ───────────────────────────────────────
+                else_if = {
+                    limit = { has_variable = exodos_transfer_active }
+
+                    var:exodos_destination_province = {
+                        save_scope_as = exodos_dest
+                    }
+                    var:exodos_anchor_province = {
+                        while = {
+                            count = 10
+                            limit = { total_population >= 2 }
+                            random_pops_in_province = {
+                                move_pop = scope:exodos_dest
+                            }
+                        }
+                    }
+
+                    change_variable = { name = exodos_pulse_counter add = -1 }
+                    if = {
+                        limit = {
+                            OR = {
+                                var:exodos_pulse_counter <= 0
+                                var:exodos_anchor_province = {
+                                    total_population < 2
+                                }
+                            }
+                        }
+                        exodos_cleanup_effect = yes
+                    }
+                }
+
+                # ── 6. DISTRIBUTE legacy ──────────────────────────────
+                else_if = {
+                    limit = { has_variable = exodos_distribute_active }
+
+                    var:exodos_anchor_province = {
+                        save_scope_as = exodos_origin
+                        area = {
+                            every_area_province = {
+                                limit = {
+                                    owner = ROOT
+                                    total_population >= 1
+                                    NOT = { has_variable = exodos_is_anchor }
+                                }
+                                save_scope_as = exodos_dist_target
+                                while = {
+                                    count = 10
+                                    limit = {
+                                        scope:exodos_origin = {
+                                            total_population >= 30
+                                        }
+                                    }
+                                    scope:exodos_origin = {
+                                        random_pops_in_province = {
+                                            move_pop = scope:exodos_dist_target
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    if = {
+                        limit = {
+                            var:exodos_anchor_province = {
+                                total_population < 30
+                            }
+                        }
+                        exodos_cleanup_effect = yes
+                    }
+                }
+
+                # ── 7. GATHER GLOBAL ──────────────────────────────────
+                else_if = {
+                    limit = {
+                        has_variable = exodos_global_active
+                    }
+
+                    # Procesar 10 areas por pulso
+                    # Cada bloque: encontrar capital de estado sin gather_global_done,
+                    # area 100% propia, ejecutar Gather count=100, marcar todas las provinces
+
+                    if = {
+                        limit = {
+                            any_owned_province = {
+                                is_state_capital = yes
+                                NOT = { is_capital = yes }
+                                OR = {
+                                    has_province_rank = city
+                                    has_province_rank = city_metropolis
+                                }
+                                NOT = { has_variable = exodos_gather_global_done }
+                                area = {
+                                    NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                                }
+                            }
+                        }
+                        random_owned_province = {
+                            limit = {
+                                is_state_capital = yes
+                                NOT = { is_capital = yes }
+                                OR = {
+                                    has_province_rank = city
+                                    has_province_rank = city_metropolis
+                                }
+                                NOT = { has_variable = exodos_gather_global_done }
+                                area = {
+                                    NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                                }
+                            }
+                            save_scope_as = exodos_global_anchor_1
+                        }
+                        scope:exodos_global_anchor_1 = {
+                            save_scope_as = exodos_dest
+                            area = {
+                                every_area_province = {
+                                    limit = {
+                                        owner = ROOT
+                                        total_population >= 2
+                                        NOT = { this = scope:exodos_global_anchor_1 }
+                                    }
+                                    while = {
+                                        count = 100
+                                        limit = { total_population >= 2 }
+                                        random_pops_in_province = {
+                                            move_pop = scope:exodos_dest
+                                        }
+                                    }
+                                }
+                                every_area_province = {
+                                    limit = { owner = ROOT }
+                                    set_variable = { name = exodos_gather_global_done value = 1 }
+                                }
+                            }
+                        }
+                    }
+                    if = {
+                        limit = {
+                            any_owned_province = {
+                                is_state_capital = yes
+                                NOT = { is_capital = yes }
+                                OR = {
+                                    has_province_rank = city
+                                    has_province_rank = city_metropolis
+                                }
+                                NOT = { has_variable = exodos_gather_global_done }
+                                area = {
+                                    NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                                }
+                            }
+                        }
+                        random_owned_province = {
+                            limit = {
+                                is_state_capital = yes
+                                NOT = { is_capital = yes }
+                                OR = {
+                                    has_province_rank = city
+                                    has_province_rank = city_metropolis
+                                }
+                                NOT = { has_variable = exodos_gather_global_done }
+                                area = {
+                                    NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                                }
+                            }
+                            save_scope_as = exodos_global_anchor_2
+                        }
+                        scope:exodos_global_anchor_2 = {
+                            save_scope_as = exodos_dest
+                            area = {
+                                every_area_province = {
+                                    limit = {
+                                        owner = ROOT
+                                        total_population >= 2
+                                        NOT = { this = scope:exodos_global_anchor_2 }
+                                    }
+                                    while = {
+                                        count = 100
+                                        limit = { total_population >= 2 }
+                                        random_pops_in_province = {
+                                            move_pop = scope:exodos_dest
+                                        }
+                                    }
+                                }
+                                every_area_province = {
+                                    limit = { owner = ROOT }
+                                    set_variable = { name = exodos_gather_global_done value = 1 }
+                                }
+                            }
+                        }
+                    }
+                    if = {
+                        limit = {
+                            any_owned_province = {
+                                is_state_capital = yes
+                                NOT = { is_capital = yes }
+                                OR = {
+                                    has_province_rank = city
+                                    has_province_rank = city_metropolis
+                                }
+                                NOT = { has_variable = exodos_gather_global_done }
+                                area = {
+                                    NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                                }
+                            }
+                        }
+                        random_owned_province = {
+                            limit = {
+                                is_state_capital = yes
+                                NOT = { is_capital = yes }
+                                OR = {
+                                    has_province_rank = city
+                                    has_province_rank = city_metropolis
+                                }
+                                NOT = { has_variable = exodos_gather_global_done }
+                                area = {
+                                    NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                                }
+                            }
+                            save_scope_as = exodos_global_anchor_3
+                        }
+                        scope:exodos_global_anchor_3 = {
+                            save_scope_as = exodos_dest
+                            area = {
+                                every_area_province = {
+                                    limit = {
+                                        owner = ROOT
+                                        total_population >= 2
+                                        NOT = { this = scope:exodos_global_anchor_3 }
+                                    }
+                                    while = {
+                                        count = 100
+                                        limit = { total_population >= 2 }
+                                        random_pops_in_province = {
+                                            move_pop = scope:exodos_dest
+                                        }
+                                    }
+                                }
+                                every_area_province = {
+                                    limit = { owner = ROOT }
+                                    set_variable = { name = exodos_gather_global_done value = 1 }
+                                }
+                            }
+                        }
+                    }
+                    if = {
+                        limit = {
+                            any_owned_province = {
+                                is_state_capital = yes
+                                NOT = { is_capital = yes }
+                                OR = {
+                                    has_province_rank = city
+                                    has_province_rank = city_metropolis
+                                }
+                                NOT = { has_variable = exodos_gather_global_done }
+                                area = {
+                                    NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                                }
+                            }
+                        }
+                        random_owned_province = {
+                            limit = {
+                                is_state_capital = yes
+                                NOT = { is_capital = yes }
+                                OR = {
+                                    has_province_rank = city
+                                    has_province_rank = city_metropolis
+                                }
+                                NOT = { has_variable = exodos_gather_global_done }
+                                area = {
+                                    NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                                }
+                            }
+                            save_scope_as = exodos_global_anchor_4
+                        }
+                        scope:exodos_global_anchor_4 = {
+                            save_scope_as = exodos_dest
+                            area = {
+                                every_area_province = {
+                                    limit = {
+                                        owner = ROOT
+                                        total_population >= 2
+                                        NOT = { this = scope:exodos_global_anchor_4 }
+                                    }
+                                    while = {
+                                        count = 100
+                                        limit = { total_population >= 2 }
+                                        random_pops_in_province = {
+                                            move_pop = scope:exodos_dest
+                                        }
+                                    }
+                                }
+                                every_area_province = {
+                                    limit = { owner = ROOT }
+                                    set_variable = { name = exodos_gather_global_done value = 1 }
+                                }
+                            }
+                        }
+                    }
+                    if = {
+                        limit = {
+                            any_owned_province = {
+                                is_state_capital = yes
+                                NOT = { is_capital = yes }
+                                OR = {
+                                    has_province_rank = city
+                                    has_province_rank = city_metropolis
+                                }
+                                NOT = { has_variable = exodos_gather_global_done }
+                                area = {
+                                    NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                                }
+                            }
+                        }
+                        random_owned_province = {
+                            limit = {
+                                is_state_capital = yes
+                                NOT = { is_capital = yes }
+                                OR = {
+                                    has_province_rank = city
+                                    has_province_rank = city_metropolis
+                                }
+                                NOT = { has_variable = exodos_gather_global_done }
+                                area = {
+                                    NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                                }
+                            }
+                            save_scope_as = exodos_global_anchor_5
+                        }
+                        scope:exodos_global_anchor_5 = {
+                            save_scope_as = exodos_dest
+                            area = {
+                                every_area_province = {
+                                    limit = {
+                                        owner = ROOT
+                                        total_population >= 2
+                                        NOT = { this = scope:exodos_global_anchor_5 }
+                                    }
+                                    while = {
+                                        count = 100
+                                        limit = { total_population >= 2 }
+                                        random_pops_in_province = {
+                                            move_pop = scope:exodos_dest
+                                        }
+                                    }
+                                }
+                                every_area_province = {
+                                    limit = { owner = ROOT }
+                                    set_variable = { name = exodos_gather_global_done value = 1 }
+                                }
+                            }
+                        }
+                    }
+                    if = {
+                        limit = {
+                            any_owned_province = {
+                                is_state_capital = yes
+                                NOT = { is_capital = yes }
+                                OR = {
+                                    has_province_rank = city
+                                    has_province_rank = city_metropolis
+                                }
+                                NOT = { has_variable = exodos_gather_global_done }
+                                area = {
+                                    NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                                }
+                            }
+                        }
+                        random_owned_province = {
+                            limit = {
+                                is_state_capital = yes
+                                NOT = { is_capital = yes }
+                                OR = {
+                                    has_province_rank = city
+                                    has_province_rank = city_metropolis
+                                }
+                                NOT = { has_variable = exodos_gather_global_done }
+                                area = {
+                                    NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                                }
+                            }
+                            save_scope_as = exodos_global_anchor_6
+                        }
+                        scope:exodos_global_anchor_6 = {
+                            save_scope_as = exodos_dest
+                            area = {
+                                every_area_province = {
+                                    limit = {
+                                        owner = ROOT
+                                        total_population >= 2
+                                        NOT = { this = scope:exodos_global_anchor_6 }
+                                    }
+                                    while = {
+                                        count = 100
+                                        limit = { total_population >= 2 }
+                                        random_pops_in_province = {
+                                            move_pop = scope:exodos_dest
+                                        }
+                                    }
+                                }
+                                every_area_province = {
+                                    limit = { owner = ROOT }
+                                    set_variable = { name = exodos_gather_global_done value = 1 }
+                                }
+                            }
+                        }
+                    }
+                    if = {
+                        limit = {
+                            any_owned_province = {
+                                is_state_capital = yes
+                                NOT = { is_capital = yes }
+                                OR = {
+                                    has_province_rank = city
+                                    has_province_rank = city_metropolis
+                                }
+                                NOT = { has_variable = exodos_gather_global_done }
+                                area = {
+                                    NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                                }
+                            }
+                        }
+                        random_owned_province = {
+                            limit = {
+                                is_state_capital = yes
+                                NOT = { is_capital = yes }
+                                OR = {
+                                    has_province_rank = city
+                                    has_province_rank = city_metropolis
+                                }
+                                NOT = { has_variable = exodos_gather_global_done }
+                                area = {
+                                    NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                                }
+                            }
+                            save_scope_as = exodos_global_anchor_7
+                        }
+                        scope:exodos_global_anchor_7 = {
+                            save_scope_as = exodos_dest
+                            area = {
+                                every_area_province = {
+                                    limit = {
+                                        owner = ROOT
+                                        total_population >= 2
+                                        NOT = { this = scope:exodos_global_anchor_7 }
+                                    }
+                                    while = {
+                                        count = 100
+                                        limit = { total_population >= 2 }
+                                        random_pops_in_province = {
+                                            move_pop = scope:exodos_dest
+                                        }
+                                    }
+                                }
+                                every_area_province = {
+                                    limit = { owner = ROOT }
+                                    set_variable = { name = exodos_gather_global_done value = 1 }
+                                }
+                            }
+                        }
+                    }
+                    if = {
+                        limit = {
+                            any_owned_province = {
+                                is_state_capital = yes
+                                NOT = { is_capital = yes }
+                                OR = {
+                                    has_province_rank = city
+                                    has_province_rank = city_metropolis
+                                }
+                                NOT = { has_variable = exodos_gather_global_done }
+                                area = {
+                                    NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                                }
+                            }
+                        }
+                        random_owned_province = {
+                            limit = {
+                                is_state_capital = yes
+                                NOT = { is_capital = yes }
+                                OR = {
+                                    has_province_rank = city
+                                    has_province_rank = city_metropolis
+                                }
+                                NOT = { has_variable = exodos_gather_global_done }
+                                area = {
+                                    NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                                }
+                            }
+                            save_scope_as = exodos_global_anchor_8
+                        }
+                        scope:exodos_global_anchor_8 = {
+                            save_scope_as = exodos_dest
+                            area = {
+                                every_area_province = {
+                                    limit = {
+                                        owner = ROOT
+                                        total_population >= 2
+                                        NOT = { this = scope:exodos_global_anchor_8 }
+                                    }
+                                    while = {
+                                        count = 100
+                                        limit = { total_population >= 2 }
+                                        random_pops_in_province = {
+                                            move_pop = scope:exodos_dest
+                                        }
+                                    }
+                                }
+                                every_area_province = {
+                                    limit = { owner = ROOT }
+                                    set_variable = { name = exodos_gather_global_done value = 1 }
+                                }
+                            }
+                        }
+                    }
+                    if = {
+                        limit = {
+                            any_owned_province = {
+                                is_state_capital = yes
+                                NOT = { is_capital = yes }
+                                OR = {
+                                    has_province_rank = city
+                                    has_province_rank = city_metropolis
+                                }
+                                NOT = { has_variable = exodos_gather_global_done }
+                                area = {
+                                    NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                                }
+                            }
+                        }
+                        random_owned_province = {
+                            limit = {
+                                is_state_capital = yes
+                                NOT = { is_capital = yes }
+                                OR = {
+                                    has_province_rank = city
+                                    has_province_rank = city_metropolis
+                                }
+                                NOT = { has_variable = exodos_gather_global_done }
+                                area = {
+                                    NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                                }
+                            }
+                            save_scope_as = exodos_global_anchor_9
+                        }
+                        scope:exodos_global_anchor_9 = {
+                            save_scope_as = exodos_dest
+                            area = {
+                                every_area_province = {
+                                    limit = {
+                                        owner = ROOT
+                                        total_population >= 2
+                                        NOT = { this = scope:exodos_global_anchor_9 }
+                                    }
+                                    while = {
+                                        count = 100
+                                        limit = { total_population >= 2 }
+                                        random_pops_in_province = {
+                                            move_pop = scope:exodos_dest
+                                        }
+                                    }
+                                }
+                                every_area_province = {
+                                    limit = { owner = ROOT }
+                                    set_variable = { name = exodos_gather_global_done value = 1 }
+                                }
+                            }
+                        }
+                    }
+                    if = {
+                        limit = {
+                            any_owned_province = {
+                                is_state_capital = yes
+                                NOT = { is_capital = yes }
+                                OR = {
+                                    has_province_rank = city
+                                    has_province_rank = city_metropolis
+                                }
+                                NOT = { has_variable = exodos_gather_global_done }
+                                area = {
+                                    NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                                }
+                            }
+                        }
+                        random_owned_province = {
+                            limit = {
+                                is_state_capital = yes
+                                NOT = { is_capital = yes }
+                                OR = {
+                                    has_province_rank = city
+                                    has_province_rank = city_metropolis
+                                }
+                                NOT = { has_variable = exodos_gather_global_done }
+                                area = {
+                                    NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                                }
+                            }
+                            save_scope_as = exodos_global_anchor_10
+                        }
+                        scope:exodos_global_anchor_10 = {
+                            save_scope_as = exodos_dest
+                            area = {
+                                every_area_province = {
+                                    limit = {
+                                        owner = ROOT
+                                        total_population >= 2
+                                        NOT = { this = scope:exodos_global_anchor_10 }
+                                    }
+                                    while = {
+                                        count = 100
+                                        limit = { total_population >= 2 }
+                                        random_pops_in_province = {
+                                            move_pop = scope:exodos_dest
+                                        }
+                                    }
+                                }
+                                every_area_province = {
+                                    limit = { owner = ROOT }
+                                    set_variable = { name = exodos_gather_global_done value = 1 }
+                                }
+                            }
+                        }
+                    }
+
+                    # Cleanup cuando no quedan areas elegibles
+                    if = {
+                        limit = {
+                            NOT = {
+                                any_owned_province = {
+                                    is_state_capital = yes
+                                    NOT = { is_capital = yes }
+                                    OR = {
+                                        has_province_rank = city
+                                        has_province_rank = city_metropolis
+                                    }
+                                    NOT = { has_variable = exodos_gather_global_done }
+                                    area = {
+                                        NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                                    }
+                                }
+                            }
+                        }
+                        remove_variable = exodos_global_active
+                        remove_variable = exodos_operation_active
+                    }
+                }
+            }
+        }
+    }
+}
+
+# ================================================================
+# DISTRIBUTE GLOBAL — monthly pulse
+# 5 áreas por mes, auto-rango R3→R2→R1→saltea
+# Ancla = state capital del área (city o city_metropolis, excluir capital nacional)
+# scope:exodos_dist_country = ancla del área (guardado por área)
+# ================================================================
+
+monthly_country_pulse = {
+    effect = {
+        if = {
+            limit = {
+                is_ai = no
+                has_variable = exodos_distribute_global_active
+            }
+
+            # ── BLOQUE 1 ─────────────────────────────────────────────
+            random_owned_province = {
+                limit = {
+                    OR = {
+                        has_province_rank = city
+                        has_province_rank = city_metropolis
+                    }
+                    NOT = { is_capital = yes }
+                    NOT = { has_variable = exodos_distribute_global_done }
+                    area = {
+                        NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                    }
+                }
+                save_scope_as = exodos_dist_country
+                if = {
+                    limit = { total_population >= iram_dist_threshold_r3 }
+                    area = {
+                        every_area_province = {
+                            limit = {
+                                has_owner = yes
+                                owner = scope:exodos_dist_country
+                                NOT = { has_province_rank = city }
+                                NOT = { has_province_rank = city_metropolis }
+                            }
+                            while = {
+                                count = 14
+                                limit = { scope:exodos_dist_country = { total_population >= 2 } }
+                                scope:exodos_dist_country = {
+                                    random_pops_in_province = {
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                else_if = {
+                    limit = { total_population >= iram_dist_threshold_r2 }
+                    area = {
+                        every_area_province = {
+                            limit = {
+                                has_owner = yes
+                                owner = scope:exodos_dist_country
+                                NOT = { has_province_rank = city }
+                                NOT = { has_province_rank = city_metropolis }
+                            }
+                            while = {
+                                count = 9
+                                limit = { scope:exodos_dist_country = { total_population >= 2 } }
+                                scope:exodos_dist_country = {
+                                    random_pops_in_province = {
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                else_if = {
+                    limit = { total_population >= iram_dist_threshold_r1 }
+                    area = {
+                        every_area_province = {
+                            limit = {
+                                has_owner = yes
+                                owner = scope:exodos_dist_country
+                                NOT = { has_province_rank = city }
+                                NOT = { has_province_rank = city_metropolis }
+                            }
+                            while = {
+                                count = 4
+                                limit = { scope:exodos_dist_country = { total_population >= 2 } }
+                                scope:exodos_dist_country = {
+                                    random_pops_in_province = {
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                set_variable = { name = exodos_distribute_global_done value = 1 }
+            }
+
+            # ── BLOQUE 2 ─────────────────────────────────────────────
+            random_owned_province = {
+                limit = {
+                    OR = {
+                        has_province_rank = city
+                        has_province_rank = city_metropolis
+                    }
+                    NOT = { is_capital = yes }
+                    NOT = { has_variable = exodos_distribute_global_done }
+                    area = {
+                        NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                    }
+                }
+                save_scope_as = exodos_dist_country
+                if = {
+                    limit = { total_population >= iram_dist_threshold_r3 }
+                    area = {
+                        every_area_province = {
+                            limit = {
+                                has_owner = yes
+                                owner = scope:exodos_dist_country
+                                NOT = { has_province_rank = city }
+                                NOT = { has_province_rank = city_metropolis }
+                            }
+                            while = {
+                                count = 14
+                                limit = { scope:exodos_dist_country = { total_population >= 2 } }
+                                scope:exodos_dist_country = {
+                                    random_pops_in_province = {
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                else_if = {
+                    limit = { total_population >= iram_dist_threshold_r2 }
+                    area = {
+                        every_area_province = {
+                            limit = {
+                                has_owner = yes
+                                owner = scope:exodos_dist_country
+                                NOT = { has_province_rank = city }
+                                NOT = { has_province_rank = city_metropolis }
+                            }
+                            while = {
+                                count = 9
+                                limit = { scope:exodos_dist_country = { total_population >= 2 } }
+                                scope:exodos_dist_country = {
+                                    random_pops_in_province = {
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                else_if = {
+                    limit = { total_population >= iram_dist_threshold_r1 }
+                    area = {
+                        every_area_province = {
+                            limit = {
+                                has_owner = yes
+                                owner = scope:exodos_dist_country
+                                NOT = { has_province_rank = city }
+                                NOT = { has_province_rank = city_metropolis }
+                            }
+                            while = {
+                                count = 4
+                                limit = { scope:exodos_dist_country = { total_population >= 2 } }
+                                scope:exodos_dist_country = {
+                                    random_pops_in_province = {
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                set_variable = { name = exodos_distribute_global_done value = 1 }
+            }
+
+            # ── BLOQUE 3 ─────────────────────────────────────────────
+            random_owned_province = {
+                limit = {
+                    OR = {
+                        has_province_rank = city
+                        has_province_rank = city_metropolis
+                    }
+                    NOT = { is_capital = yes }
+                    NOT = { has_variable = exodos_distribute_global_done }
+                    area = {
+                        NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                    }
+                }
+                save_scope_as = exodos_dist_country
+                if = {
+                    limit = { total_population >= iram_dist_threshold_r3 }
+                    area = {
+                        every_area_province = {
+                            limit = {
+                                has_owner = yes
+                                owner = scope:exodos_dist_country
+                                NOT = { has_province_rank = city }
+                                NOT = { has_province_rank = city_metropolis }
+                            }
+                            while = {
+                                count = 14
+                                limit = { scope:exodos_dist_country = { total_population >= 2 } }
+                                scope:exodos_dist_country = {
+                                    random_pops_in_province = {
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                else_if = {
+                    limit = { total_population >= iram_dist_threshold_r2 }
+                    area = {
+                        every_area_province = {
+                            limit = {
+                                has_owner = yes
+                                owner = scope:exodos_dist_country
+                                NOT = { has_province_rank = city }
+                                NOT = { has_province_rank = city_metropolis }
+                            }
+                            while = {
+                                count = 9
+                                limit = { scope:exodos_dist_country = { total_population >= 2 } }
+                                scope:exodos_dist_country = {
+                                    random_pops_in_province = {
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                else_if = {
+                    limit = { total_population >= iram_dist_threshold_r1 }
+                    area = {
+                        every_area_province = {
+                            limit = {
+                                has_owner = yes
+                                owner = scope:exodos_dist_country
+                                NOT = { has_province_rank = city }
+                                NOT = { has_province_rank = city_metropolis }
+                            }
+                            while = {
+                                count = 4
+                                limit = { scope:exodos_dist_country = { total_population >= 2 } }
+                                scope:exodos_dist_country = {
+                                    random_pops_in_province = {
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                set_variable = { name = exodos_distribute_global_done value = 1 }
+            }
+
+            # ── BLOQUE 4 ─────────────────────────────────────────────
+            random_owned_province = {
+                limit = {
+                    OR = {
+                        has_province_rank = city
+                        has_province_rank = city_metropolis
+                    }
+                    NOT = { is_capital = yes }
+                    NOT = { has_variable = exodos_distribute_global_done }
+                    area = {
+                        NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                    }
+                }
+                save_scope_as = exodos_dist_country
+                if = {
+                    limit = { total_population >= iram_dist_threshold_r3 }
+                    area = {
+                        every_area_province = {
+                            limit = {
+                                has_owner = yes
+                                owner = scope:exodos_dist_country
+                                NOT = { has_province_rank = city }
+                                NOT = { has_province_rank = city_metropolis }
+                            }
+                            while = {
+                                count = 14
+                                limit = { scope:exodos_dist_country = { total_population >= 2 } }
+                                scope:exodos_dist_country = {
+                                    random_pops_in_province = {
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                else_if = {
+                    limit = { total_population >= iram_dist_threshold_r2 }
+                    area = {
+                        every_area_province = {
+                            limit = {
+                                has_owner = yes
+                                owner = scope:exodos_dist_country
+                                NOT = { has_province_rank = city }
+                                NOT = { has_province_rank = city_metropolis }
+                            }
+                            while = {
+                                count = 9
+                                limit = { scope:exodos_dist_country = { total_population >= 2 } }
+                                scope:exodos_dist_country = {
+                                    random_pops_in_province = {
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                else_if = {
+                    limit = { total_population >= iram_dist_threshold_r1 }
+                    area = {
+                        every_area_province = {
+                            limit = {
+                                has_owner = yes
+                                owner = scope:exodos_dist_country
+                                NOT = { has_province_rank = city }
+                                NOT = { has_province_rank = city_metropolis }
+                            }
+                            while = {
+                                count = 4
+                                limit = { scope:exodos_dist_country = { total_population >= 2 } }
+                                scope:exodos_dist_country = {
+                                    random_pops_in_province = {
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                set_variable = { name = exodos_distribute_global_done value = 1 }
+            }
+
+            # ── BLOQUE 5 ─────────────────────────────────────────────
+            random_owned_province = {
+                limit = {
+                    OR = {
+                        has_province_rank = city
+                        has_province_rank = city_metropolis
+                    }
+                    NOT = { is_capital = yes }
+                    NOT = { has_variable = exodos_distribute_global_done }
+                    area = {
+                        NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                    }
+                }
+                save_scope_as = exodos_dist_country
+                if = {
+                    limit = { total_population >= iram_dist_threshold_r3 }
+                    area = {
+                        every_area_province = {
+                            limit = {
+                                has_owner = yes
+                                owner = scope:exodos_dist_country
+                                NOT = { has_province_rank = city }
+                                NOT = { has_province_rank = city_metropolis }
+                            }
+                            while = {
+                                count = 14
+                                limit = { scope:exodos_dist_country = { total_population >= 2 } }
+                                scope:exodos_dist_country = {
+                                    random_pops_in_province = {
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                else_if = {
+                    limit = { total_population >= iram_dist_threshold_r2 }
+                    area = {
+                        every_area_province = {
+                            limit = {
+                                has_owner = yes
+                                owner = scope:exodos_dist_country
+                                NOT = { has_province_rank = city }
+                                NOT = { has_province_rank = city_metropolis }
+                            }
+                            while = {
+                                count = 9
+                                limit = { scope:exodos_dist_country = { total_population >= 2 } }
+                                scope:exodos_dist_country = {
+                                    random_pops_in_province = {
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                else_if = {
+                    limit = { total_population >= iram_dist_threshold_r1 }
+                    area = {
+                        every_area_province = {
+                            limit = {
+                                has_owner = yes
+                                owner = scope:exodos_dist_country
+                                NOT = { has_province_rank = city }
+                                NOT = { has_province_rank = city_metropolis }
+                            }
+                            while = {
+                                count = 4
+                                limit = { scope:exodos_dist_country = { total_population >= 2 } }
+                                scope:exodos_dist_country = {
+                                    random_pops_in_province = {
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                set_variable = { name = exodos_distribute_global_done value = 1 }
+            }
+
+            # ── CLEANUP — si no quedan áreas sin procesar ─────────────
+            if = {
+                limit = {
+                    NOT = {
+                        any_owned_province = {
+                            OR = {
+                                has_province_rank = city
+                                has_province_rank = city_metropolis
+                            }
+                            NOT = { is_capital = yes }
+                            NOT = { has_variable = exodos_distribute_global_done }
+                            area = {
+                                NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                            }
+                        }
+                    }
+                }
+                exodos_cleanup_effect = yes
+            }
+        }
+    }
+}
+
+# ================================================================
+# OPTIMIZE GLOBAL — monthly pulse
+# 5 áreas por mes
+# Ancla = state capital del área (city o city_metropolis, excluir capital nacional)
+# Guard: num_of_slaves >= iram_optimize_threshold en el ancla
+# Distribuye slaves a settlements según building (mine=10, farming=10, latifundia=15)
+# ================================================================
+
+monthly_country_pulse = {
+    effect = {
+        if = {
+            limit = {
+                is_ai = no
+                has_variable = exodos_optimize_global_active
+            }
+
+            # ── BLOQUE 1 ─────────────────────────────────────────────
+            random_owned_province = {
+                limit = {
+                    OR = {
+                        has_province_rank = city
+                        has_province_rank = city_metropolis
+                    }
+                    NOT = { is_capital = yes }
+                    NOT = { has_variable = exodos_optimize_global_done }
+                    area = {
+                        NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                    }
+                }
+                save_scope_as = exodos_dist_country
+                if = {
+                    limit = { num_of_slaves >= iram_optimize_threshold }
+                    area = {
+                        every_area_province = {
+                            limit = {
+                                has_owner = yes
+                                owner = scope:exodos_dist_country
+                                has_city_status = no
+                                num_of_slave_mine_building > 0
+                            }
+                            while = {
+                                count = 10
+                                limit = { scope:exodos_dist_country = { num_of_slaves >= 1 } }
+                                scope:exodos_dist_country = {
+                                    random_pops_in_province = {
+                                        limit = { pop_type = slaves }
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                        every_area_province = {
+                            limit = {
+                                has_owner = yes
+                                owner = scope:exodos_dist_country
+                                has_city_status = no
+                                num_of_basic_settlement_infratructure_building > 0
+                            }
+                            while = {
+                                count = 10
+                                limit = { scope:exodos_dist_country = { num_of_slaves >= 1 } }
+                                scope:exodos_dist_country = {
+                                    random_pops_in_province = {
+                                        limit = { pop_type = slaves }
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                        every_area_province = {
+                            limit = {
+                                has_owner = yes
+                                owner = scope:exodos_dist_country
+                                has_city_status = no
+                                num_of_latifundia_building > 0
+                            }
+                            while = {
+                                count = 15
+                                limit = { scope:exodos_dist_country = { num_of_slaves >= 1 } }
+                                scope:exodos_dist_country = {
+                                    random_pops_in_province = {
+                                        limit = { pop_type = slaves }
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                set_variable = { name = exodos_optimize_global_done value = 1 }
+            }
+
+            # ── BLOQUE 2 ─────────────────────────────────────────────
+            random_owned_province = {
+                limit = {
+                    OR = {
+                        has_province_rank = city
+                        has_province_rank = city_metropolis
+                    }
+                    NOT = { is_capital = yes }
+                    NOT = { has_variable = exodos_optimize_global_done }
+                    area = {
+                        NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                    }
+                }
+                save_scope_as = exodos_dist_country
+                if = {
+                    limit = { num_of_slaves >= iram_optimize_threshold }
+                    area = {
+                        every_area_province = {
+                            limit = {
+                                has_owner = yes
+                                owner = scope:exodos_dist_country
+                                has_city_status = no
+                                num_of_slave_mine_building > 0
+                            }
+                            while = {
+                                count = 10
+                                limit = { scope:exodos_dist_country = { num_of_slaves >= 1 } }
+                                scope:exodos_dist_country = {
+                                    random_pops_in_province = {
+                                        limit = { pop_type = slaves }
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                        every_area_province = {
+                            limit = {
+                                has_owner = yes
+                                owner = scope:exodos_dist_country
+                                has_city_status = no
+                                num_of_basic_settlement_infratructure_building > 0
+                            }
+                            while = {
+                                count = 10
+                                limit = { scope:exodos_dist_country = { num_of_slaves >= 1 } }
+                                scope:exodos_dist_country = {
+                                    random_pops_in_province = {
+                                        limit = { pop_type = slaves }
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                        every_area_province = {
+                            limit = {
+                                has_owner = yes
+                                owner = scope:exodos_dist_country
+                                has_city_status = no
+                                num_of_latifundia_building > 0
+                            }
+                            while = {
+                                count = 15
+                                limit = { scope:exodos_dist_country = { num_of_slaves >= 1 } }
+                                scope:exodos_dist_country = {
+                                    random_pops_in_province = {
+                                        limit = { pop_type = slaves }
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                set_variable = { name = exodos_optimize_global_done value = 1 }
+            }
+
+            # ── BLOQUE 3 ─────────────────────────────────────────────
+            random_owned_province = {
+                limit = {
+                    OR = {
+                        has_province_rank = city
+                        has_province_rank = city_metropolis
+                    }
+                    NOT = { is_capital = yes }
+                    NOT = { has_variable = exodos_optimize_global_done }
+                    area = {
+                        NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                    }
+                }
+                save_scope_as = exodos_dist_country
+                if = {
+                    limit = { num_of_slaves >= iram_optimize_threshold }
+                    area = {
+                        every_area_province = {
+                            limit = {
+                                has_owner = yes
+                                owner = scope:exodos_dist_country
+                                has_city_status = no
+                                num_of_slave_mine_building > 0
+                            }
+                            while = {
+                                count = 10
+                                limit = { scope:exodos_dist_country = { num_of_slaves >= 1 } }
+                                scope:exodos_dist_country = {
+                                    random_pops_in_province = {
+                                        limit = { pop_type = slaves }
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                        every_area_province = {
+                            limit = {
+                                has_owner = yes
+                                owner = scope:exodos_dist_country
+                                has_city_status = no
+                                num_of_basic_settlement_infratructure_building > 0
+                            }
+                            while = {
+                                count = 10
+                                limit = { scope:exodos_dist_country = { num_of_slaves >= 1 } }
+                                scope:exodos_dist_country = {
+                                    random_pops_in_province = {
+                                        limit = { pop_type = slaves }
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                        every_area_province = {
+                            limit = {
+                                has_owner = yes
+                                owner = scope:exodos_dist_country
+                                has_city_status = no
+                                num_of_latifundia_building > 0
+                            }
+                            while = {
+                                count = 15
+                                limit = { scope:exodos_dist_country = { num_of_slaves >= 1 } }
+                                scope:exodos_dist_country = {
+                                    random_pops_in_province = {
+                                        limit = { pop_type = slaves }
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                set_variable = { name = exodos_optimize_global_done value = 1 }
+            }
+
+            # ── BLOQUE 4 ─────────────────────────────────────────────
+            random_owned_province = {
+                limit = {
+                    OR = {
+                        has_province_rank = city
+                        has_province_rank = city_metropolis
+                    }
+                    NOT = { is_capital = yes }
+                    NOT = { has_variable = exodos_optimize_global_done }
+                    area = {
+                        NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                    }
+                }
+                save_scope_as = exodos_dist_country
+                if = {
+                    limit = { num_of_slaves >= iram_optimize_threshold }
+                    area = {
+                        every_area_province = {
+                            limit = {
+                                has_owner = yes
+                                owner = scope:exodos_dist_country
+                                has_city_status = no
+                                num_of_slave_mine_building > 0
+                            }
+                            while = {
+                                count = 10
+                                limit = { scope:exodos_dist_country = { num_of_slaves >= 1 } }
+                                scope:exodos_dist_country = {
+                                    random_pops_in_province = {
+                                        limit = { pop_type = slaves }
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                        every_area_province = {
+                            limit = {
+                                has_owner = yes
+                                owner = scope:exodos_dist_country
+                                has_city_status = no
+                                num_of_basic_settlement_infratructure_building > 0
+                            }
+                            while = {
+                                count = 10
+                                limit = { scope:exodos_dist_country = { num_of_slaves >= 1 } }
+                                scope:exodos_dist_country = {
+                                    random_pops_in_province = {
+                                        limit = { pop_type = slaves }
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                        every_area_province = {
+                            limit = {
+                                has_owner = yes
+                                owner = scope:exodos_dist_country
+                                has_city_status = no
+                                num_of_latifundia_building > 0
+                            }
+                            while = {
+                                count = 15
+                                limit = { scope:exodos_dist_country = { num_of_slaves >= 1 } }
+                                scope:exodos_dist_country = {
+                                    random_pops_in_province = {
+                                        limit = { pop_type = slaves }
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                set_variable = { name = exodos_optimize_global_done value = 1 }
+            }
+
+            # ── BLOQUE 5 ─────────────────────────────────────────────
+            random_owned_province = {
+                limit = {
+                    OR = {
+                        has_province_rank = city
+                        has_province_rank = city_metropolis
+                    }
+                    NOT = { is_capital = yes }
+                    NOT = { has_variable = exodos_optimize_global_done }
+                    area = {
+                        NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                    }
+                }
+                save_scope_as = exodos_dist_country
+                if = {
+                    limit = { num_of_slaves >= iram_optimize_threshold }
+                    area = {
+                        every_area_province = {
+                            limit = {
+                                has_owner = yes
+                                owner = scope:exodos_dist_country
+                                has_city_status = no
+                                num_of_slave_mine_building > 0
+                            }
+                            while = {
+                                count = 10
+                                limit = { scope:exodos_dist_country = { num_of_slaves >= 1 } }
+                                scope:exodos_dist_country = {
+                                    random_pops_in_province = {
+                                        limit = { pop_type = slaves }
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                        every_area_province = {
+                            limit = {
+                                has_owner = yes
+                                owner = scope:exodos_dist_country
+                                has_city_status = no
+                                num_of_basic_settlement_infratructure_building > 0
+                            }
+                            while = {
+                                count = 10
+                                limit = { scope:exodos_dist_country = { num_of_slaves >= 1 } }
+                                scope:exodos_dist_country = {
+                                    random_pops_in_province = {
+                                        limit = { pop_type = slaves }
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                        every_area_province = {
+                            limit = {
+                                has_owner = yes
+                                owner = scope:exodos_dist_country
+                                has_city_status = no
+                                num_of_latifundia_building > 0
+                            }
+                            while = {
+                                count = 15
+                                limit = { scope:exodos_dist_country = { num_of_slaves >= 1 } }
+                                scope:exodos_dist_country = {
+                                    random_pops_in_province = {
+                                        limit = { pop_type = slaves }
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                set_variable = { name = exodos_optimize_global_done value = 1 }
+            }
+
+            # ── CLEANUP — si no quedan áreas sin procesar ─────────────
+            if = {
+                limit = {
+                    NOT = {
+                        any_owned_province = {
+                            OR = {
+                                has_province_rank = city
+                                has_province_rank = city_metropolis
+                            }
+                            NOT = { is_capital = yes }
+                            NOT = { has_variable = exodos_optimize_global_done }
+                            area = {
+                                NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                            }
+                        }
+                    }
+                }
+                exodos_cleanup_effect = yes
+            }
+        }
+    }
+}
+

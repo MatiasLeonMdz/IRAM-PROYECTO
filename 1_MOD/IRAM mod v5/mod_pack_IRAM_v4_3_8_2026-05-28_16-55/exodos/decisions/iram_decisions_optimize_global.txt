@@ -1,0 +1,29 @@
+﻿country_decisions = {
+
+    # ================================================================
+    # OPTIMIZE GLOBAL — Fase 1 gather + Fase 2 distribute automático
+    # ================================================================
+
+    iram_13_activate_optimize_global = {
+        potential = {
+            is_ai = no
+            has_variable = iram_menu_management_open
+            has_variable = exodos_gather_global_completed
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            NOT = { has_variable = exodos_operation_active }
+        }
+        effect = {
+            every_character = {
+                limit = { is_ruler = yes }
+                add_popularity = -100
+            }
+            add_tyranny = 100
+            set_variable = { name = exodos_optimize_global_active value = 1 }
+            set_variable = { name = exodos_operation_active value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+}

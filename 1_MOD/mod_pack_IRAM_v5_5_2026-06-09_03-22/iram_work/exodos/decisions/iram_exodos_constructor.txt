@@ -1,0 +1,131 @@
+﻿country_decisions = {
+
+    # ================================================================
+    # iram_12 — Constructor Automático
+    # Itera every_owned_province con has_city_status = no
+    # y NOT = { num_of_fortress_building > 0 }
+    # FASE 1: demoler con 7 if independientes + guard num_of_X > 0
+    # FASE 2: if/else_if con trade_goods = X → add_building_level
+    # INSTANTÁNEO — todo en el effect, sin pulso mensual
+    # ================================================================
+
+    iram_exodos_constructor_auto = {
+        potential = {
+            is_ai = no
+            has_variable = iram_exodos_menu
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            custom_tooltip = iram_tt_exodos_sin_op
+            NOT = { has_variable = iram_operation_active }
+        }
+        effect = {
+            every_owned_province = {
+                limit = {
+                    has_city_status = no
+                    NOT = { num_of_fortress_building > 0 }
+                }
+
+                # ── FASE 1 — DEMOLER (if independientes — demoler TODOS) ──
+
+                if = { limit = { num_of_barracks_building > 0 }
+                    remove_building_level = barracks_building }
+                if = { limit = { num_of_slave_mine_building > 0 }
+                    remove_building_level = slave_mine_building }
+                if = { limit = { num_of_latifundia_building > 0 }
+                    remove_building_level = latifundia_building }
+                if = { limit = { num_of_basic_settlement_infratructure_building > 0 }
+                    remove_building_level = basic_settlement_infratructure_building }
+                if = { limit = { num_of_local_forum_building > 0 }
+                    remove_building_level = local_forum_building }
+                if = { limit = { num_of_port_building > 0 }
+                    remove_building_level = port_building }
+                if = { limit = { num_of_hill_fort > 0 }
+                    remove_building_level = hill_fort }
+
+                # ── FASE 2 — CONSTRUIR según trade good ──────────────────
+
+                # Farming Settlement — grain, fish, cattle, vegetables
+                if = { limit = { trade_goods = grain }
+                    add_building_level = basic_settlement_infratructure_building }
+                else_if = { limit = { trade_goods = fish }
+                    add_building_level = basic_settlement_infratructure_building }
+                else_if = { limit = { trade_goods = cattle }
+                    add_building_level = basic_settlement_infratructure_building }
+                else_if = { limit = { trade_goods = vegetables }
+                    add_building_level = basic_settlement_infratructure_building }
+
+                # Mine — iron, precious_metals, base_metals, marble
+                else_if = { limit = { trade_goods = iron }
+                    add_building_level = slave_mine_building }
+                else_if = { limit = { trade_goods = precious_metals }
+                    add_building_level = slave_mine_building }
+                else_if = { limit = { trade_goods = base_metals }
+                    add_building_level = slave_mine_building }
+                else_if = { limit = { trade_goods = marble }
+                    add_building_level = slave_mine_building }
+
+                # Provincial Legation — wine, leather, hemp, dates, stone,
+                #                       olive, wild_game, fur, woad
+                else_if = { limit = { trade_goods = wine }
+                    add_building_level = local_forum_building }
+                else_if = { limit = { trade_goods = leather }
+                    add_building_level = local_forum_building }
+                else_if = { limit = { trade_goods = hemp }
+                    add_building_level = local_forum_building }
+                else_if = { limit = { trade_goods = dates }
+                    add_building_level = local_forum_building }
+                else_if = { limit = { trade_goods = stone }
+                    add_building_level = local_forum_building }
+                else_if = { limit = { trade_goods = olive }
+                    add_building_level = local_forum_building }
+                else_if = { limit = { trade_goods = wild_game }
+                    add_building_level = local_forum_building }
+                else_if = { limit = { trade_goods = fur }
+                    add_building_level = local_forum_building }
+                else_if = { limit = { trade_goods = woad }
+                    add_building_level = local_forum_building }
+
+                # Slave Estate — todos los demás (salt, honey, papyrus, cloth,
+                #   dye, incense, silk, amber, spices, earthware, gems, glass,
+                #   horses, wood, elephants, steppe_horses, camel)
+                else_if = { limit = { trade_goods = salt }
+                    add_building_level = latifundia_building }
+                else_if = { limit = { trade_goods = honey }
+                    add_building_level = latifundia_building }
+                else_if = { limit = { trade_goods = papyrus }
+                    add_building_level = latifundia_building }
+                else_if = { limit = { trade_goods = cloth }
+                    add_building_level = latifundia_building }
+                else_if = { limit = { trade_goods = dye }
+                    add_building_level = latifundia_building }
+                else_if = { limit = { trade_goods = incense }
+                    add_building_level = latifundia_building }
+                else_if = { limit = { trade_goods = silk }
+                    add_building_level = latifundia_building }
+                else_if = { limit = { trade_goods = amber }
+                    add_building_level = latifundia_building }
+                else_if = { limit = { trade_goods = spices }
+                    add_building_level = latifundia_building }
+                else_if = { limit = { trade_goods = earthware }
+                    add_building_level = latifundia_building }
+                else_if = { limit = { trade_goods = gems }
+                    add_building_level = latifundia_building }
+                else_if = { limit = { trade_goods = glass }
+                    add_building_level = latifundia_building }
+                else_if = { limit = { trade_goods = horses }
+                    add_building_level = latifundia_building }
+                else_if = { limit = { trade_goods = wood }
+                    add_building_level = latifundia_building }
+                else_if = { limit = { trade_goods = elephants }
+                    add_building_level = latifundia_building }
+                else_if = { limit = { trade_goods = steppe_horses }
+                    add_building_level = latifundia_building }
+                else_if = { limit = { trade_goods = camel }
+                    add_building_level = latifundia_building }
+            }
+        }
+        ai_will_do = { factor = 0 }
+    }
+}

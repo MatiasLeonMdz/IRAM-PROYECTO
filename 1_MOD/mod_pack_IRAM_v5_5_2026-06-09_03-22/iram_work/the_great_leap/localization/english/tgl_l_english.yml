@@ -1,0 +1,10 @@
+﻿l_english:
+ iram_tgl_purchase:0 "The Great Leap"
+ iram_tgl_purchase_desc:0 "By concentrating vast resources and the finest minds of the state, we can rapidly advance our understanding across all fields of knowledge. This opportunity comes but once, and at great cost to the treasury and the patience of the people."
+ tgl_purchase_cost_tt:0 "Paying 516 gold per metropolis and 258 gold per city. Costs 100 tyranny. Cost varies by settlements owned."
+ tgl_purchase_warning_tt:0 "WARNING: The total cost depends on the number of settlements you own. Your treasury can go negative — the engine charges every city regardless. Count your metropolises and cities before confirming."
+
+ # ── TOOLTIPS RD1 (T10) ─────────────────────────────────────────────────
+ iram_tt_tgl_purchased:0   "This purchase has not yet been used."
+ iram_tt_tgl_ciudades:0    "You control at least one city."
+

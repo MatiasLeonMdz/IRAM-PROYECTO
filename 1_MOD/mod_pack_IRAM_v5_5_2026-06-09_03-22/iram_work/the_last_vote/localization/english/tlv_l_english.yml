@@ -1,0 +1,10 @@
+﻿l_english:
+ iram_tlv_confirm:0 "The Last Vote: Dissolve the Republic"
+ iram_tlv_confirm_desc:0 "The people have spoken. With sufficient support and the authority to act, dissolve the institutions of the republic and seize power. There will be no going back. Cost: 2000 gold, 50 stability, 40 tyranny."
+ tlv.2.t:0 "The Republic Is Dead"
+ tlv.2.d:0 "The last vote has been cast. The senate is dissolved. Power rests in one pair of hands now."
+ tlv.2.ok:0 "As it was always meant to be."
+
+ # ── TOOLTIPS RD1 (T10) ─────────────────────────────────────────────────
+ iram_tt_tlv_republic:0    "Your nation must be a republic."
+

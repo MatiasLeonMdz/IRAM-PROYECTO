@@ -1,0 +1,47 @@
+﻿l_english:
+ # ================================================================
+ # NIVEL 0
+ # ================================================================
+ iram_01_menu_open:0 "IRAM: Alternative Mechanics"
+ iram_01_menu_open_desc:0 "Access the advanced state mechanics panel. Here you can control population movement, demographics, and political decisions of the empire."
+
+ # ================================================================
+ # NIVEL 1 — Categories
+ # ================================================================
+ iram_03_menu_management:0 "Population Movement"
+ iram_03_menu_management_desc:0 "Concentrate, distribute, transfer, or optimize population between provinces and areas. Requires a rival in command as a position marker."
+
+ iram_04_menu_behavior:0 "Demographics"
+ iram_04_menu_behavior_desc:0 "Activate permanent decrees that accelerate pop migration, promotion, or demotion, and manage the relic of spiritual unity."
+
+ iram_05_menu_political:0 "Political"
+ iram_05_menu_political_desc:0 "Political decisions: eliminate rivals, manipulate characters, manage the rival heir, and structural reforms of the state."
+
+ iram_06_cerrar_menu:0 "« Close menu"
+ iram_06_cerrar_menu_desc:0 "Close the alternative mechanics panel."
+
+ # ================================================================
+ # NIVEL 2 — Close categories
+ # ================================================================
+ iram_07_cerrar_management:0 "« Back to menu"
+ iram_07_cerrar_management_desc:0 "Close the Population Movement category and return to the main menu."
+
+ iram_14_cerrar_behavior:0 "« Back to menu"
+ iram_08_cerrar_demografia_desc:0 "Close the Demographics category and return to the main menu."
+
+ iram_19_cerrar_political:0 "« Back to menu"
+ iram_09_cerrar_politico_desc:0 "Close the Political category and return to the main menu."
+
+ # ================================================================
+ # RIVAL HEIR SUBMENU
+ # ================================================================
+ iram_20_rival_heir_open:0 "Rival Heir"
+ iram_10_rival_heir_open_desc:0 "Engender an heir using the rival as the father. The heir will be born with traits influenced by the rival lineage."
+
+ iram_21_cerrar_rival_heir:0 "« Back to Political"
+ iram_11_cerrar_rival_heir_desc:0 "Close the Rival Heir submenu."
+
+ # ================================================================
+ # TOOLTIPS
+ # ================================================================
+ iram_tt_rival_none:0 "You need exactly 1 active rival."

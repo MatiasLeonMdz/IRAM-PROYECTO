@@ -1,0 +1,9 @@
+﻿l_spanish:
+ iram_activate_migracion_forzada:0 "Decreto de Migración Forzada"
+ iram_activate_migracion_forzada_desc:0 "El estado movilizará a la población libre para reubicarla según las necesidades del imperio. La velocidad de migración de todas las pops aumentará de forma permanente."
+
+ iram_deactivate_migracion_forzada:0 "Derogar el Decreto de Migración"
+ iram_deactivate_migracion_forzada_desc:0 "La movilización forzada de población será suspendida."
+
+ iram_migracion_forzada:0 "Migración Forzada"
+ iram_migracion_forzada_desc:0 "El estado dirige activamente el movimiento de la población libre. Velocidad de migración aumentada en todo el imperio."

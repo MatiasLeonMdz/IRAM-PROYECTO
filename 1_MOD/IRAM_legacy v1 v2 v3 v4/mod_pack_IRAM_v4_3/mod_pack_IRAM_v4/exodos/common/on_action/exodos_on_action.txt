@@ -1,0 +1,884 @@
+﻿monthly_country_pulse = {
+    effect = {
+        if = {
+            limit = {
+                is_ai = no
+                has_variable = exodos_operation_active
+            }
+
+            # ── 1. CHEQUEOS DE ERROR ──────────────────────────────────
+
+            # Ancla destruida — un solo bloque sin distinción por operación (R14)
+            if = {
+                limit = { NOT = { any_unit = { has_variable = exodos_unit_anchor } } }
+                trigger_event = { id = exodos.1 }
+            }
+
+            # Destino destruido (solo Transfer)
+            else_if = {
+                limit = {
+                    has_variable = exodos_transfer_active
+                    NOT = { any_unit = { has_variable = exodos_unit_destination } }
+                }
+                trigger_event = { id = exodos.1 }
+            }
+
+            # Ancla perdida
+            else_if = {
+                limit = {
+                    var:exodos_anchor_province = {
+                        NOT = { owner = ROOT }
+                    }
+                }
+                trigger_event = { id = exodos.1 }
+            }
+
+            # Destino perdido (solo Transfer)
+            else_if = {
+                limit = {
+                    has_variable = exodos_transfer_active
+                    var:exodos_destination_province = {
+                        NOT = { owner = ROOT }
+                    }
+                }
+                trigger_event = { id = exodos.1 }
+            }
+
+            # Área no 100% propia (Optimize)
+            else_if = {
+                limit = {
+                    has_variable = exodos_optimize_active
+                    var:exodos_anchor_province = {
+                        area = {
+                            any_area_province = {
+                                NOT = { owner = ROOT }
+                            }
+                        }
+                    }
+                }
+                trigger_event = { id = exodos.1 }
+            }
+
+            # Área no 100% propia (Gather)
+            else_if = {
+                limit = {
+                    has_variable = exodos_gather_active
+                    var:exodos_anchor_province = {
+                        area = {
+                            any_area_province = {
+                                NOT = { owner = ROOT }
+                            }
+                        }
+                    }
+                }
+                trigger_event = { id = exodos.1 }
+            }
+
+            # Área no 100% propia (Distribute)
+            else_if = {
+                limit = {
+                    has_variable = exodos_distribute_active
+                    var:exodos_anchor_province = {
+                        area = {
+                            any_area_province = {
+                                NOT = { owner = ROOT }
+                            }
+                        }
+                    }
+                }
+                trigger_event = { id = exodos.1 }
+            }
+
+            else = {
+
+                # ── 2. OPTIMIZE — FASE GATHER ─────────────────────────
+                if = {
+                    limit = {
+                        has_variable = exodos_optimize_active
+                        NOT = { has_variable = exodos_optimize_gather_done }
+                    }
+
+                    var:exodos_anchor_province = {
+                        save_scope_as = exodos_dest
+                        area = {
+                            every_area_province = {
+                                limit = {
+                                    owner = ROOT
+                                    total_population >= 2
+                                    NOT = { has_variable = exodos_is_anchor }
+                                }
+                                while = {
+                                    count = 30
+                                    limit = { total_population >= 2 }
+                                    random_pops_in_province = {
+                                        move_pop = scope:exodos_dest
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    # Cuando todas las fuentes llegan a < 2 pops: señal para Distribute
+                    if = {
+                        limit = {
+                            var:exodos_anchor_province = {
+                                area = {
+                                    NOT = {
+                                        any_area_province = {
+                                            NOT = { has_variable = exodos_is_anchor }
+                                            total_population >= 2
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        set_variable = { name = exodos_optimize_gather_done  value = 1 }
+                    }
+                }
+
+                # ── OPTIMIZE — FASE DISTRIBUTE — rango 3 (45–58 pops) ──
+                else_if = {
+                    limit = {
+                        has_variable = exodos_optimize_active
+                        has_variable = exodos_optimize_gather_done
+                        var:exodos_optimize_count = 3
+                    }
+
+                    var:exodos_anchor_province = {
+                        save_scope_as = exodos_origin
+                        area = {
+                            every_area_province = {
+                                limit = {
+                                    owner = ROOT
+                                    total_population >= 1
+                                    NOT = { has_variable = exodos_is_anchor }
+                                }
+                                save_scope_as = exodos_dist_target
+                                while = {
+                                    count = 3
+                                    limit = {
+                                        scope:exodos_origin = {
+                                            total_population >= 2
+                                        }
+                                    }
+                                    scope:exodos_origin = {
+                                        random_pops_in_province = {
+                                            move_pop = scope:exodos_dist_target
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    exodos_cleanup_effect = yes
+                }
+                # ── OPTIMIZE — FASE DISTRIBUTE — rango 4 (59–73 pops) ──
+                else_if = {
+                    limit = {
+                        has_variable = exodos_optimize_active
+                        has_variable = exodos_optimize_gather_done
+                        var:exodos_optimize_count = 4
+                    }
+
+                    var:exodos_anchor_province = {
+                        save_scope_as = exodos_origin
+                        area = {
+                            every_area_province = {
+                                limit = {
+                                    owner = ROOT
+                                    total_population >= 1
+                                    NOT = { has_variable = exodos_is_anchor }
+                                }
+                                save_scope_as = exodos_dist_target
+                                while = {
+                                    count = 4
+                                    limit = {
+                                        scope:exodos_origin = {
+                                            total_population >= 2
+                                        }
+                                    }
+                                    scope:exodos_origin = {
+                                        random_pops_in_province = {
+                                            move_pop = scope:exodos_dist_target
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    exodos_cleanup_effect = yes
+                }
+                # ── OPTIMIZE — FASE DISTRIBUTE — rango 5 (74–88 pops) ──
+                else_if = {
+                    limit = {
+                        has_variable = exodos_optimize_active
+                        has_variable = exodos_optimize_gather_done
+                        var:exodos_optimize_count = 5
+                    }
+
+                    var:exodos_anchor_province = {
+                        save_scope_as = exodos_origin
+                        area = {
+                            every_area_province = {
+                                limit = {
+                                    owner = ROOT
+                                    total_population >= 1
+                                    NOT = { has_variable = exodos_is_anchor }
+                                }
+                                save_scope_as = exodos_dist_target
+                                while = {
+                                    count = 5
+                                    limit = {
+                                        scope:exodos_origin = {
+                                            total_population >= 2
+                                        }
+                                    }
+                                    scope:exodos_origin = {
+                                        random_pops_in_province = {
+                                            move_pop = scope:exodos_dist_target
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    exodos_cleanup_effect = yes
+                }
+                # ── OPTIMIZE — FASE DISTRIBUTE — rango 6 (89–103 pops) ──
+                else_if = {
+                    limit = {
+                        has_variable = exodos_optimize_active
+                        has_variable = exodos_optimize_gather_done
+                        var:exodos_optimize_count = 6
+                    }
+
+                    var:exodos_anchor_province = {
+                        save_scope_as = exodos_origin
+                        area = {
+                            every_area_province = {
+                                limit = {
+                                    owner = ROOT
+                                    total_population >= 1
+                                    NOT = { has_variable = exodos_is_anchor }
+                                }
+                                save_scope_as = exodos_dist_target
+                                while = {
+                                    count = 6
+                                    limit = {
+                                        scope:exodos_origin = {
+                                            total_population >= 2
+                                        }
+                                    }
+                                    scope:exodos_origin = {
+                                        random_pops_in_province = {
+                                            move_pop = scope:exodos_dist_target
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    exodos_cleanup_effect = yes
+                }
+                # ── OPTIMIZE — FASE DISTRIBUTE — rango 7 (104–117 pops) ──
+                else_if = {
+                    limit = {
+                        has_variable = exodos_optimize_active
+                        has_variable = exodos_optimize_gather_done
+                        var:exodos_optimize_count = 7
+                    }
+
+                    var:exodos_anchor_province = {
+                        save_scope_as = exodos_origin
+                        area = {
+                            every_area_province = {
+                                limit = {
+                                    owner = ROOT
+                                    total_population >= 1
+                                    NOT = { has_variable = exodos_is_anchor }
+                                }
+                                save_scope_as = exodos_dist_target
+                                while = {
+                                    count = 7
+                                    limit = {
+                                        scope:exodos_origin = {
+                                            total_population >= 2
+                                        }
+                                    }
+                                    scope:exodos_origin = {
+                                        random_pops_in_province = {
+                                            move_pop = scope:exodos_dist_target
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    exodos_cleanup_effect = yes
+                }
+                # ── OPTIMIZE — FASE DISTRIBUTE — rango 8 (118–132 pops) ──
+                else_if = {
+                    limit = {
+                        has_variable = exodos_optimize_active
+                        has_variable = exodos_optimize_gather_done
+                        var:exodos_optimize_count = 8
+                    }
+
+                    var:exodos_anchor_province = {
+                        save_scope_as = exodos_origin
+                        area = {
+                            every_area_province = {
+                                limit = {
+                                    owner = ROOT
+                                    total_population >= 1
+                                    NOT = { has_variable = exodos_is_anchor }
+                                }
+                                save_scope_as = exodos_dist_target
+                                while = {
+                                    count = 8
+                                    limit = {
+                                        scope:exodos_origin = {
+                                            total_population >= 2
+                                        }
+                                    }
+                                    scope:exodos_origin = {
+                                        random_pops_in_province = {
+                                            move_pop = scope:exodos_dist_target
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    exodos_cleanup_effect = yes
+                }
+                # ── OPTIMIZE — FASE DISTRIBUTE — rango 9 (133–147 pops) ──
+                else_if = {
+                    limit = {
+                        has_variable = exodos_optimize_active
+                        has_variable = exodos_optimize_gather_done
+                        var:exodos_optimize_count = 9
+                    }
+
+                    var:exodos_anchor_province = {
+                        save_scope_as = exodos_origin
+                        area = {
+                            every_area_province = {
+                                limit = {
+                                    owner = ROOT
+                                    total_population >= 1
+                                    NOT = { has_variable = exodos_is_anchor }
+                                }
+                                save_scope_as = exodos_dist_target
+                                while = {
+                                    count = 9
+                                    limit = {
+                                        scope:exodos_origin = {
+                                            total_population >= 2
+                                        }
+                                    }
+                                    scope:exodos_origin = {
+                                        random_pops_in_province = {
+                                            move_pop = scope:exodos_dist_target
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    exodos_cleanup_effect = yes
+                }
+                # ── OPTIMIZE — FASE DISTRIBUTE — rango 10 (148–162 pops) ──
+                else_if = {
+                    limit = {
+                        has_variable = exodos_optimize_active
+                        has_variable = exodos_optimize_gather_done
+                        var:exodos_optimize_count = 10
+                    }
+
+                    var:exodos_anchor_province = {
+                        save_scope_as = exodos_origin
+                        area = {
+                            every_area_province = {
+                                limit = {
+                                    owner = ROOT
+                                    total_population >= 1
+                                    NOT = { has_variable = exodos_is_anchor }
+                                }
+                                save_scope_as = exodos_dist_target
+                                while = {
+                                    count = 10
+                                    limit = {
+                                        scope:exodos_origin = {
+                                            total_population >= 2
+                                        }
+                                    }
+                                    scope:exodos_origin = {
+                                        random_pops_in_province = {
+                                            move_pop = scope:exodos_dist_target
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    exodos_cleanup_effect = yes
+                }
+                # ── OPTIMIZE — FASE DISTRIBUTE — rango 11 (163–176 pops) ──
+                else_if = {
+                    limit = {
+                        has_variable = exodos_optimize_active
+                        has_variable = exodos_optimize_gather_done
+                        var:exodos_optimize_count = 11
+                    }
+
+                    var:exodos_anchor_province = {
+                        save_scope_as = exodos_origin
+                        area = {
+                            every_area_province = {
+                                limit = {
+                                    owner = ROOT
+                                    total_population >= 1
+                                    NOT = { has_variable = exodos_is_anchor }
+                                }
+                                save_scope_as = exodos_dist_target
+                                while = {
+                                    count = 11
+                                    limit = {
+                                        scope:exodos_origin = {
+                                            total_population >= 2
+                                        }
+                                    }
+                                    scope:exodos_origin = {
+                                        random_pops_in_province = {
+                                            move_pop = scope:exodos_dist_target
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    exodos_cleanup_effect = yes
+                }
+                # ── OPTIMIZE — FASE DISTRIBUTE — rango 12 (177–192 pops) ──
+                else_if = {
+                    limit = {
+                        has_variable = exodos_optimize_active
+                        has_variable = exodos_optimize_gather_done
+                        var:exodos_optimize_count = 12
+                    }
+
+                    var:exodos_anchor_province = {
+                        save_scope_as = exodos_origin
+                        area = {
+                            every_area_province = {
+                                limit = {
+                                    owner = ROOT
+                                    total_population >= 1
+                                    NOT = { has_variable = exodos_is_anchor }
+                                }
+                                save_scope_as = exodos_dist_target
+                                while = {
+                                    count = 12
+                                    limit = {
+                                        scope:exodos_origin = {
+                                            total_population >= 2
+                                        }
+                                    }
+                                    scope:exodos_origin = {
+                                        random_pops_in_province = {
+                                            move_pop = scope:exodos_dist_target
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    exodos_cleanup_effect = yes
+                }
+                # ── OPTIMIZE — FASE DISTRIBUTE — rango 13 (193–209 pops) ──
+                else_if = {
+                    limit = {
+                        has_variable = exodos_optimize_active
+                        has_variable = exodos_optimize_gather_done
+                        var:exodos_optimize_count = 13
+                    }
+
+                    var:exodos_anchor_province = {
+                        save_scope_as = exodos_origin
+                        area = {
+                            every_area_province = {
+                                limit = {
+                                    owner = ROOT
+                                    total_population >= 1
+                                    NOT = { has_variable = exodos_is_anchor }
+                                }
+                                save_scope_as = exodos_dist_target
+                                while = {
+                                    count = 13
+                                    limit = {
+                                        scope:exodos_origin = {
+                                            total_population >= 2
+                                        }
+                                    }
+                                    scope:exodos_origin = {
+                                        random_pops_in_province = {
+                                            move_pop = scope:exodos_dist_target
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    exodos_cleanup_effect = yes
+                }
+                # ── OPTIMIZE — FASE DISTRIBUTE — rango 14 (210–223 pops) ──
+                else_if = {
+                    limit = {
+                        has_variable = exodos_optimize_active
+                        has_variable = exodos_optimize_gather_done
+                        var:exodos_optimize_count = 14
+                    }
+
+                    var:exodos_anchor_province = {
+                        save_scope_as = exodos_origin
+                        area = {
+                            every_area_province = {
+                                limit = {
+                                    owner = ROOT
+                                    total_population >= 1
+                                    NOT = { has_variable = exodos_is_anchor }
+                                }
+                                save_scope_as = exodos_dist_target
+                                while = {
+                                    count = 14
+                                    limit = {
+                                        scope:exodos_origin = {
+                                            total_population >= 2
+                                        }
+                                    }
+                                    scope:exodos_origin = {
+                                        random_pops_in_province = {
+                                            move_pop = scope:exodos_dist_target
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    exodos_cleanup_effect = yes
+                }
+                # ── OPTIMIZE — FASE DISTRIBUTE — rango 15 (224–238 pops) ──
+                else_if = {
+                    limit = {
+                        has_variable = exodos_optimize_active
+                        has_variable = exodos_optimize_gather_done
+                        var:exodos_optimize_count = 15
+                    }
+
+                    var:exodos_anchor_province = {
+                        save_scope_as = exodos_origin
+                        area = {
+                            every_area_province = {
+                                limit = {
+                                    owner = ROOT
+                                    total_population >= 1
+                                    NOT = { has_variable = exodos_is_anchor }
+                                }
+                                save_scope_as = exodos_dist_target
+                                while = {
+                                    count = 15
+                                    limit = {
+                                        scope:exodos_origin = {
+                                            total_population >= 2
+                                        }
+                                    }
+                                    scope:exodos_origin = {
+                                        random_pops_in_province = {
+                                            move_pop = scope:exodos_dist_target
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    exodos_cleanup_effect = yes
+                }
+                # ── OPTIMIZE — FASE DISTRIBUTE — rango 16 (239–254 pops) ──
+                else_if = {
+                    limit = {
+                        has_variable = exodos_optimize_active
+                        has_variable = exodos_optimize_gather_done
+                        var:exodos_optimize_count = 16
+                    }
+
+                    var:exodos_anchor_province = {
+                        save_scope_as = exodos_origin
+                        area = {
+                            every_area_province = {
+                                limit = {
+                                    owner = ROOT
+                                    total_population >= 1
+                                    NOT = { has_variable = exodos_is_anchor }
+                                }
+                                save_scope_as = exodos_dist_target
+                                while = {
+                                    count = 16
+                                    limit = {
+                                        scope:exodos_origin = {
+                                            total_population >= 2
+                                        }
+                                    }
+                                    scope:exodos_origin = {
+                                        random_pops_in_province = {
+                                            move_pop = scope:exodos_dist_target
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    exodos_cleanup_effect = yes
+                }
+                # ── OPTIMIZE — FASE DISTRIBUTE — rango 17 (255–268 pops) ──
+                else_if = {
+                    limit = {
+                        has_variable = exodos_optimize_active
+                        has_variable = exodos_optimize_gather_done
+                        var:exodos_optimize_count = 17
+                    }
+
+                    var:exodos_anchor_province = {
+                        save_scope_as = exodos_origin
+                        area = {
+                            every_area_province = {
+                                limit = {
+                                    owner = ROOT
+                                    total_population >= 1
+                                    NOT = { has_variable = exodos_is_anchor }
+                                }
+                                save_scope_as = exodos_dist_target
+                                while = {
+                                    count = 17
+                                    limit = {
+                                        scope:exodos_origin = {
+                                            total_population >= 2
+                                        }
+                                    }
+                                    scope:exodos_origin = {
+                                        random_pops_in_province = {
+                                            move_pop = scope:exodos_dist_target
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    exodos_cleanup_effect = yes
+                }
+                # ── OPTIMIZE — FASE DISTRIBUTE — rango 18 (269–284 pops) ──
+                else_if = {
+                    limit = {
+                        has_variable = exodos_optimize_active
+                        has_variable = exodos_optimize_gather_done
+                        var:exodos_optimize_count = 18
+                    }
+
+                    var:exodos_anchor_province = {
+                        save_scope_as = exodos_origin
+                        area = {
+                            every_area_province = {
+                                limit = {
+                                    owner = ROOT
+                                    total_population >= 1
+                                    NOT = { has_variable = exodos_is_anchor }
+                                }
+                                save_scope_as = exodos_dist_target
+                                while = {
+                                    count = 18
+                                    limit = {
+                                        scope:exodos_origin = {
+                                            total_population >= 2
+                                        }
+                                    }
+                                    scope:exodos_origin = {
+                                        random_pops_in_province = {
+                                            move_pop = scope:exodos_dist_target
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    exodos_cleanup_effect = yes
+                }
+                # ── OPTIMIZE — FASE DISTRIBUTE — rango 19 (285–300 pops) ──
+                else_if = {
+                    limit = {
+                        has_variable = exodos_optimize_active
+                        has_variable = exodos_optimize_gather_done
+                        var:exodos_optimize_count = 19
+                    }
+
+                    var:exodos_anchor_province = {
+                        save_scope_as = exodos_origin
+                        area = {
+                            every_area_province = {
+                                limit = {
+                                    owner = ROOT
+                                    total_population >= 1
+                                    NOT = { has_variable = exodos_is_anchor }
+                                }
+                                save_scope_as = exodos_dist_target
+                                while = {
+                                    count = 19
+                                    limit = {
+                                        scope:exodos_origin = {
+                                            total_population >= 2
+                                        }
+                                    }
+                                    scope:exodos_origin = {
+                                        random_pops_in_province = {
+                                            move_pop = scope:exodos_dist_target
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    exodos_cleanup_effect = yes
+                }
+
+                # ── 3. GATHER ────────────────────────────────────────
+                else_if = {
+                    limit = { has_variable = exodos_gather_active }
+
+                    var:exodos_anchor_province = {
+                        save_scope_as = exodos_dest
+                        area = {
+                            every_area_province = {
+                                limit = {
+                                    owner = ROOT
+                                    total_population >= 2
+                                    NOT = { has_variable = exodos_is_anchor }
+                                }
+                                while = {
+                                    count = 20
+                                    limit = { total_population >= 2 }
+                                    random_pops_in_province = {
+                                        move_pop = scope:exodos_dest
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    if = {
+                        limit = {
+                            var:exodos_anchor_province = {
+                                area = {
+                                    NOT = {
+                                        any_area_province = {
+                                            NOT = { has_variable = exodos_is_anchor }
+                                            total_population >= 2
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        exodos_cleanup_effect = yes
+                    }
+                }
+
+                # ── 4. TRANSFER ───────────────────────────────────────
+                else_if = {
+                    limit = { has_variable = exodos_transfer_active }
+
+                    var:exodos_destination_province = {
+                        save_scope_as = exodos_dest
+                    }
+                    var:exodos_anchor_province = {
+                        while = {
+                            count = 10
+                            limit = { total_population >= 2 }
+                            random_pops_in_province = {
+                                move_pop = scope:exodos_dest
+                            }
+                        }
+                    }
+
+                    change_variable = { name = exodos_pulse_counter  add = -1 }
+                    if = {
+                        limit = {
+                            OR = {
+                                var:exodos_pulse_counter <= 0
+                                var:exodos_anchor_province = {
+                                    total_population < 2
+                                }
+                            }
+                        }
+                        exodos_cleanup_effect = yes
+                    }
+                }
+
+                # ── 5. DISTRIBUTE ─────────────────────────────────────
+                else_if = {
+                    limit = { has_variable = exodos_distribute_active }
+
+                    var:exodos_anchor_province = {
+                        save_scope_as = exodos_origin
+                        area = {
+                            every_area_province = {
+                                limit = {
+                                    owner = ROOT
+                                    total_population >= 1
+                                    NOT = { has_variable = exodos_is_anchor }
+                                }
+                                save_scope_as = exodos_dist_target
+                                while = {
+                                    count = 10
+                                    limit = {
+                                        scope:exodos_origin = {
+                                            total_population >= 30
+                                        }
+                                    }
+                                    scope:exodos_origin = {
+                                        random_pops_in_province = {
+                                            move_pop = scope:exodos_dist_target
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    if = {
+                        limit = {
+                            var:exodos_anchor_province = {
+                                total_population < 30
+                            }
+                        }
+                        exodos_cleanup_effect = yes
+                    }
+                }
+            }
+        }
+    }
+}

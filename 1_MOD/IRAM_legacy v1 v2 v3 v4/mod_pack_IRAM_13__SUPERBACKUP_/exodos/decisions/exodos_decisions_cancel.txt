@@ -1,0 +1,17 @@
+﻿country_decisions = {
+
+    exodos_cancel_all = {
+        potential = {
+            is_ai = no
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            always = yes
+        }
+        effect = {
+            exodos_cleanup_effect = yes
+        }
+        ai_will_do = { factor = 0 }
+    }
+}

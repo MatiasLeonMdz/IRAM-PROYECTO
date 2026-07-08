@@ -1,0 +1,17 @@
+﻿l_spanish:
+ iram_bom_ego_mars:0 "Filius Martis — Camino de la Guerra"
+ iram_bom_ego_mars_desc:0 "El gobernante se declara hijo de Marte — la guerra no es su oficio, es su naturaleza."
+ iram_bom_ego_iovis:0 "Filius Iovis — Camino de la Piedad"
+ iram_bom_ego_iovis_desc:0 "El gobernante se declara hijo de Jupiter — arde con una fe que ningun hombre puede apagar ni los dioses contener."
+ iram_bom_ego_mercurii:0 "Filius Mercurii — Camino de la Oratoria"
+ iram_bom_ego_mercurii_desc:0 "El gobernante se declara hijo de Mercurio — el acero conquista tierras, sus palabras conquistan hombres."
+ iram_bom_ego_minervae:0 "Filius Minervae — Camino de la Sabiduria"
+ iram_bom_ego_minervae_desc:0 "El gobernante se declara hijo de Minerva — no necesita ver el futuro, lo construye."
+
+ # ── TOOLTIPS RD1 (T10) ─────────────────────────────────────────────────
+ iram_tt_bom_ego_mars_usado:0      "Filius Martis aún no fue elegido."
+ iram_tt_bom_ego_iovis_usado:0     "Filius Iovis aún no fue elegido."
+ iram_tt_bom_ego_mercurii_usado:0  "Filius Mercurii aún no fue elegido."
+ iram_tt_bom_ego_minervae_usado:0  "Filius Minervae aún no fue elegido."
+ iram_tt_bom_ego_gobernante:0      "El gobernante aún no recibió la bendición Ego Sum."
+

@@ -1,0 +1,53 @@
+﻿l_spanish:
+ # ── TRANSFER ──────────────────────────────────────────────────────
+ iram_exodos_activate_transfer:0 "Exodos: Transferencia"
+ iram_exodos_activate_transfer_desc:0 "Por decreto del estado, el pueblo sera trasladado. Despliega las unidades Origen y Destino para marcar los territorios de origen y destino, luego confirma la operacion. Ambas unidades deben estar estacionarias y posicionadas en territorios bajo tu control. El costo se cobra al confirmar. (La operacion sera cancelada si una unidad es destruida o alguno de los territorios es perdido.)"
+ iram_exodos_confirm_transfer:0 "Exodos: Confirmar Transferencia"
+ iram_exodos_confirm_transfer_desc:0 "La orden esta dada. El pueblo marchara durante diez meses. Costo: 2000 oro, 5000 soldados, 20 tirania. Ambas unidades deben estar estacionarias antes de que la operacion pueda comenzar."
+
+
+ # ── OPTIMIZAR ─────────────────────────────────────────────────────
+
+
+ # ── GATHER GLOBAL ─────────────────────────────────────────
+ iram_exodos_gather_global:0 "Exodos: Concentración Global"
+ iram_exodos_gather_global_desc:0 "Concentra la población de los territorios de cada provincia en su capital de provincia.\n\nLas provincias parcialmente controladas y las capitales sin rango de ciudad son salteadas. Opera en 10 provincias por mes.\n\nLas ciudades secundarias del área no son afectadas — sus pops no se concentran.\n\nESTA OPERACIÓN PUEDE TARDAR VARIOS MESES. GUARDÁ LA PARTIDA Y CREÁ UNA COPIA DE RESPALDO.\n\n| Para un ciclo de optimización de esclavos: Concentración → Distribución → esperar conversión de esclavos → Concentración → Optimización. Este es el paso 1 — o el paso 3 si ya corriste Distribución."
+
+ # ── CANCELAR TODO ─────────────────────────────────────────────────
+ iram_exodos_cancel_all:0 "Cancelar Todo"
+ iram_exodos_cancel_all_desc:0 "Rescinde todos los decretos activos del estado. Limpia toda operacion en curso — Exodos, transferencias, y cualquier estado residual de instalaciones anteriores del mod. Los costos ya pagados no seran reembolsados. Usar como primer paso al migrar desde una instalacion anterior."
+
+ # ── EVENTO DE FALLO ───────────────────────────────────────────────
+ iram.1.t:0 "El Exodo Ha Fracasado"
+ iram.1.d:0 "El movimiento del pueblo ha llegado a un abrupto fin. Los esfuerzos del estado han sido en vano."
+ iram.1.ok:0 "Que asi sea."
+
+ # ── CUSTOM TOOLTIPS ───────────────────────────────────────────────
+ iram_tt_unit_stopped:0 "Las unidades deben llegar a su destino antes de que la operacion pueda comenzar. (Unidad en movimiento)"
+ iram_tt_owner:0 "Ambos territorios deben estar bajo la autoridad del estado. (Territorio no controlado)"
+
+
+ # ── DISTRIBUTE GLOBAL ────────────────────────────────────────────
+ iram_exodos_distribute_global:0 "Distribución Global"
+ iram_exodos_distribute_global_desc:0 "Distribuye población desde la capital de provincia de cada área hacia sus territorios.\n\nLas provincias sin capital calificada o sin población suficiente son salteadas. Opera en 5 provincias por mes.\n\nLas ciudades secundarias del área no son afectadas — no reciben población.\n\nESTA OPERACIÓN PUEDE TARDAR VARIOS MESES. GUARDÁ LA PARTIDA Y CREÁ UNA COPIA DE RESPALDO.\n\n| Para un ciclo de optimización de esclavos: Concentración → Distribución → esperar conversión de esclavos → Concentración → Optimización. Este es el paso 2."
+
+ # ── CONSTRUCTOR AUTOMÁTICO ───────────────────────────────────────
+ iram_exodos_constructor_auto:0 "Constructor Automático"
+ iram_exodos_constructor_auto_desc:0 "Reconstruye todos los asentamientos del imperio según su bien de producción. Demuelve lo que haya y construye el edificio óptimo para cada trade good.\n\nNunca toca fortalezas ni ciudades.\n\nLas ciudades secundarias del área no son afectadas.\n\nINSTANTÁNEO. ESTA ACCIÓN ES IRREVERSIBLE. GUARDÁ LA PARTIDA Y CREÁ UNA COPIA DE RESPALDO.\n\n| Para un ciclo de optimización de esclavos corré el Constructor antes de iniciar. El ciclo es: Concentración → Distribución → esperar conversión de esclavos → Concentración → Optimización."
+
+ # ── OPTIMIZE GLOBAL ───────────────────────────────────────────────
+ iram_exodos_optimize_global:0 "Optimización Global"
+ iram_exodos_optimize_global_desc:0 "Distribuye los esclavos acumulados en la capital de provincia de cada área hacia sus territorios según lo que necesita cada edificio: hasta 10 para minas y asentamientos agrícolas, hasta 15 para latifundios.\n\nLas provincias sin esclavos suficientes para cubrir sus territorios son salteadas. Opera en 5 provincias por mes.\n\nLas ciudades secundarias del área no son afectadas — no reciben esclavos.\n\nESTA OPERACIÓN PUEDE TARDAR VARIOS MESES. GUARDÁ LA PARTIDA Y CREÁ UNA COPIA DE RESPALDO.\n\n| Para un ciclo de optimización de esclavos: Concentración → Distribución → esperar conversión de esclavos → Concentración → Optimización. Este es el paso 4."
+ iram.2.t:0 "Distribute Global — Operacion Completada"
+ iram.2.d:0 "La distribucion de poblacion desde capitales de provincia hacia territorios ha concluido. Las areas salteadas por territorio perdido o pops insuficientes no fueron modificadas."
+ iram.2.ok:0 "Que asi sea."
+
+ # ── OPTIMIZE GLOBAL — COMPLETADO ─────────────────────────────────
+ iram.3.t:0 "Optimize Global — Operacion Completada"
+ iram.3.d:0 "La optimizacion de esclavos por area ha concluido. Las areas salteadas por esclavos insuficientes o territorio perdido no fueron modificadas."
+ iram.3.ok:0 "Que asi sea."
+
+ # ── GATHER GLOBAL — COMPLETADO ───────────────────────────────────
+ iram.4.t:0 "Gather Global — Operacion Completada"
+ iram.4.d:0 "La concentracion global de poblacion en capitales de provincia ha concluido. Las areas salteadas por territorio perdido o pops insuficientes no fueron modificadas."
+ iram.4.ok:0 "Que asi sea."

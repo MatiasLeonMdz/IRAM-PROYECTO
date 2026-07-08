@@ -1,0 +1,8 @@
+﻿iram_divine_relic = {
+    global_pop_conversion_speed = 50
+    global_pop_assimilation_speed = 50
+}
+
+iram_migracion_forzada = {
+    global_pop_migration_speed = 100
+}

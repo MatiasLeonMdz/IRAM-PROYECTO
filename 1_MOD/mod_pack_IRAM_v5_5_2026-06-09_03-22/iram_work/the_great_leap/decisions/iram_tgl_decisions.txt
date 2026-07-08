@@ -1,0 +1,27 @@
+﻿country_decisions = {
+
+    # ================================================================
+    # COMPRA DE INNOVACIONES
+    # ================================================================
+
+    iram_tgl_purchase = {
+        potential = {
+            is_ai = no
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            custom_tooltip = iram_tt_tgl_purchased
+            NOT = { has_variable = iram_tgl_purchased }
+            custom_tooltip = iram_tt_tgl_ciudades
+            num_of_cities >= 1
+        }
+        effect = {
+            custom_tooltip = tgl_purchase_cost_tt
+            custom_tooltip = tgl_purchase_warning_tt
+            add_innovation = 320
+            set_variable = { name = iram_tgl_purchased value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+}

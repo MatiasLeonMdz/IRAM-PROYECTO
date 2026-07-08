@@ -1,0 +1,322 @@
+﻿country_decisions = {
+
+    # ================================================================
+    # FASE 1 — ACTIVAR (sin cobro)
+    # ================================================================
+
+    exodos_activate_transfer = {
+        potential = {
+            is_ai = no
+            NOT = { has_variable = exodos_transfer_pending }
+            NOT = { has_variable = exodos_gather_pending }
+            NOT = { has_variable = exodos_distribute_pending }
+            NOT = { has_variable = exodos_operation_active }
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            custom_tooltip = exodos_tt_no_war
+            war = no
+            tyranny <= 80
+        }
+        effect = {
+            create_unit = {
+                name = "Exodos - Origen"
+                location = capital_scope
+                sub_unit = exodos_marker
+                save_scope_as = exodos_origin_scope
+            }
+            scope:exodos_origin_scope = {
+                set_variable = { name = exodos_unit_transfer_origin value = 1 }
+            }
+            create_unit = {
+                name = "Exodos - Destino"
+                location = capital_scope
+                sub_unit = exodos_marker
+                save_scope_as = exodos_dest_scope
+            }
+            scope:exodos_dest_scope = {
+                set_variable = { name = exodos_unit_transfer_dest value = 1 }
+            }
+            set_variable = { name = exodos_transfer_pending value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    exodos_activate_gather = {
+        potential = {
+            is_ai = no
+            NOT = { has_variable = exodos_transfer_pending }
+            NOT = { has_variable = exodos_gather_pending }
+            NOT = { has_variable = exodos_distribute_pending }
+            NOT = { has_variable = exodos_operation_active }
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            custom_tooltip = exodos_tt_no_war
+            war = no
+            tyranny <= 90
+        }
+        effect = {
+            create_unit = {
+                name = "Exodos - Concentrar"
+                location = capital_scope
+                sub_unit = exodos_marker
+                save_scope_as = exodos_unit_scope
+            }
+            scope:exodos_unit_scope = {
+                set_variable = { name = exodos_unit_concentrate value = 1 }
+            }
+            set_variable = { name = exodos_gather_pending value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    exodos_activate_distribute = {
+        potential = {
+            is_ai = no
+            NOT = { has_variable = exodos_transfer_pending }
+            NOT = { has_variable = exodos_gather_pending }
+            NOT = { has_variable = exodos_distribute_pending }
+            NOT = { has_variable = exodos_operation_active }
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            custom_tooltip = exodos_tt_no_war
+            war = no
+            tyranny <= 90
+        }
+        effect = {
+            create_unit = {
+                name = "Exodos - Distribuir"
+                location = capital_scope
+                sub_unit = exodos_marker
+                save_scope_as = exodos_dist_scope
+            }
+            scope:exodos_dist_scope = {
+                set_variable = { name = exodos_unit_distribute value = 1 }
+            }
+            set_variable = { name = exodos_distribute_pending value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    # ================================================================
+    # FASE 2 — CONFIRMAR (cobra costos)
+    # ================================================================
+
+    exodos_confirm_gather = {
+        potential = {
+            is_ai = no
+            has_variable = exodos_gather_pending
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            custom_tooltip = exodos_tt_unit_stopped
+            NOT = {
+                any_unit = {
+                    has_variable = exodos_unit_concentrate
+                    is_moving = yes
+                }
+            }
+            any_unit = {
+                has_variable = exodos_unit_concentrate
+                unit_location = { owner = ROOT }
+            }
+            custom_tooltip = exodos_tt_area_owner
+            any_unit = {
+                has_variable = exodos_unit_concentrate
+                unit_location = {
+                    area = {
+                        NOT = {
+                            any_area_province = {
+                                NOT = { owner = ROOT }
+                            }
+                        }
+                    }
+                }
+            }
+            war = no
+            treasury >= 1000
+            manpower >= 5
+            tyranny <= 90
+        }
+        effect = {
+            add_treasury = -1000
+            add_manpower = -5
+            add_tyranny = 10
+            every_unit = {
+                limit = { has_variable = exodos_unit_concentrate }
+                unit_location = {
+                    ROOT = {
+                        set_variable = {
+                            name = exodos_anchor_province
+                            value = prev
+                        }
+                    }
+                    set_variable = { name = exodos_is_anchor value = 1 }
+                }
+            }
+            remove_variable = exodos_gather_pending
+            set_variable = { name = exodos_operation_active value = 1 }
+            set_variable = { name = exodos_gather_active value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    exodos_confirm_transfer = {
+        potential = {
+            is_ai = no
+            has_variable = exodos_transfer_pending
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            custom_tooltip = exodos_tt_unit_stopped
+            NOT = {
+                any_unit = {
+                    has_variable = exodos_unit_transfer_origin
+                    is_moving = yes
+                }
+            }
+            NOT = {
+                any_unit = {
+                    has_variable = exodos_unit_transfer_dest
+                    is_moving = yes
+                }
+            }
+            custom_tooltip = exodos_tt_owner
+            any_unit = {
+                has_variable = exodos_unit_transfer_origin
+                unit_location = { owner = ROOT }
+            }
+            any_unit = {
+                has_variable = exodos_unit_transfer_dest
+                unit_location = { owner = ROOT }
+            }
+            custom_tooltip = exodos_tt_no_war
+            war = no
+            treasury >= 2000
+            manpower >= 10
+            tyranny <= 80
+        }
+        effect = {
+            add_treasury = -2000
+            add_manpower = -10
+            add_tyranny = 20
+            every_unit = {
+                limit = { has_variable = exodos_unit_transfer_origin }
+                unit_location = {
+                    ROOT = {
+                        set_variable = {
+                            name = exodos_anchor_province
+                            value = prev
+                        }
+                    }
+                    set_variable = { name = exodos_is_anchor value = 1 }
+                }
+            }
+            every_unit = {
+                limit = { has_variable = exodos_unit_transfer_dest }
+                unit_location = {
+                    ROOT = {
+                        set_variable = {
+                            name = exodos_destination_province
+                            value = prev
+                        }
+                    }
+                    set_variable = { name = exodos_is_destination value = 1 }
+                }
+            }
+            set_variable = { name = exodos_pulse_counter value = 10 }
+            remove_variable = exodos_transfer_pending
+            set_variable = { name = exodos_operation_active value = 1 }
+            set_variable = { name = exodos_transfer_active value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    exodos_confirm_distribute = {
+        potential = {
+            is_ai = no
+            has_variable = exodos_distribute_pending
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            custom_tooltip = exodos_tt_unit_stopped
+            NOT = {
+                any_unit = {
+                    has_variable = exodos_unit_distribute
+                    is_moving = yes
+                }
+            }
+            any_unit = {
+                has_variable = exodos_unit_distribute
+                unit_location = { owner = ROOT }
+            }
+            custom_tooltip = exodos_tt_area_owner
+            any_unit = {
+                has_variable = exodos_unit_distribute
+                unit_location = {
+                    area = {
+                        NOT = {
+                            any_area_province = {
+                                NOT = { owner = ROOT }
+                            }
+                        }
+                    }
+                }
+            }
+            war = no
+            treasury >= 1000
+            manpower >= 5
+            tyranny <= 90
+        }
+        effect = {
+            add_treasury = -1000
+            add_manpower = -5
+            add_tyranny = 10
+            every_unit = {
+                limit = { has_variable = exodos_unit_distribute }
+                unit_location = {
+                    ROOT = {
+                        set_variable = {
+                            name = exodos_anchor_province
+                            value = prev
+                        }
+                    }
+                    set_variable = { name = exodos_is_anchor value = 1 }
+                }
+            }
+            remove_variable = exodos_distribute_pending
+            set_variable = { name = exodos_operation_active value = 1 }
+            set_variable = { name = exodos_distribute_active value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    # ================================================================
+    # CANCELAR — Transfer, Gather, Distribute
+    # ================================================================
+
+    exodos_cancel = {
+        potential = {
+            is_ai = no
+            OR = {
+                has_variable = exodos_transfer_pending
+                has_variable = exodos_transfer_active
+                has_variable = exodos_gather_pending
+                has_variable = exodos_gather_active
+                has_variable = exodos_distribute_pending
+                has_variable = exodos_distribute_active
+            }
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = { always = yes }
+        effect = {
+            exodos_cleanup_effect = yes
+        }
+        ai_will_do = { factor = 0 }
+    }
+}

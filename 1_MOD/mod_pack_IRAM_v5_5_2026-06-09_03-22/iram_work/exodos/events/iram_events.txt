@@ -1,0 +1,34 @@
+﻿namespace = iram
+
+iram.1 = {
+    type = country_event
+    title = "iram.1.t"
+    desc = "iram.1.d"
+    immediate = { iram_cleanup_exodos = yes }
+    option = { name = "iram.1.ok" }
+}
+
+iram.2 = {
+    type = country_event
+    title = "iram.2.t"
+    desc = "iram.2.d"
+    immediate = { iram_cleanup_exodos = yes }
+    option = { name = "iram.2.ok" }
+}
+
+iram.3 = {
+    type = country_event
+    title = "iram.3.t"
+    desc = "iram.3.d"
+    immediate = { iram_cleanup_exodos = yes }
+    option = { name = "iram.3.ok" }
+}
+
+iram.4 = {
+    type = country_event
+    title = "iram.4.t"
+    desc = "iram.4.d"
+    immediate = { iram_cleanup_exodos = yes }
+    option = { name = "iram.4.ok" }
+}
+

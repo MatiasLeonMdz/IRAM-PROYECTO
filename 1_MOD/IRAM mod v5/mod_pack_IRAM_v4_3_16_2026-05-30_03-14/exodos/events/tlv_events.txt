@@ -1,0 +1,8 @@
+﻿namespace = tlv
+
+tlv.2 = {
+    type = country_event
+    title = "tlv.2.t"
+    desc = "tlv.2.d"
+    option = { name = "tlv.2.ok" }
+}

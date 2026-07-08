@@ -1,0 +1,3 @@
+# Datos crudos pesados (opcional excluir si el repo se vuelve muy grande)
+# 1_MOD/corpus_A_crudo/*.zip
+.DS_Store

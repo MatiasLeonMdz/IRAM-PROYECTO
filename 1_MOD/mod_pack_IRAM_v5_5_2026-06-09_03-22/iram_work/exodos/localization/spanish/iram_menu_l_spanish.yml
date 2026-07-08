@@ -1,0 +1,17 @@
+﻿l_spanish:
+ # ── EXODOS — menú (español) ───────────────────────────────────────────
+ iram_exodos_menu_open:0       "Exodos — Movimiento de Pops"
+ iram_exodos_menu_open_desc:0  "Acceder a las operaciones de movimiento de población: concentrar, distribuir, transferir y optimizar pops en el imperio."
+ iram_exodos_menu_close:0      "« Cerrar Exodos"
+ iram_exodos_menu_close_desc:0 "Cerrar el panel de movimiento de población."
+
+ # ── EXODOS — cancel (español) ─────────────────────────────────────────
+ iram_exodos_cancel_all:0      "Cancelar todo — Exodos"
+ iram_exodos_cancel_all_desc:0 "Cancelar todas las operaciones activas de Exodos. Las unidades marcadoras son destruidas y el estado se resetea por completo."
+
+ # ── TOOLTIPS ──────────────────────────────────────────────────────────
+
+ # ── TOOLTIPS RD1 (T10) ─────────────────────────────────────────────────
+ iram_tt_exodos_sin_op:0           "No hay ninguna operación activa en curso."
+ iram_tt_exodos_transfer_ya_activa:0 "No hay un Transfer pendiente de confirmación."
+

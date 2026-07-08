@@ -1,0 +1,124 @@
+﻿country_decisions = {
+
+    # ================================================================
+    # RELIQUIA — Un Pueblo, Una Fe (toggle permanente)
+    # ================================================================
+
+    iram_bom_demo_relic = {
+        potential = {
+            is_ai = no
+            has_variable = iram_bom_menu_demo
+        }
+        allow = {
+            is_ai = no
+            custom_tooltip = iram_tt_bom_demo_relic_activa
+            NOT = { has_country_modifier = iram_divine_relic }
+        }
+        effect = {
+            add_country_modifier = {
+                name = iram_divine_relic
+                duration = -1
+            }
+            set_variable = {
+                name = iram_divine_relic_active
+                value = 1
+            }
+            set_variable = { name = iram_bom_active value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+
+    # ================================================================
+    # MIGRACION FORZADA (toggle permanente)
+    # Modifier: global_pop_migration_speed = 100
+    # Esclavos no afectados — hardcoded en el engine
+    # ================================================================
+
+    iram_bom_demo_migracion = {
+        potential = {
+            is_ai = no
+            has_variable = iram_bom_menu_demo
+        }
+        allow = {
+            is_ai = no
+            custom_tooltip = iram_tt_bom_demo_migracion_activa
+            NOT = { has_country_modifier = iram_migracion_forzada }
+        }
+        effect = {
+            add_country_modifier = {
+                name = iram_migracion_forzada
+                duration = -1
+            }
+            set_variable = {
+                name = iram_migracion_forzada_active
+                value = 1
+            }
+            set_variable = { name = iram_bom_active value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+
+    # ================================================================
+    # ASCENSO FORZADO (toggle permanente)
+    # Modifier: global_pop_promotion_speed = 100
+    # TESTEO PENDIENTE: sistema usa threshold, no barra 0->100
+    # ================================================================
+
+    iram_bom_demo_ascenso = {
+        potential = {
+            is_ai = no
+            has_variable = iram_bom_menu_demo
+        }
+        allow = {
+            is_ai = no
+            custom_tooltip = iram_tt_bom_demo_ascenso_activo
+            NOT = { has_country_modifier = iram_ascenso_forzado }
+        }
+        effect = {
+            add_country_modifier = {
+                name = iram_ascenso_forzado
+                duration = -1
+            }
+            set_variable = {
+                name = iram_ascenso_forzado_active
+                value = 1
+            }
+            set_variable = { name = iram_bom_active value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+
+    # ================================================================
+    # DESCENSO FORZADO (toggle permanente)
+    # Modifier: global_pop_demotion_speed = 100
+    # TESTEO PENDIENTE: sistema usa threshold, no barra 0->100
+    # ================================================================
+
+    iram_bom_demo_descenso = {
+        potential = {
+            is_ai = no
+            has_variable = iram_bom_menu_demo
+        }
+        allow = {
+            is_ai = no
+            custom_tooltip = iram_tt_bom_demo_descenso_activo
+            NOT = { has_country_modifier = iram_descenso_forzado }
+        }
+        effect = {
+            add_country_modifier = {
+                name = iram_descenso_forzado
+                duration = -1
+            }
+            set_variable = {
+                name = iram_descenso_forzado_active
+                value = 1
+            }
+            set_variable = { name = iram_bom_active value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+}

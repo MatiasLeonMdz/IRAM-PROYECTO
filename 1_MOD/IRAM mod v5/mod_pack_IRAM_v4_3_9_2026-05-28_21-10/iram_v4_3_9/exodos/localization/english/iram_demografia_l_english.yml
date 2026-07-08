@@ -1,0 +1,24 @@
+﻿l_english:
+ iram_16_activate_migracion:0 "Forced Migration Decree"
+ iram_activate_migracion_forzada_desc:0 "The state will mobilize the free population for resettlement according to the needs of the empire. Migration speed for all pops will increase permanently."
+
+ iram_deactivate_migracion_forzada_desc:0 "Forced population mobilization will be suspended."
+
+ iram_migracion_forzada:0 "Forced Migration"
+ iram_migracion_forzada_desc:0 "The state actively directs the movement of free population. Migration speed increased empire-wide."
+
+ iram_17_activate_ascenso:0 "Forced Promotion Decree"
+ iram_activate_ascenso_forzado_desc:0 "The state will actively promote the social advancement of the free population. Promotion speed for all pops will increase permanently."
+
+ iram_deactivate_ascenso_forzado_desc:0 "Forced population promotion will be suspended."
+
+ iram_ascenso_forzado:0 "Forced Promotion"
+ iram_ascenso_forzado_desc:0 "The state drives the social advancement of the free population. Promotion speed increased empire-wide."
+
+ iram_18_activate_descenso:0 "Forced Demotion Decree"
+ iram_activate_descenso_forzado_desc:0 "The state will apply status reductions to surplus population. Demotion speed for all pops will increase permanently."
+
+ iram_deactivate_descenso_forzado_desc:0 "Forced population demotion will be suspended."
+
+ iram_descenso_forzado:0 "Forced Demotion"
+ iram_descenso_forzado_desc:0 "The state actively reduces the status of surplus population. Demotion speed increased empire-wide."

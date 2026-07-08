@@ -1,0 +1,127 @@
+﻿\xef\xbb\xbfcountry_decisions = {
+
+    # ================================================================
+    # DISTRIBUTE — 2 fases, unidad spawneada en posicion del ejercito del rival
+    # ================================================================
+
+    exodos_activate_distribute = {
+        potential = {
+            is_ai = no
+            NOT = { has_variable = exodos_transfer_pending }
+            NOT = { has_variable = exodos_gather_pending }
+            NOT = { has_variable = exodos_distribute_pending }
+            NOT = { has_variable = exodos_operation_active }
+            any_character = {
+                is_ruler = yes
+                num_of_rivals >= 1
+                NOT = { num_of_rivals >= 2 }
+                any_rival = {
+                    employer = ROOT
+                    in_command = yes
+                }
+            }
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            custom_tooltip = exodos_tt_rival_commander
+            any_character = {
+                is_ruler = yes
+                num_of_rivals >= 1
+                NOT = { num_of_rivals >= 2 }
+                any_rival = {
+                    employer = ROOT
+                    in_command = yes
+                }
+            }
+            tyranny <= 90
+        }
+        effect = {
+            every_character = {
+                limit = { is_ruler = yes }
+                every_rival = {
+                    limit = {
+                        employer = ROOT
+                        in_command = yes
+                    }
+                    save_scope_as = exodos_rival
+                }
+            }
+            random_unit = {
+                limit = {
+                    commander = scope:exodos_rival
+                }
+                unit_location = { save_scope_as = exodos_rival_loc }
+            }
+            create_unit = {
+                name = "Exodos - Distribuir"
+                location = scope:exodos_rival_loc
+                sub_unit = exodos_marker
+                save_scope_as = exodos_dist_scope
+            }
+            scope:exodos_dist_scope = {
+                set_variable = { name = exodos_unit_distribute value = 1 }
+            }
+            set_variable = { name = exodos_distribute_pending value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    exodos_confirm_distribute = {
+        potential = {
+            is_ai = no
+            has_variable = exodos_distribute_pending
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            custom_tooltip = exodos_tt_unit_stopped
+            NOT = {
+                any_unit = {
+                    has_variable = exodos_unit_distribute
+                    is_moving = yes
+                }
+            }
+            any_unit = {
+                has_variable = exodos_unit_distribute
+                unit_location = { owner = ROOT }
+            }
+            custom_tooltip = exodos_tt_area_owner
+            any_unit = {
+                has_variable = exodos_unit_distribute
+                unit_location = {
+                    area = {
+                        NOT = {
+                            any_area_province = {
+                                NOT = { owner = ROOT }
+                            }
+                        }
+                    }
+                }
+            }
+            treasury >= 1000
+            manpower >= 5
+            tyranny <= 90
+        }
+        effect = {
+            add_treasury = -1000
+            add_manpower = -5
+            add_tyranny = 10
+            every_unit = {
+                limit = { has_variable = exodos_unit_distribute }
+                unit_location = {
+                    ROOT = {
+                        set_variable = {
+                            name = exodos_anchor_province
+                            value = prev
+                        }
+                    }
+                    set_variable = { name = exodos_is_anchor value = 1 }
+                }
+            }
+            remove_variable = exodos_distribute_pending
+            set_variable = { name = exodos_operation_active value = 1 }
+            set_variable = { name = exodos_distribute_active value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+}

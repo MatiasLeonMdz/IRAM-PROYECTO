@@ -1,0 +1,27 @@
+﻿exodos_anchor = {
+    army = yes
+    levy_tier = none
+    movement_speed = 0
+    build_cost = { gold = 0 manpower = 0 }
+    food_consumption = 0
+    light_infantry = 0.0  heavy_infantry = 0.0  heavy_cavalry = 0.0
+    warelephant = 0.0  horse_archers = 0.0  archers = 0.0
+    chariots = 0.0  camels = 0.0  light_cavalry = 0.0
+    supply_train = 0.0  attrition_weight = 0.0
+    morale_damage_taken = 0.0  setup_fraction = 0.0
+    ai_max_percentage = 0
+}
+
+exodos_marker = {
+    army = yes
+    levy_tier = none
+    movement_speed = 0
+    build_cost = { gold = 0 manpower = 0 }
+    food_consumption = 0
+    light_infantry = 0.0  heavy_infantry = 0.0  heavy_cavalry = 0.0
+    warelephant = 0.0  horse_archers = 0.0  archers = 0.0
+    chariots = 0.0  camels = 0.0  light_cavalry = 0.0
+    supply_train = 0.0  attrition_weight = 0.0
+    morale_damage_taken = 0.0  setup_fraction = 0.0
+    ai_max_percentage = 0
+}

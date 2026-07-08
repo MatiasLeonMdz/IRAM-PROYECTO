@@ -1,0 +1,20 @@
+﻿l_english:
+ iram_bom_confirm:0 "By Other Means: Eliminate Rivals"
+ iram_bom_confirm_desc:0 "The state has enemies that cannot be defeated in open battle. Authorize the elimination of all rivals of the ruler. Cost: 2000 gold, 500 manpower, 40 tyranny. This cannot be undone."
+ iram_bom_bacanal:0 "Bacchanalia"
+ iram_bom_bacanal_desc:0 "The power extends an invitation — wine, excess, ruin. Those who stand against us will not fall in battle. They will fall in their own chambers, by their own appetites. Cost: 500 gold, 10 tyranny."
+ iram_bom_kill_ruler:0 "Et tu, Brute?"
+ iram_bom_kill_ruler_desc:0 "The ruler must fall. Authorize their elimination and clear the path. Cost: 2000 gold, 500 manpower, 40 tyranny."
+ iram_bom_seize_holdings:0 "Iron Hand: Seize Properties"
+ iram_bom_seize_holdings_desc:0 "The sword is not always necessary. Strip the rival of the ruler of everything they hold. Land is power — take it. Cost: 2000 gold, 40 tyranny."
+ iram_bom_fill_the_void:0 "Iron Hand: Fill the Void"
+ iram_bom_fill_the_void_desc:0 "While a rival threatens, the land cannot sit unclaimed. Grant every holding without an owner to the selected rival, enriching them beyond their ambitions. Cost: 2000 gold, 40 tyranny."
+
+ # ── TOOLTIPS RD1 (T10) ─────────────────────────────────────────────────
+ iram_tt_bom_rival:0               "You need at least 1 active rival."
+ iram_tt_bom_rival_unico:0         "You need exactly 1 active rival employed in your court."
+ # ── RIVAL HEIR ────────────────────────────────────────────────────
+ iram_bom_heir_son:0 "Rival's Son"
+ iram_bom_heir_son_desc:0 "A son of the ruler's rival will be born. The child will inherit the rival's family, religion, and culture — and dynastic traits from both parents if they have them. His name will be assigned according to the rival's culture."
+ iram_bom_heir_daughter:0 "Rival's Daughter"
+ iram_bom_heir_daughter_desc:0 "A daughter of the ruler's rival will be born. The child will inherit the rival's family, religion, and culture — and dynastic traits from both parents if they have them. Her name will be assigned according to the rival's culture."

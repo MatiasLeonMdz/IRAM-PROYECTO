@@ -1,0 +1,31 @@
+﻿l_english:
+ # Fase 1 — Activate
+ exodos_activate_transfer:0 "Exodos: Transfer"
+ exodos_activate_transfer_desc:0 "By decree of the state, the people shall be moved. Deploy the Origin and Destination units to mark the source and destination territories, then confirm the operation. Both units must be stationary and positioned in territories under your control. Cost is paid upon confirmation. (Operation will be cancelled if war is declared, a unit is destroyed, or either territory is lost.)"
+ exodos_activate_gather:0 "Exodos: Gather"
+ exodos_activate_gather_desc:0 "The scattered shall be brought together. Deploy the Concentrate unit to mark the destination territory, then confirm the operation. The entire area must be under your control. Cost is paid upon confirmation. (Operation will be cancelled if war is declared, the unit is destroyed, or any territory in the area is lost.)"
+ exodos_activate_distribute:0 "Exodos: Distribute"
+ exodos_activate_distribute_desc:0 "The crowded shall be dispersed across the land. Deploy the Distribute unit to mark the source territory, then confirm the operation. The entire area must be under your control. Cost is paid upon confirmation. (Operation will be cancelled if war is declared, the unit is destroyed, or any territory in the area is lost.)"
+
+ # Confirmar
+ exodos_confirm_transfer:0 "Exodos: Confirm Transfer"
+ exodos_confirm_transfer_desc:0 "The order is given. The people will march for ten months. Costs: 2000 gold, 5000 manpower, 20 tyranny. Both units must be stationary before the operation can begin."
+ exodos_confirm_gather:0 "Exodos: Confirm Gather"
+ exodos_confirm_gather_desc:0 "Sound the call. The scattered shall converge. Costs: 1000 gold, 2500 manpower, 10 tyranny. The unit must be stationary and the entire area must be under your control."
+ exodos_confirm_distribute:0 "Exodos: Confirm Distribute"
+ exodos_confirm_distribute_desc:0 "Open the gates. The people shall spread across the land. Costs: 1000 gold, 2500 manpower, 10 tyranny. The unit must be stationary and the entire area must be under your control."
+
+ # Cancelar — Transfer, Gather, Distribute
+ exodos_cancel:0 "Cancel the Exodos"
+ exodos_cancel_desc:0 "The decree is rescinded. The operation ends here. Costs already paid will not be refunded."
+
+ # Evento de fallo
+ exodos.1.t:0 "The Exodos Has Failed"
+ exodos.1.d:0 "The movement of the people has been brought to an abrupt end. The state's efforts have come to nothing."
+ exodos.1.ok:0 "So be it."
+
+ # Custom tooltips
+ exodos_tt_no_war:0 "The state cannot move its people while war rages on. (At war)"
+ exodos_tt_unit_stopped:0 "The units must reach their destination before the operation can begin. (Unit still moving)"
+ exodos_tt_owner:0 "Both territories must be under the authority of the state. (Territory not owned)"
+ exodos_tt_area_owner:0 "The entire area must be under the authority of the state. (Area not fully controlled)"

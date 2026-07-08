@@ -1,0 +1,102 @@
+﻿country_decisions = {
+
+    iram_exodos_activate_transfer = {
+        potential = {
+            is_ai = no
+            has_variable = iram_exodos_menu
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            custom_tooltip = iram_tt_exodos_sin_op
+            NOT = { has_variable = iram_operation_active }
+            custom_tooltip = iram_tt_exodos_transfer_ya_activa
+            NOT = { has_variable = iram_transfer_pending }
+        }
+        effect = {
+            create_unit = {
+                name = "Exodos - Origen"
+                location = capital_scope
+                sub_unit = iram_marker
+                save_scope_as = iram_origin_scope
+            }
+            scope:iram_origin_scope = {
+                set_variable = { name = iram_unit_transfer_origin value = 1 }
+            }
+            create_unit = {
+                name = "Exodos - Destino"
+                location = capital_scope
+                sub_unit = iram_marker
+                save_scope_as = iram_dest_scope
+            }
+            scope:iram_dest_scope = {
+                set_variable = { name = iram_unit_transfer_dest value = 1 }
+            }
+            set_variable = { name = iram_transfer_pending value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    iram_exodos_confirm_transfer = {
+        potential = {
+            is_ai = no
+            has_variable = iram_transfer_pending
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            custom_tooltip = iram_tt_unit_stopped
+            NOT = {
+                any_unit = {
+                    has_variable = iram_unit_transfer_origin
+                    is_moving = yes
+                }
+            }
+            NOT = {
+                any_unit = {
+                    has_variable = iram_unit_transfer_dest
+                    is_moving = yes
+                }
+            }
+            custom_tooltip = iram_tt_owner
+            any_unit = {
+                has_variable = iram_unit_transfer_origin
+                unit_location = { owner = ROOT }
+            }
+            any_unit = {
+                has_variable = iram_unit_transfer_dest
+                unit_location = { owner = ROOT }
+            }
+        }
+        effect = {
+            every_unit = {
+                limit = { has_variable = iram_unit_transfer_origin }
+                unit_location = {
+                    ROOT = {
+                        set_variable = {
+                            name = iram_anchor_province
+                            value = prev
+                        }
+                    }
+                    set_variable = { name = iram_is_anchor value = 1 }
+                }
+            }
+            every_unit = {
+                limit = { has_variable = iram_unit_transfer_dest }
+                unit_location = {
+                    ROOT = {
+                        set_variable = {
+                            name = iram_destination_province
+                            value = prev
+                        }
+                    }
+                    set_variable = { name = iram_is_destination value = 1 }
+                }
+            }
+            set_variable = { name = iram_pulse_counter value = 10 }
+            remove_variable = iram_transfer_pending
+            set_variable = { name = iram_operation_active value = 1 }
+            set_variable = { name = iram_transfer_active value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+}

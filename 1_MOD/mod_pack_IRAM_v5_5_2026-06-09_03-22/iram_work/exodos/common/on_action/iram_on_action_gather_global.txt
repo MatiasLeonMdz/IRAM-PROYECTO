@@ -1,0 +1,597 @@
+﻿monthly_country_pulse = {
+    effect = {
+        if = {
+            limit = {
+                is_ai = no
+                has_variable = iram_global_active
+            }
+
+            # Procesar 10 areas por pulso
+            # Cada bloque: encontrar capital de estado sin gather_global_done,
+            # area 100% propia, ejecutar Gather count=100, marcar todas las provinces
+
+            if = {
+                limit = {
+                    any_owned_province = {
+                        is_state_capital = yes
+                        NOT = { is_capital = yes }
+                        OR = {
+                            has_province_rank = city
+                            has_province_rank = city_metropolis
+                        }
+                        NOT = { has_variable = iram_gather_global_done }
+                        area = {
+                            NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                        }
+                    }
+                }
+                random_owned_province = {
+                    limit = {
+                        is_state_capital = yes
+                        NOT = { is_capital = yes }
+                        OR = {
+                            has_province_rank = city
+                            has_province_rank = city_metropolis
+                        }
+                        NOT = { has_variable = iram_gather_global_done }
+                        area = {
+                            NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                        }
+                    }
+                    save_scope_as = iram_global_anchor_1
+                }
+                scope:iram_global_anchor_1 = {
+                    save_scope_as = iram_dest
+                    area = {
+                        every_area_province = {
+                            limit = {
+                                owner = ROOT
+                                total_population >= 2
+                                NOT = { this = scope:iram_global_anchor_1 }
+                                NOT = { has_province_rank = city }
+                                NOT = { has_province_rank = city_metropolis }
+                            }
+                            while = {
+                                count = 100
+                                limit = { total_population >= 2 }
+                                random_pops_in_province = {
+                                    move_pop = scope:iram_dest
+                                }
+                            }
+                        }
+                        every_area_province = {
+                            limit = { owner = ROOT }
+                            set_variable = { name = iram_gather_global_done value = 1 }
+                        }
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    any_owned_province = {
+                        is_state_capital = yes
+                        NOT = { is_capital = yes }
+                        OR = {
+                            has_province_rank = city
+                            has_province_rank = city_metropolis
+                        }
+                        NOT = { has_variable = iram_gather_global_done }
+                        area = {
+                            NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                        }
+                    }
+                }
+                random_owned_province = {
+                    limit = {
+                        is_state_capital = yes
+                        NOT = { is_capital = yes }
+                        OR = {
+                            has_province_rank = city
+                            has_province_rank = city_metropolis
+                        }
+                        NOT = { has_variable = iram_gather_global_done }
+                        area = {
+                            NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                        }
+                    }
+                    save_scope_as = iram_global_anchor_2
+                }
+                scope:iram_global_anchor_2 = {
+                    save_scope_as = iram_dest
+                    area = {
+                        every_area_province = {
+                            limit = {
+                                owner = ROOT
+                                total_population >= 2
+                                NOT = { this = scope:iram_global_anchor_2 }
+                                NOT = { has_province_rank = city }
+                                NOT = { has_province_rank = city_metropolis }
+                            }
+                            while = {
+                                count = 100
+                                limit = { total_population >= 2 }
+                                random_pops_in_province = {
+                                    move_pop = scope:iram_dest
+                                }
+                            }
+                        }
+                        every_area_province = {
+                            limit = { owner = ROOT }
+                            set_variable = { name = iram_gather_global_done value = 1 }
+                        }
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    any_owned_province = {
+                        is_state_capital = yes
+                        NOT = { is_capital = yes }
+                        OR = {
+                            has_province_rank = city
+                            has_province_rank = city_metropolis
+                        }
+                        NOT = { has_variable = iram_gather_global_done }
+                        area = {
+                            NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                        }
+                    }
+                }
+                random_owned_province = {
+                    limit = {
+                        is_state_capital = yes
+                        NOT = { is_capital = yes }
+                        OR = {
+                            has_province_rank = city
+                            has_province_rank = city_metropolis
+                        }
+                        NOT = { has_variable = iram_gather_global_done }
+                        area = {
+                            NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                        }
+                    }
+                    save_scope_as = iram_global_anchor_3
+                }
+                scope:iram_global_anchor_3 = {
+                    save_scope_as = iram_dest
+                    area = {
+                        every_area_province = {
+                            limit = {
+                                owner = ROOT
+                                total_population >= 2
+                                NOT = { this = scope:iram_global_anchor_3 }
+                                NOT = { has_province_rank = city }
+                                NOT = { has_province_rank = city_metropolis }
+                            }
+                            while = {
+                                count = 100
+                                limit = { total_population >= 2 }
+                                random_pops_in_province = {
+                                    move_pop = scope:iram_dest
+                                }
+                            }
+                        }
+                        every_area_province = {
+                            limit = { owner = ROOT }
+                            set_variable = { name = iram_gather_global_done value = 1 }
+                        }
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    any_owned_province = {
+                        is_state_capital = yes
+                        NOT = { is_capital = yes }
+                        OR = {
+                            has_province_rank = city
+                            has_province_rank = city_metropolis
+                        }
+                        NOT = { has_variable = iram_gather_global_done }
+                        area = {
+                            NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                        }
+                    }
+                }
+                random_owned_province = {
+                    limit = {
+                        is_state_capital = yes
+                        NOT = { is_capital = yes }
+                        OR = {
+                            has_province_rank = city
+                            has_province_rank = city_metropolis
+                        }
+                        NOT = { has_variable = iram_gather_global_done }
+                        area = {
+                            NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                        }
+                    }
+                    save_scope_as = iram_global_anchor_4
+                }
+                scope:iram_global_anchor_4 = {
+                    save_scope_as = iram_dest
+                    area = {
+                        every_area_province = {
+                            limit = {
+                                owner = ROOT
+                                total_population >= 2
+                                NOT = { this = scope:iram_global_anchor_4 }
+                                NOT = { has_province_rank = city }
+                                NOT = { has_province_rank = city_metropolis }
+                            }
+                            while = {
+                                count = 100
+                                limit = { total_population >= 2 }
+                                random_pops_in_province = {
+                                    move_pop = scope:iram_dest
+                                }
+                            }
+                        }
+                        every_area_province = {
+                            limit = { owner = ROOT }
+                            set_variable = { name = iram_gather_global_done value = 1 }
+                        }
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    any_owned_province = {
+                        is_state_capital = yes
+                        NOT = { is_capital = yes }
+                        OR = {
+                            has_province_rank = city
+                            has_province_rank = city_metropolis
+                        }
+                        NOT = { has_variable = iram_gather_global_done }
+                        area = {
+                            NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                        }
+                    }
+                }
+                random_owned_province = {
+                    limit = {
+                        is_state_capital = yes
+                        NOT = { is_capital = yes }
+                        OR = {
+                            has_province_rank = city
+                            has_province_rank = city_metropolis
+                        }
+                        NOT = { has_variable = iram_gather_global_done }
+                        area = {
+                            NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                        }
+                    }
+                    save_scope_as = iram_global_anchor_5
+                }
+                scope:iram_global_anchor_5 = {
+                    save_scope_as = iram_dest
+                    area = {
+                        every_area_province = {
+                            limit = {
+                                owner = ROOT
+                                total_population >= 2
+                                NOT = { this = scope:iram_global_anchor_5 }
+                                NOT = { has_province_rank = city }
+                                NOT = { has_province_rank = city_metropolis }
+                            }
+                            while = {
+                                count = 100
+                                limit = { total_population >= 2 }
+                                random_pops_in_province = {
+                                    move_pop = scope:iram_dest
+                                }
+                            }
+                        }
+                        every_area_province = {
+                            limit = { owner = ROOT }
+                            set_variable = { name = iram_gather_global_done value = 1 }
+                        }
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    any_owned_province = {
+                        is_state_capital = yes
+                        NOT = { is_capital = yes }
+                        OR = {
+                            has_province_rank = city
+                            has_province_rank = city_metropolis
+                        }
+                        NOT = { has_variable = iram_gather_global_done }
+                        area = {
+                            NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                        }
+                    }
+                }
+                random_owned_province = {
+                    limit = {
+                        is_state_capital = yes
+                        NOT = { is_capital = yes }
+                        OR = {
+                            has_province_rank = city
+                            has_province_rank = city_metropolis
+                        }
+                        NOT = { has_variable = iram_gather_global_done }
+                        area = {
+                            NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                        }
+                    }
+                    save_scope_as = iram_global_anchor_6
+                }
+                scope:iram_global_anchor_6 = {
+                    save_scope_as = iram_dest
+                    area = {
+                        every_area_province = {
+                            limit = {
+                                owner = ROOT
+                                total_population >= 2
+                                NOT = { this = scope:iram_global_anchor_6 }
+                                NOT = { has_province_rank = city }
+                                NOT = { has_province_rank = city_metropolis }
+                            }
+                            while = {
+                                count = 100
+                                limit = { total_population >= 2 }
+                                random_pops_in_province = {
+                                    move_pop = scope:iram_dest
+                                }
+                            }
+                        }
+                        every_area_province = {
+                            limit = { owner = ROOT }
+                            set_variable = { name = iram_gather_global_done value = 1 }
+                        }
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    any_owned_province = {
+                        is_state_capital = yes
+                        NOT = { is_capital = yes }
+                        OR = {
+                            has_province_rank = city
+                            has_province_rank = city_metropolis
+                        }
+                        NOT = { has_variable = iram_gather_global_done }
+                        area = {
+                            NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                        }
+                    }
+                }
+                random_owned_province = {
+                    limit = {
+                        is_state_capital = yes
+                        NOT = { is_capital = yes }
+                        OR = {
+                            has_province_rank = city
+                            has_province_rank = city_metropolis
+                        }
+                        NOT = { has_variable = iram_gather_global_done }
+                        area = {
+                            NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                        }
+                    }
+                    save_scope_as = iram_global_anchor_7
+                }
+                scope:iram_global_anchor_7 = {
+                    save_scope_as = iram_dest
+                    area = {
+                        every_area_province = {
+                            limit = {
+                                owner = ROOT
+                                total_population >= 2
+                                NOT = { this = scope:iram_global_anchor_7 }
+                                NOT = { has_province_rank = city }
+                                NOT = { has_province_rank = city_metropolis }
+                            }
+                            while = {
+                                count = 100
+                                limit = { total_population >= 2 }
+                                random_pops_in_province = {
+                                    move_pop = scope:iram_dest
+                                }
+                            }
+                        }
+                        every_area_province = {
+                            limit = { owner = ROOT }
+                            set_variable = { name = iram_gather_global_done value = 1 }
+                        }
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    any_owned_province = {
+                        is_state_capital = yes
+                        NOT = { is_capital = yes }
+                        OR = {
+                            has_province_rank = city
+                            has_province_rank = city_metropolis
+                        }
+                        NOT = { has_variable = iram_gather_global_done }
+                        area = {
+                            NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                        }
+                    }
+                }
+                random_owned_province = {
+                    limit = {
+                        is_state_capital = yes
+                        NOT = { is_capital = yes }
+                        OR = {
+                            has_province_rank = city
+                            has_province_rank = city_metropolis
+                        }
+                        NOT = { has_variable = iram_gather_global_done }
+                        area = {
+                            NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                        }
+                    }
+                    save_scope_as = iram_global_anchor_8
+                }
+                scope:iram_global_anchor_8 = {
+                    save_scope_as = iram_dest
+                    area = {
+                        every_area_province = {
+                            limit = {
+                                owner = ROOT
+                                total_population >= 2
+                                NOT = { this = scope:iram_global_anchor_8 }
+                                NOT = { has_province_rank = city }
+                                NOT = { has_province_rank = city_metropolis }
+                            }
+                            while = {
+                                count = 100
+                                limit = { total_population >= 2 }
+                                random_pops_in_province = {
+                                    move_pop = scope:iram_dest
+                                }
+                            }
+                        }
+                        every_area_province = {
+                            limit = { owner = ROOT }
+                            set_variable = { name = iram_gather_global_done value = 1 }
+                        }
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    any_owned_province = {
+                        is_state_capital = yes
+                        NOT = { is_capital = yes }
+                        OR = {
+                            has_province_rank = city
+                            has_province_rank = city_metropolis
+                        }
+                        NOT = { has_variable = iram_gather_global_done }
+                        area = {
+                            NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                        }
+                    }
+                }
+                random_owned_province = {
+                    limit = {
+                        is_state_capital = yes
+                        NOT = { is_capital = yes }
+                        OR = {
+                            has_province_rank = city
+                            has_province_rank = city_metropolis
+                        }
+                        NOT = { has_variable = iram_gather_global_done }
+                        area = {
+                            NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                        }
+                    }
+                    save_scope_as = iram_global_anchor_9
+                }
+                scope:iram_global_anchor_9 = {
+                    save_scope_as = iram_dest
+                    area = {
+                        every_area_province = {
+                            limit = {
+                                owner = ROOT
+                                total_population >= 2
+                                NOT = { this = scope:iram_global_anchor_9 }
+                                NOT = { has_province_rank = city }
+                                NOT = { has_province_rank = city_metropolis }
+                            }
+                            while = {
+                                count = 100
+                                limit = { total_population >= 2 }
+                                random_pops_in_province = {
+                                    move_pop = scope:iram_dest
+                                }
+                            }
+                        }
+                        every_area_province = {
+                            limit = { owner = ROOT }
+                            set_variable = { name = iram_gather_global_done value = 1 }
+                        }
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    any_owned_province = {
+                        is_state_capital = yes
+                        NOT = { is_capital = yes }
+                        OR = {
+                            has_province_rank = city
+                            has_province_rank = city_metropolis
+                        }
+                        NOT = { has_variable = iram_gather_global_done }
+                        area = {
+                            NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                        }
+                    }
+                }
+                random_owned_province = {
+                    limit = {
+                        is_state_capital = yes
+                        NOT = { is_capital = yes }
+                        OR = {
+                            has_province_rank = city
+                            has_province_rank = city_metropolis
+                        }
+                        NOT = { has_variable = iram_gather_global_done }
+                        area = {
+                            NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                        }
+                    }
+                    save_scope_as = iram_global_anchor_10
+                }
+                scope:iram_global_anchor_10 = {
+                    save_scope_as = iram_dest
+                    area = {
+                        every_area_province = {
+                            limit = {
+                                owner = ROOT
+                                total_population >= 2
+                                NOT = { this = scope:iram_global_anchor_10 }
+                                NOT = { has_province_rank = city }
+                                NOT = { has_province_rank = city_metropolis }
+                            }
+                            while = {
+                                count = 100
+                                limit = { total_population >= 2 }
+                                random_pops_in_province = {
+                                    move_pop = scope:iram_dest
+                                }
+                            }
+                        }
+                        every_area_province = {
+                            limit = { owner = ROOT }
+                            set_variable = { name = iram_gather_global_done value = 1 }
+                        }
+                    }
+                }
+            }
+
+            # Cleanup cuando no quedan areas elegibles
+            if = {
+                limit = {
+                    NOT = {
+                        any_owned_province = {
+                            is_state_capital = yes
+                            NOT = { is_capital = yes }
+                            OR = {
+                                has_province_rank = city
+                                has_province_rank = city_metropolis
+                            }
+                            NOT = { has_variable = iram_gather_global_done }
+                            area = {
+                                NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                            }
+                        }
+                    }
+                }
+                trigger_event = { id = iram.4 }
+                iram_cleanup_exodos = yes
+            }
+        }
+    }
+}

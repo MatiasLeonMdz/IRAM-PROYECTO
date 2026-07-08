@@ -1,0 +1,41 @@
+﻿iram_cleanup_exodos_menu = {
+    remove_variable = iram_exodos_menu
+}
+
+iram_cleanup_exodos = {
+    iram_cleanup_exodos_menu = yes
+    remove_variable = iram_operation_active
+    remove_variable = iram_transfer_active
+    remove_variable = iram_transfer_pending
+    remove_variable = iram_anchor_province
+    remove_variable = iram_destination_province
+    remove_variable = iram_pulse_counter
+    remove_variable = iram_global_active
+    remove_variable = iram_distribute_global_active
+    remove_variable = iram_optimize_global_active
+    every_owned_province = {
+        limit = {
+            OR = {
+                has_variable = iram_is_anchor
+                has_variable = iram_is_destination
+                has_variable = iram_gather_global_done
+                has_variable = iram_distribute_global_done
+                has_variable = iram_optimize_global_done
+            }
+        }
+        remove_variable = iram_is_anchor
+        remove_variable = iram_is_destination
+        remove_variable = iram_gather_global_done
+        remove_variable = iram_distribute_global_done
+        remove_variable = iram_optimize_global_done
+    }
+    every_unit = {
+        limit = {
+            OR = {
+                has_variable = iram_unit_transfer_origin
+                has_variable = iram_unit_transfer_dest
+            }
+        }
+        destroy_unit = yes
+    }
+}

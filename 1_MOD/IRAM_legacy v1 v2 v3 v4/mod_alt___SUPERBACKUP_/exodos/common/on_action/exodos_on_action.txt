@@ -1,0 +1,199 @@
+﻿monthly_country_pulse = {
+    effect = {
+        if = {
+            limit = {
+                is_ai = no
+                has_variable = exodos_operation_active
+            }
+
+            # ── 1. CHEQUEOS DE ERROR ──────────────────────────────────
+
+            # Unidad destruida o desaparecida
+            if = {
+                limit = {
+                    NOT = {
+                        any_unit = {
+                            OR = {
+                                has_variable = exodos_unit_transfer_origin
+                                has_variable = exodos_unit_transfer_dest
+                                has_variable = exodos_unit_concentrate
+                                has_variable = exodos_unit_distribute
+                            }
+                        }
+                    }
+                }
+                trigger_event = { id = exodos.1 }
+            }
+
+            # Ancla perdida
+            else_if = {
+                limit = {
+                    var:exodos_anchor_province = {
+                        NOT = { owner = ROOT }
+                    }
+                }
+                trigger_event = { id = exodos.1 }
+            }
+
+            # Destino perdido (solo Transfer)
+            else_if = {
+                limit = {
+                    has_variable = exodos_transfer_active
+                    var:exodos_destination_province = {
+                        NOT = { owner = ROOT }
+                    }
+                }
+                trigger_event = { id = exodos.1 }
+            }
+
+            # Area ya no es 100% propia (solo Gather)
+            else_if = {
+                limit = {
+                    has_variable = exodos_gather_active
+                    var:exodos_anchor_province = {
+                        area = {
+                            any_area_province = {
+                                NOT = { owner = ROOT }
+                            }
+                        }
+                    }
+                }
+                trigger_event = { id = exodos.1 }
+            }
+
+            # Area ya no es 100% propia (solo Distribute)
+            else_if = {
+                limit = {
+                    has_variable = exodos_distribute_active
+                    var:exodos_anchor_province = {
+                        area = {
+                            any_area_province = {
+                                NOT = { owner = ROOT }
+                            }
+                        }
+                    }
+                }
+                trigger_event = { id = exodos.1 }
+            }
+
+            else = {
+
+                # ── 2. GATHER ─────────────────────────────────────────
+                if = {
+                    limit = { has_variable = exodos_gather_active }
+
+                    var:exodos_anchor_province = {
+                        save_scope_as = exodos_dest
+                        area = {
+                            every_area_province = {
+                                limit = {
+                                    owner = ROOT
+                                    total_population >= 2
+                                    NOT = { has_variable = exodos_is_anchor }
+                                }
+                                while = {
+                                    count = 20
+                                    limit = { total_population >= 2 }
+                                    random_pops_in_province = {
+                                        move_pop = scope:exodos_dest
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    # Cleanup solo cuando todas las fuentes llegaron a < 2 pops
+                    if = {
+                        limit = {
+                            var:exodos_anchor_province = {
+                                area = {
+                                    NOT = {
+                                        any_area_province = {
+                                            NOT = { has_variable = exodos_is_anchor }
+                                            total_population >= 2
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        exodos_cleanup_effect = yes
+                    }
+                }
+
+                # ── 3. TRANSFER ───────────────────────────────────────
+                else_if = {
+                    limit = { has_variable = exodos_transfer_active }
+
+                    var:exodos_destination_province = {
+                        save_scope_as = exodos_dest
+                    }
+                    var:exodos_anchor_province = {
+                        while = {
+                            count = 10
+                            limit = { total_population >= 2 }
+                            random_pops_in_province = {
+                                move_pop = scope:exodos_dest
+                            }
+                        }
+                    }
+
+                    # Contador — 10 pulsos
+                    change_variable = { name = exodos_pulse_counter add = -1 }
+                    if = {
+                        limit = {
+                            OR = {
+                                var:exodos_pulse_counter <= 0
+                                var:exodos_anchor_province = {
+                                    total_population < 2
+                                }
+                            }
+                        }
+                        exodos_cleanup_effect = yes
+                    }
+                }
+
+                # ── 4. DISTRIBUTE ─────────────────────────────────────
+                else_if = {
+                    limit = { has_variable = exodos_distribute_active }
+
+                    var:exodos_anchor_province = {
+                        save_scope_as = exodos_origin
+                        area = {
+                            every_area_province = {
+                                limit = {
+                                    owner = ROOT
+                                    total_population >= 1
+                                    NOT = { has_variable = exodos_is_anchor }
+                                }
+                                save_scope_as = exodos_dist_target
+                                while = {
+                                    count = 10
+                                    limit = {
+                                        scope:exodos_origin = {
+                                            total_population >= 30
+                                        }
+                                    }
+                                    scope:exodos_origin = {
+                                        random_pops_in_province = {
+                                            move_pop = scope:exodos_dist_target
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    # Cleanup solo cuando el ancla llega a < 10 pops
+                    if = {
+                        limit = {
+                            var:exodos_anchor_province = {
+                                total_population < 30
+                            }
+                        }
+                        exodos_cleanup_effect = yes
+                    }
+                }
+            }
+        }
+    }
+}

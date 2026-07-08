@@ -1,0 +1,34 @@
+﻿namespace = exodos
+
+exodos.1 = {
+    type = country_event
+    title = "exodos.1.t"
+    desc = "exodos.1.d"
+    immediate = { exodos_cleanup_effect = yes }
+    option = { name = "exodos.1.ok" }
+}
+
+exodos.2 = {
+    type = country_event
+    title = "exodos.2.t"
+    desc = "exodos.2.d"
+    immediate = { exodos_cleanup_effect = yes }
+    option = { name = "exodos.2.ok" }
+}
+
+exodos.3 = {
+    type = country_event
+    title = "exodos.3.t"
+    desc = "exodos.3.d"
+    immediate = { exodos_cleanup_effect = yes }
+    option = { name = "exodos.3.ok" }
+}
+
+exodos.4 = {
+    type = country_event
+    title = "exodos.4.t"
+    desc = "exodos.4.d"
+    immediate = { exodos_cleanup_effect = yes }
+    option = { name = "exodos.4.ok" }
+}
+

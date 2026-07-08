@@ -1,0 +1,9 @@
+﻿l_english:
+ iram_create_divine_relic:0 "One People, One Faith"
+ iram_create_divine_relic_desc:0 "The state will impose a unified spiritual and cultural identity across the empire."
+
+ iram_remove_divine_relic:0 "Dismantle the Relic"
+ iram_remove_divine_relic_desc:0 "The centralized spiritual structure will be dismantled."
+
+ iram_divine_relic:0 "One People, One Faith"
+ iram_divine_relic_desc:0 "Religious conversion and cultural assimilation progress at extraordinary speed across the empire."

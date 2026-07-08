@@ -1,0 +1,11 @@
+﻿l_spanish:
+ bom_confirm:0 "By Other Means: Eliminar Rivales"
+ bom_confirm_desc:0 "El estado tiene enemigos que no pueden ser derrotados en batalla abierta. Autoriza la eliminacion de todos los rivales del gobernante. Costo: 2000 oro, 500 soldados, 40 tirania. Esto no puede deshacerse."
+ bom_bacanal:0 "Bacanal"
+ bom_bacanal_desc:0 "El poder extiende una invitacion — vino, exceso, ruina. Quienes se nos oponen no caeran en batalla. Caeran en sus propias camaras, por sus propios apetitos. Costo: 500 oro, 10 tirania."
+ bom_kill_ruler:0 "Et tu, Brute?"
+ bom_kill_ruler_desc:0 "El gobernante debe caer. Autoriza su eliminacion y despeja el camino. Costo: 2000 oro, 500 soldados, 40 tirania."
+ iha_seize_holdings:0 "Iron Hand: Confiscar Propiedades"
+ iha_seize_holdings_desc:0 "La espada no siempre es necesaria. Despoja al rival del gobernante de todo lo que posee. La tierra es poder — Tomala. Costo: 2000 oro, 40 tirania."
+ iha_fill_the_void:0 "Iron Hand: Llenar el Vacio"
+ iha_fill_the_void_desc:0 "Mientras un rival amenaza, la tierra no puede quedarse sin dueno. Otorga todas las propiedades sin dueno al rival seleccionado, enriqueciendolo mas alla de sus ambiciones. Costo: 2000 oro, 40 tirania."

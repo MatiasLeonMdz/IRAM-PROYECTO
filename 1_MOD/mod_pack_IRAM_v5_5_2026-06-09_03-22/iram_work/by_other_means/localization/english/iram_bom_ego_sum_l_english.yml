@@ -1,0 +1,17 @@
+﻿l_english:
+ iram_bom_ego_mars:0 "Filius Martis — Path of War"
+ iram_bom_ego_mars_desc:0 "The ruler declares himself a son of Mars — war is not his trade, it is his nature."
+ iram_bom_ego_iovis:0 "Filius Iovis — Path of Piety"
+ iram_bom_ego_iovis_desc:0 "The ruler declares himself a son of Jupiter — he burns with a faith no man can extinguish nor the gods contain."
+ iram_bom_ego_mercurii:0 "Filius Mercurii — Path of Oratory"
+ iram_bom_ego_mercurii_desc:0 "The ruler declares himself a son of Mercury — steel conquers lands, his words conquer men."
+ iram_bom_ego_minervae:0 "Filius Minervae — Path of Wisdom"
+ iram_bom_ego_minervae_desc:0 "The ruler declares himself a son of Minerva — he does not need to see the future, he builds it."
+
+ # ── TOOLTIPS RD1 (T10) ─────────────────────────────────────────────────
+ iram_tt_bom_ego_mars_usado:0      "Filius Martis has not been chosen yet."
+ iram_tt_bom_ego_iovis_usado:0     "Filius Iovis has not been chosen yet."
+ iram_tt_bom_ego_mercurii_usado:0  "Filius Mercurii has not been chosen yet."
+ iram_tt_bom_ego_minervae_usado:0  "Filius Minervae has not been chosen yet."
+ iram_tt_bom_ego_gobernante:0      "The ruler has not yet received the Ego Sum blessing."
+

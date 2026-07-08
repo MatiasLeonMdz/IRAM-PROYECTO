@@ -1,0 +1,31 @@
+﻿l_spanish:
+ # Fase 1 — Activate
+ exodos_activate_transfer:0 "Exodos: Transferencia"
+ exodos_activate_transfer_desc:0 "Por decreto del estado, el pueblo sera trasladado. Despliega las unidades Origen y Destino para marcar los territorios de origen y destino, luego confirma la operacion. Ambas unidades deben estar estacionarias y posicionadas en territorios bajo tu control. El costo se cobra al confirmar. (La operacion sera cancelada si una unidad es destruida o alguno de los territorios es perdido.)"
+ exodos_activate_gather:0 "Exodos: Concentracion"
+ exodos_activate_gather_desc:0 "Los dispersos seran reunidos. Recluta un ejercito o leva bajo el mando del rival del gobernante en el territorio donde quieras concentrar la poblacion — la unidad marcadora sera posicionada ahi automaticamente. Podes moverla antes de confirmar. El costo se cobra al confirmar. (La operacion sera cancelada si la unidad es destruida o cualquier territorio del area es perdido.)"
+ exodos_activate_distribute:0 "Exodos: Distribucion"
+ exodos_activate_distribute_desc:0 "Los hacinados seran dispersados por la tierra. Recluta un ejercito o leva bajo el mando del rival del gobernante en el territorio que quieras vaciar — la unidad marcadora sera posicionada ahi automaticamente. Podes moverla antes de confirmar. El costo se cobra al confirmar. (La operacion sera cancelada si la unidad es destruida o cualquier territorio del area es perdido.)"
+
+ # Confirmar
+ exodos_confirm_transfer:0 "Exodos: Confirmar Transferencia"
+ exodos_confirm_transfer_desc:0 "La orden esta dada. El pueblo marchara durante diez meses. Costo: 2000 oro, 5000 soldados, 20 tirania. Ambas unidades deben estar estacionarias antes de que la operacion pueda comenzar."
+ exodos_confirm_gather:0 "Exodos: Confirmar Concentracion"
+ exodos_confirm_gather_desc:0 "Suena el llamado. Los dispersos convergaran en un solo mes. Costo: 1000 oro, 2500 soldados, 10 tirania. La unidad debe estar estacionaria y el area completa bajo tu control."
+ exodos_confirm_distribute:0 "Exodos: Confirmar Distribucion"
+ exodos_confirm_distribute_desc:0 "Se abren las puertas. El pueblo se extendera por la tierra en un solo mes. Costo: 1000 oro, 2500 soldados, 10 tirania. La unidad debe estar estacionaria y el area completa bajo tu control."
+
+ # Cancelar
+ exodos_cancel:0 "Cancelar el Exodo"
+ exodos_cancel_desc:0 "El decreto es rescindido. La operacion termina aqui. Los costos ya pagados no seran reembolsados."
+
+ # Evento de fallo
+ exodos.1.t:0 "El Exodo Ha Fracasado"
+ exodos.1.d:0 "El movimiento del pueblo ha llegado a un abrupto fin. Los esfuerzos del estado han sido en vano."
+ exodos.1.ok:0 "Que asi sea."
+
+ # Custom tooltips
+ exodos_tt_unit_stopped:0 "Las unidades deben llegar a su destino antes de que la operacion pueda comenzar. (Unidad en movimiento)"
+ exodos_tt_owner:0 "Ambos territorios deben estar bajo la autoridad del estado. (Territorio no controlado)"
+ exodos_tt_area_owner:0 "El area completa debe estar bajo la autoridad del estado. (Area no controlada en su totalidad)"
+ exodos_tt_rival_commander:0 "Se requiere exactamente un rival del gobernante del mismo estado, al mando de un ejercito o leva activa. Recluta primero una leva del rival en el territorio destino. (Condicion de rival no cumplida)"

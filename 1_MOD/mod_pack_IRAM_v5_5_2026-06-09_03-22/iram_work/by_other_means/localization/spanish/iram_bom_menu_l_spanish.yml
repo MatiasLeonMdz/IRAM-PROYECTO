@@ -1,0 +1,34 @@
+﻿l_spanish:
+ # ── BOM — menú principal (español) ───────────────────────────────────
+ iram_bom_menu_open:0          "Por Otros Medios"
+ iram_bom_menu_open_desc:0     "Decisiones políticas y espirituales: eliminar rivales, invocar patrocinio divino, decretar cambios demográficos."
+ iram_bom_menu_close:0         "« Cerrar"
+ iram_bom_menu_close_desc:0    "Cerrar el panel de Por Otros Medios."
+
+ # ── BOM — Acciones Políticas (español) ───────────────────────────────
+ iram_bom_menu_bom_open:0      "Acciones Políticas"
+ iram_bom_menu_bom_open_desc:0 "Manipular rivales, confiscar tierras, eliminar obstáculos. Por cualquier medio necesario."
+ iram_bom_menu_bom_close:0     "« Volver"
+ iram_bom_menu_bom_close_desc:0 "Volver al menú principal de Por Otros Medios."
+
+ # ── BOM — Ego Sum (español) ───────────────────────────────────────────
+ iram_bom_menu_ego_open:0      "Ego Sum..."
+ iram_bom_menu_ego_open_desc:0 "Invocar una identidad divina. Una invocación por dios y por gobernante — se resetea al cancelar operaciones BOM."
+ iram_bom_menu_ego_close:0     "« Volver a Acciones Políticas"
+ iram_bom_menu_ego_close_desc:0 "Volver al submenú de Acciones Políticas."
+
+ # ── BOM — Heredero del Rival (español) ───────────────────────────────
+ iram_bom_menu_heir_open:0     "Heredero del Rival"
+ iram_bom_menu_heir_open_desc:0 "Engendrar un heredero usando al rival como padre. El heredero nacerá con rasgos del linaje rival."
+ iram_bom_menu_heir_close:0    "« Volver a Acciones Políticas"
+ iram_bom_menu_heir_close_desc:0 "Volver al submenú de Acciones Políticas."
+
+ # ── BOM — Demografía (español) ────────────────────────────────────────
+ iram_bom_menu_demo_open:0     "Demografía"
+ iram_bom_menu_demo_open_desc:0 "Activar decretos demográficos permanentes: migración forzada, ascenso y descenso de pops, y unidad espiritual."
+ iram_bom_menu_demo_close:0    "« Volver"
+ iram_bom_menu_demo_close_desc:0 "Volver al menú principal de Por Otros Medios."
+
+ # ── BOM — cancel (español) ────────────────────────────────────────────
+ iram_bom_cancel_all:0         "Cancelar todo — Por Otros Medios"
+ iram_bom_cancel_all_desc:0    "Cancelar todas las operaciones activas de BOM. Demografía, invocaciones divinas y estado Ego Sum se resetean por completo."

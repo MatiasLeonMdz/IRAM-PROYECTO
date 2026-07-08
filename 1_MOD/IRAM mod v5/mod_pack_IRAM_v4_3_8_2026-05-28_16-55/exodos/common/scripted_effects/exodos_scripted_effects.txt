@@ -1,0 +1,85 @@
+﻿exodos_cleanup_effect = {
+
+    # Limpiar menu IRAM
+    iram_cleanup_menu = yes
+
+    # Limpiar toggles de demografia
+    iram_cleanup_demografia = yes
+
+    # Variables de operacion
+    remove_variable = exodos_operation_active
+    remove_variable = exodos_gather_active
+    remove_variable = exodos_transfer_active
+    remove_variable = exodos_distribute_active
+    remove_variable = exodos_transfer_pending
+    remove_variable = exodos_gather_pending
+    remove_variable = exodos_distribute_pending
+    remove_variable = exodos_anchor_province
+    remove_variable = exodos_destination_province
+    remove_variable = exodos_pulse_counter
+
+    # Variables Optimizar (IRAM)
+    remove_variable = exodos_optimize_pending
+    remove_variable = exodos_optimize_active
+    remove_variable = exodos_optimize_gather_done
+    remove_variable = exodos_optimize_count
+
+    # Variables Gather Global
+    remove_variable = exodos_global_active
+    remove_variable = exodos_gather_global_completed
+
+    # Variables Optimize Global
+    remove_variable = exodos_optimize_global_active
+    remove_variable = exodos_optimize_global_distribute_active
+
+    # Limpiar variables de province
+    every_owned_province = {
+        limit = {
+            OR = {
+                has_variable = exodos_is_anchor
+                has_variable = exodos_is_destination
+                has_variable = exodos_gather_global_done
+                has_variable = exodos_optimize_global_done
+            }
+        }
+        remove_variable = exodos_is_anchor
+        remove_variable = exodos_is_destination
+        remove_variable = exodos_gather_global_done
+        remove_variable = exodos_optimize_global_done
+    }
+
+    # Disolver unidades Exodos
+    every_unit = {
+        limit = {
+            OR = {
+                has_variable = exodos_unit_transfer_origin
+                has_variable = exodos_unit_transfer_dest
+                has_variable = exodos_unit_concentrate
+                has_variable = exodos_unit_distribute
+                has_variable = exodos_unit_optimize
+            }
+        }
+        destroy_unit = yes
+    }
+}
+
+iram_cleanup_menu = {
+    remove_variable = iram_menu_open
+    remove_variable = iram_menu_management_open
+    remove_variable = iram_menu_behavior_open
+    remove_variable = iram_menu_political_open
+    remove_variable = iram_rival_heir_open
+}
+
+iram_cleanup_demografia = {
+    # Failsafe — limpia estado corrupto de toggles de demografia
+    # Es la única forma de desactivar los toggles (cancel_all llama a este effect)
+    remove_variable = iram_migracion_forzada_active
+    remove_variable = iram_ascenso_forzado_active
+    remove_variable = iram_descenso_forzado_active
+    remove_country_modifier = iram_migracion_forzada
+    remove_country_modifier = iram_ascenso_forzado
+    remove_country_modifier = iram_descenso_forzado
+    remove_country_modifier = iram_divine_relic
+    remove_variable = iram_divine_relic_active
+}

@@ -1,0 +1,81 @@
+﻿l_english:
+ # ── TRANSFER ──────────────────────────────────────────────────────
+ iram_08_activate_transfer:0 "Exodos: Transfer"
+ exodos_activate_transfer_desc:0 "By decree of the state, the people shall be moved. Deploy the Origin and Destination units to mark the source and destination territories, then confirm the operation. Both units must be stationary and positioned in territories under your control. Cost is paid upon confirmation. (Operation will be cancelled if a unit is destroyed or either territory is lost.)"
+ iram_09_confirm_transfer:0 "Exodos: Confirm Transfer"
+ exodos_confirm_transfer_desc:0 "The order is given. The people will march for ten months. Costs: 2000 gold, 5000 manpower, 20 tyranny. Both units must be stationary before the operation can begin."
+
+ # ── GATHER / DISTRIBUTE legacy ────────────────────────────────────
+ iram_08_activate_gather:0 "Exodos: Gather"
+ exodos_activate_gather_desc:0 "The scattered shall be brought together. Raise an army or levy under the ruler's rival in the territory where you want to concentrate population — the marker unit will be placed there automatically. You may move it before confirming. Cost is paid upon confirmation. (Operation will be cancelled if the unit is destroyed or any territory in the area is lost.)"
+ iram_09_confirm_gather:0 "Exodos: Confirm Gather"
+ exodos_confirm_gather_desc:0 "Sound the call. The scattered shall converge in a single month. Costs: 1000 gold, 2500 manpower, 10 tyranny. The unit must be stationary and the entire area must be under your control."
+ iram_10_activate_distribute:0 "Exodos: Distribute"
+ exodos_activate_distribute_desc:0 "The crowded shall be dispersed across the land. Raise an army or levy under the ruler's rival in the territory you want to empty — the marker unit will be placed there automatically. You may move it before confirming. Cost is paid upon confirmation. (Operation will be cancelled if the unit is destroyed or any territory in the area is lost.)"
+ iram_11_confirm_distribute:0 "Exodos: Confirm Distribute"
+ exodos_confirm_distribute_desc:0 "Open the gates. The people shall spread across the land in a single month. Costs: 1000 gold, 2500 manpower, 10 tyranny. The unit must be stationary and the entire area must be under your control."
+
+ # ── OPTIMIZE ──────────────────────────────────────────────────────
+ iram_14_activate_optimize:0 "Exodos: Optimize"
+ exodos_activate_optimize_desc:0 "The province's pops will be optimally redistributed for religious conversion and cultural assimilation. Raise or move an army or levy under the ruler's rival in any territory of the province — the marker unit will be generated there automatically, use it to mark your main city in the province. You may move it before choosing the range, the operation cost is charged in the next decision."
+ iram_15_opt_range_04:0 "Between 45 and 107 pops in the province"
+ exodos_opt_range_04_desc:0 "Verify the province's total pop count before confirming — province panel, hover between the governor button and the procurators button, or at Nation Overview / Administration / Governorships.\n\nIf the marker unit is destroyed or any territory in the province is lost, the operation will be cancelled.\n\nTHIS ACTION CANNOT BE UNDONE OR REFUNDED AND MAY TAKE SEVERAL MONTHS. MAKE A SAVE AND KEEP A BACKUP."
+ iram_16_opt_range_09:0 "Between 108 and 171 pops in the province"
+ exodos_opt_range_09_desc:0 "Verify the province's total pop count before confirming — province panel, hover between the governor button and the procurators button, or at Nation Overview / Administration / Governorships.\n\nIf the marker unit is destroyed or any territory in the province is lost, the operation will be cancelled.\n\nTHIS ACTION CANNOT BE UNDONE OR REFUNDED AND MAY TAKE SEVERAL MONTHS. MAKE A SAVE AND KEEP A BACKUP."
+ iram_17_opt_range_14:0 "Between 172 and 235 pops in the province"
+ exodos_opt_range_14_desc:0 "Verify the province's total pop count before confirming — province panel, hover between the governor button and the procurators button, or at Nation Overview / Administration / Governorships.\n\nIf the marker unit is destroyed or any territory in the province is lost, the operation will be cancelled.\n\nTHIS ACTION CANNOT BE UNDONE OR REFUNDED AND MAY TAKE SEVERAL MONTHS. MAKE A SAVE AND KEEP A BACKUP."
+ iram_18_opt_range_19:0 "Between 236 and 300 pops in the province"
+ exodos_opt_range_19_desc:0 "Verify the province's total pop count before confirming — province panel, hover between the governor button and the procurators button, or at Nation Overview / Administration / Governorships.\n\nIf the marker unit is destroyed or any territory in the province is lost, the operation will be cancelled.\n\nTHIS ACTION CANNOT BE UNDONE OR REFUNDED AND MAY TAKE SEVERAL MONTHS. MAKE A SAVE AND KEEP A BACKUP."
+
+
+ # ── GATHER GLOBAL ─────────────────────────────────────────
+ iram_10_confirm_gather_global:0 "Exodos: Global Concentrate"
+ exodos_confirm_gather_global_desc:0 "Concentrates the population of each area's territories into its province capital.\n\nPartially controlled provinces and capitals without city rank are skipped. Processes 10 provinces per month.\n\nSecondary cities in the area are not affected — their pops are not concentrated.\n\nTHIS OPERATION MAY TAKE SEVERAL MONTHS. SAVE YOUR GAME AND CREATE A BACKUP.\n\n| For a slave optimization cycle: Concentrate → Distribute → wait for slave conversion → Concentrate → Optimize. This is step 1 — or step 3 if you already ran Distribute."
+
+ # ── CANCEL ALL ────────────────────────────────────────────────────
+ iram_02_cancel_all:0 "Cancel All"
+ exodos_cancel_all_desc:0 "Rescinds all active state decrees. Clears any ongoing operation — Exodos, transfers, and any residual state from previous mod installations. Costs already paid will not be refunded. Use as a first step when migrating from a previous installation."
+
+ # ── FAILURE EVENT ─────────────────────────────────────────────────
+ exodos.1.t:0 "The Exodos Has Failed"
+ exodos.1.d:0 "The movement of the people has been brought to an abrupt end. The state's efforts have come to nothing."
+ exodos.1.ok:0 "So be it."
+
+ # ── CUSTOM TOOLTIPS ───────────────────────────────────────────────
+ exodos_tt_unit_stopped:0 "The units must reach their destination before the operation can begin. (Unit still moving)"
+ exodos_tt_owner:0 "Both territories must be under the authority of the state. (Territory not owned)"
+ exodos_tt_area_owner:0 "The entire area must be under the authority of the state. (Area not fully controlled)"
+ exodos_tt_rival_commander:0 "Exactly one rival of the ruler is required — of the same state, commanding an active army or levy. Raise a levy under the rival in the target territory first. (Rival condition not met)"
+
+ # ── RIVAL HEIR ────────────────────────────────────────────────────
+ iram_22_spawn_rival_son:0 "Exodos: Rival's Son"
+ exodos_spawn_rival_son_desc:0 "A son of the ruler's rival will be born. The child will inherit the rival's family, religion, and culture — and dynastic traits from both parents if they have them. His name will be assigned according to the rival's culture."
+ iram_23_spawn_rival_daughter:0 "Exodos: Rival's Daughter"
+ exodos_spawn_rival_daughter_desc:0 "A daughter of the ruler's rival will be born. The child will inherit the rival's family, religion, and culture — and dynastic traits from both parents if they have them. Her name will be assigned according to the rival's culture."
+ exodos_tt_rival_unique:0 "Exactly one rival of the ruler is required — in the player's service, aged 16 or older. (Rival condition not met)"
+
+ # ── OPTIMIZE GLOBAL ───────────────────────────────────────────────
+ # ── DISTRIBUTE GLOBAL ────────────────────────────────────────────
+ iram_11_distribute_global:0 "Global Distribute"
+ iram_11_distribute_global_desc:0 "Distributes population from each area's province capital to its territories.\n\nProvinces without a qualifying capital or insufficient population are skipped. Processes 5 provinces per month.\n\nSecondary cities in the area are not affected — they do not receive population.\n\nTHIS OPERATION MAY TAKE SEVERAL MONTHS. SAVE YOUR GAME AND CREATE A BACKUP.\n\n| For a slave optimization cycle: Concentrate → Distribute → wait for slave conversion → Concentrate → Optimize. This is step 2."
+
+ # ── AUTOMATIC BUILDER ────────────────────────────────────────────
+ iram_12_constructor_auto:0 "Automatic Builder"
+ iram_12_constructor_auto_desc:0 "Rebuilds all settlements in the empire according to their trade good. Demolishes whatever is there and constructs the optimal building for each trade good.\n\nNever touches fortresses or cities.\n\nSecondary cities in the area are not affected.\n\nINSTANT. THIS ACTION IS IRREVERSIBLE. SAVE YOUR GAME AND CREATE A BACKUP.\n\n| For a slave optimization cycle run the Builder before starting. The cycle is: Concentrate → Distribute → wait for slave conversion → Concentrate → Optimize."
+
+ # ── OPTIMIZE GLOBAL ───────────────────────────────────────────────
+ iram_13_activate_optimize_global:0 "Global Optimize"
+ iram_13_activate_optimize_global_desc:0 "Distributes the slaves accumulated in each area's province capital to its territories based on actual building demand: up to 10 for mines and farming settlements, up to 15 for slave estates.\n\nProvinces where the capital does not have enough slaves to cover its territories are skipped. Processes 5 provinces per month.\n\nSecondary cities in the area are not affected — they do not receive slaves.\n\nTHIS OPERATION MAY TAKE SEVERAL MONTHS. SAVE YOUR GAME AND CREATE A BACKUP.\n\n| For a slave optimization cycle: Concentrate → Distribute → wait for slave conversion → Concentrate → Optimize. This is step 4."
+ exodos.2.t:0 "Global Distribute — Operation Complete"
+ exodos.2.d:0 "Population distribution from province capitals to territories has concluded. Areas skipped due to lost territory or insufficient pops were not modified."
+ exodos.2.ok:0 "So be it."
+
+ # ── OPTIMIZE GLOBAL — COMPLETE ────────────────────────────────────
+ exodos.3.t:0 "Global Optimize — Operation Complete"
+ exodos.3.d:0 "Slave optimization across areas has concluded. Areas skipped due to insufficient slaves or lost territory were not modified."
+ exodos.3.ok:0 "So be it."
+
+ # ── GATHER GLOBAL — COMPLETE ─────────────────────────────────────
+ exodos.4.t:0 "Global Gather — Operation Complete"
+ exodos.4.d:0 "Global population concentration in province capitals has concluded. Areas skipped due to lost territory or insufficient pops were not modified."
+ exodos.4.ok:0 "So be it."

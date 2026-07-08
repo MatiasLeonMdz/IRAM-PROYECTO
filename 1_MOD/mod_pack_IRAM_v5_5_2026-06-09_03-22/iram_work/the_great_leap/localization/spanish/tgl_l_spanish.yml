@@ -1,0 +1,10 @@
+﻿l_spanish:
+ iram_tgl_purchase:0 "El Gran Salto"
+ iram_tgl_purchase_desc:0 "Concentrando vastos recursos y las mentes mas brillantes del estado, podemos avanzar rapidamente nuestro conocimiento en todos los campos del saber. Esta oportunidad se presenta una sola vez, y a un gran costo para el tesoro y la paciencia del pueblo."
+ tgl_purchase_cost_tt:0 "Pagando 516 oro por metropolis y 258 oro por ciudad. Cuesta 100 tirania. El costo varia segun los asentamientos controlados."
+ tgl_purchase_warning_tt:0 "ADVERTENCIA: El costo total depende de la cantidad de asentamientos que controles. El tesoro puede quedar en negativo — el engine cobra cada ciudad sin excepcion. Conta tus metropolis y ciudades antes de confirmar."
+
+ # ── TOOLTIPS RD1 (T10) ─────────────────────────────────────────────────
+ iram_tt_tgl_purchased:0   "Esta compra no fue usada todavía."
+ iram_tt_tgl_ciudades:0    "Controlás al menos una ciudad."
+

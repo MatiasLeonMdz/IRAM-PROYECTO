@@ -1,0 +1,9 @@
+﻿l_english:
+ iram_activate_migracion_forzada:0 "Forced Migration Decree"
+ iram_activate_migracion_forzada_desc:0 "The state will mobilize the free population for resettlement according to the needs of the empire. Migration speed for all pops will increase permanently."
+
+ iram_deactivate_migracion_forzada:0 "Revoke Migration Decree"
+ iram_deactivate_migracion_forzada_desc:0 "Forced population mobilization will be suspended."
+
+ iram_migracion_forzada:0 "Forced Migration"
+ iram_migracion_forzada_desc:0 "The state actively directs the movement of free population. Migration speed increased empire-wide."

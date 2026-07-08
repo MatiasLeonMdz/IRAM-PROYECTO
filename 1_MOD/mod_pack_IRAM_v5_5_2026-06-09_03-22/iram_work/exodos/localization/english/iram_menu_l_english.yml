@@ -1,0 +1,17 @@
+﻿l_english:
+ # ── EXODOS — menú ────────────────────────────────────────────────────
+ iram_exodos_menu_open:0       "Exodos — Population Movement"
+ iram_exodos_menu_open_desc:0  "Access population movement operations: concentrate, distribute, transfer, and optimize pops across the empire."
+ iram_exodos_menu_close:0      "« Close Exodos"
+ iram_exodos_menu_close_desc:0 "Close the population movement panel."
+
+ # ── EXODOS — cancel ───────────────────────────────────────────────────
+ iram_exodos_cancel_all:0      "Cancel All — Exodos"
+ iram_exodos_cancel_all_desc:0 "Cancel all active Exodos operations. All marker units are destroyed and all state variables are reset."
+
+ # ── TOOLTIPS ──────────────────────────────────────────────────────────
+
+ # ── TOOLTIPS RD1 (T10) ─────────────────────────────────────────────────
+ iram_tt_exodos_sin_op:0           "No operation is currently running."
+ iram_tt_exodos_transfer_ya_activa:0 "No Transfer is pending confirmation."
+

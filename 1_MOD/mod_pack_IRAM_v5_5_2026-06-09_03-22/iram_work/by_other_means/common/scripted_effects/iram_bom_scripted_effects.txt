@@ -1,0 +1,28 @@
+﻿iram_cleanup_bom_menu = {
+    remove_variable = iram_bom_menu
+    remove_variable = iram_bom_menu_bom
+    remove_variable = iram_bom_menu_ego
+    remove_variable = iram_bom_menu_demo
+    remove_variable = iram_bom_menu_heir
+}
+
+iram_cleanup_bom = {
+    iram_cleanup_bom_menu = yes
+    remove_variable = iram_bom_active
+    remove_variable = iram_migracion_forzada_active
+    remove_variable = iram_ascenso_forzado_active
+    remove_variable = iram_descenso_forzado_active
+    remove_country_modifier = iram_migracion_forzada
+    remove_country_modifier = iram_ascenso_forzado
+    remove_country_modifier = iram_descenso_forzado
+    remove_country_modifier = iram_divine_relic
+    remove_variable = iram_divine_relic_active
+    remove_variable = iram_bom_ego_mars_used
+    remove_variable = iram_bom_ego_iovis_used
+    remove_variable = iram_bom_ego_mercurii_used
+    remove_variable = iram_bom_ego_minervae_used
+    every_character = {
+        limit = { is_ruler = yes }
+        remove_variable = iram_bom_ego_gobernante_used
+    }
+}

@@ -1,0 +1,28 @@
+﻿country_decisions = {
+
+    # ================================================================
+    # GATHER GLOBAL
+    # ================================================================
+
+    iram_10_confirm_gather_global = {
+        potential = {
+            is_ai = no
+            has_variable = iram_menu_management_open
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            NOT = { has_variable = exodos_operation_active }
+            tyranny <= 90
+        }
+        effect = {
+                every_character = {
+                    limit = { is_ruler = yes }
+                    add_popularity = -50
+                }
+                set_variable = { name = exodos_global_active value = 1 }
+                set_variable = { name = exodos_operation_active value = 1 }
+            }
+        ai_will_do = { factor = 0 }
+    }
+}

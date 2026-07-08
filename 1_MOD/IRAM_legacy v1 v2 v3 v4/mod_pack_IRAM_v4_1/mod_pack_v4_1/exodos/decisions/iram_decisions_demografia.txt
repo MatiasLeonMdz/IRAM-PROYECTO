@@ -1,0 +1,230 @@
+﻿country_decisions = {
+
+    # ================================================================
+    # RELIQUIA — Un Pueblo, Una Fe (toggle permanente)
+    # ================================================================
+
+    iram_create_divine_relic = {
+        potential = {
+            is_ai = no
+        }
+
+        allow = {
+            is_ai = no
+            treasury >= 5000
+            NOT = { has_country_modifier = iram_divine_relic }
+        }
+
+        effect = {
+            add_treasury = -5000
+
+            add_country_modifier = {
+                name = iram_divine_relic
+                duration = -1
+            }
+
+            set_variable = {
+                name = iram_divine_relic_active
+                value = 1
+            }
+        }
+
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+    iram_remove_divine_relic = {
+        potential = {
+            is_ai = no
+        }
+
+        allow = {
+            is_ai = no
+            has_country_modifier = iram_divine_relic
+        }
+
+        effect = {
+            remove_country_modifier = iram_divine_relic
+            remove_variable = iram_divine_relic_active
+        }
+
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+    # ================================================================
+    # MIGRACION FORZADA (toggle permanente)
+    # Modifier: global_pop_migration_speed = 100
+    # Esclavos no afectados — hardcoded en el engine
+    # ================================================================
+
+    iram_activate_migracion_forzada = {
+        potential = {
+            is_ai = no
+            NOT = { has_country_modifier = iram_migracion_forzada }
+        }
+
+        allow = {
+            is_ai = no
+            treasury >= 2000
+            NOT = { has_country_modifier = iram_migracion_forzada }
+        }
+
+        effect = {
+            add_treasury = -2000
+
+            add_country_modifier = {
+                name = iram_migracion_forzada
+                duration = -1
+            }
+
+            set_variable = {
+                name = iram_migracion_forzada_active
+                value = 1
+            }
+        }
+
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+    iram_deactivate_migracion_forzada = {
+        potential = {
+            is_ai = no
+            has_country_modifier = iram_migracion_forzada
+        }
+
+        allow = {
+            is_ai = no
+            has_country_modifier = iram_migracion_forzada
+        }
+
+        effect = {
+            remove_country_modifier = iram_migracion_forzada
+            remove_variable = iram_migracion_forzada_active
+        }
+
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+    # ================================================================
+    # ASCENSO FORZADO (toggle permanente)
+    # Modifier: global_pop_promotion_speed = 100
+    # TESTEO PENDIENTE: sistema usa threshold, no barra 0->100
+    # ================================================================
+
+    iram_activate_ascenso_forzado = {
+        potential = {
+            is_ai = no
+            NOT = { has_country_modifier = iram_ascenso_forzado }
+        }
+
+        allow = {
+            is_ai = no
+            treasury >= 2000
+            NOT = { has_country_modifier = iram_ascenso_forzado }
+        }
+
+        effect = {
+            add_treasury = -2000
+
+            add_country_modifier = {
+                name = iram_ascenso_forzado
+                duration = -1
+            }
+
+            set_variable = {
+                name = iram_ascenso_forzado_active
+                value = 1
+            }
+        }
+
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+    iram_deactivate_ascenso_forzado = {
+        potential = {
+            is_ai = no
+            has_country_modifier = iram_ascenso_forzado
+        }
+
+        allow = {
+            is_ai = no
+            has_country_modifier = iram_ascenso_forzado
+        }
+
+        effect = {
+            remove_country_modifier = iram_ascenso_forzado
+            remove_variable = iram_ascenso_forzado_active
+        }
+
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+    # ================================================================
+    # DESCENSO FORZADO (toggle permanente)
+    # Modifier: global_pop_demotion_speed = 100
+    # TESTEO PENDIENTE: sistema usa threshold, no barra 0->100
+    # ================================================================
+
+    iram_activate_descenso_forzado = {
+        potential = {
+            is_ai = no
+            NOT = { has_country_modifier = iram_descenso_forzado }
+        }
+
+        allow = {
+            is_ai = no
+            treasury >= 2000
+            NOT = { has_country_modifier = iram_descenso_forzado }
+        }
+
+        effect = {
+            add_treasury = -2000
+
+            add_country_modifier = {
+                name = iram_descenso_forzado
+                duration = -1
+            }
+
+            set_variable = {
+                name = iram_descenso_forzado_active
+                value = 1
+            }
+        }
+
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+    iram_deactivate_descenso_forzado = {
+        potential = {
+            is_ai = no
+            has_country_modifier = iram_descenso_forzado
+        }
+
+        allow = {
+            is_ai = no
+            has_country_modifier = iram_descenso_forzado
+        }
+
+        effect = {
+            remove_country_modifier = iram_descenso_forzado
+            remove_variable = iram_descenso_forzado_active
+        }
+
+        ai_will_do = {
+            factor = 0
+        }
+    }
+}

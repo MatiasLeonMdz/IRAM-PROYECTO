@@ -1,0 +1,24 @@
+﻿l_spanish:
+ iram_16_activate_migracion:0 "Decreto de Migración Forzada"
+ iram_activate_migracion_forzada_desc:0 "El estado movilizará a la población libre para reubicarla según las necesidades del imperio. La velocidad de migración de todas las pops aumentará de forma permanente."
+
+ iram_deactivate_migracion_forzada_desc:0 "La movilización forzada de población será suspendida."
+
+ iram_migracion_forzada:0 "Migración Forzada"
+ iram_migracion_forzada_desc:0 "El estado dirige activamente el movimiento de la población libre. Velocidad de migración aumentada en todo el imperio."
+
+ iram_17_activate_ascenso:0 "Decreto de Ascenso Forzado"
+ iram_activate_ascenso_forzado_desc:0 "El estado promoverá activamente el ascenso social de la población libre. La velocidad de promoción de todas las pops aumentará de forma permanente."
+
+ iram_deactivate_ascenso_forzado_desc:0 "La promoción forzada de población será suspendida."
+
+ iram_ascenso_forzado:0 "Ascenso Forzado"
+ iram_ascenso_forzado_desc:0 "El estado impulsa el ascenso social de la población libre. Velocidad de promoción aumentada en todo el imperio."
+
+ iram_18_activate_descenso:0 "Decreto de Descenso Forzado"
+ iram_activate_descenso_forzado_desc:0 "El estado aplicará una reducción de estatus a la población excedente. La velocidad de descenso de todas las pops aumentará de forma permanente."
+
+ iram_deactivate_descenso_forzado_desc:0 "La degradación forzada de población será suspendida."
+
+ iram_descenso_forzado:0 "Descenso Forzado"
+ iram_descenso_forzado_desc:0 "El estado reduce activamente el estatus de la población excedente. Velocidad de descenso aumentada en todo el imperio."

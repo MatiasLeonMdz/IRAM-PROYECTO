@@ -1,0 +1,403 @@
+﻿monthly_country_pulse = {
+    effect = {
+        if = {
+            limit = {
+                is_ai = no
+                has_variable = iram_optimize_global_active
+            }
+
+            # ── BLOQUE 1 ─────────────────────────────────────────────
+            random_owned_province = {
+                limit = {
+                    is_state_capital = yes
+                    OR = {
+                        has_province_rank = city
+                        has_province_rank = city_metropolis
+                    }
+                    NOT = { is_capital = yes }
+                    NOT = { has_variable = iram_optimize_global_done }
+                    area = {
+                        NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                    }
+                }
+                save_scope_as = iram_dist_country
+                if = {
+                    limit = { num_of_slaves >= iram_optimize_threshold }
+                    area = {
+                        every_area_province = {
+                            limit = {
+                                owner = scope:iram_dist_country
+                                has_city_status = no
+                                num_of_slave_mine_building > 0
+                            }
+                            while = {
+                                count = 10
+                                limit = { scope:iram_dist_country = { num_of_slaves >= 1 } }
+                                scope:iram_dist_country = {
+                                    random_pops_in_province = {
+                                        limit = { pop_type = slaves }
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                        every_area_province = {
+                            limit = {
+                                owner = scope:iram_dist_country
+                                has_city_status = no
+                                num_of_basic_settlement_infratructure_building > 0
+                            }
+                            while = {
+                                count = 10
+                                limit = { scope:iram_dist_country = { num_of_slaves >= 1 } }
+                                scope:iram_dist_country = {
+                                    random_pops_in_province = {
+                                        limit = { pop_type = slaves }
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                        every_area_province = {
+                            limit = {
+                                owner = scope:iram_dist_country
+                                has_city_status = no
+                                num_of_latifundia_building > 0
+                            }
+                            while = {
+                                count = 15
+                                limit = { scope:iram_dist_country = { num_of_slaves >= 1 } }
+                                scope:iram_dist_country = {
+                                    random_pops_in_province = {
+                                        limit = { pop_type = slaves }
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                set_variable = { name = iram_optimize_global_done value = 1 }
+            }
+
+            # ── BLOQUE 2 ─────────────────────────────────────────────
+            random_owned_province = {
+                limit = {
+                    is_state_capital = yes
+                    OR = {
+                        has_province_rank = city
+                        has_province_rank = city_metropolis
+                    }
+                    NOT = { is_capital = yes }
+                    NOT = { has_variable = iram_optimize_global_done }
+                    area = {
+                        NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                    }
+                }
+                save_scope_as = iram_dist_country
+                if = {
+                    limit = { num_of_slaves >= iram_optimize_threshold }
+                    area = {
+                        every_area_province = {
+                            limit = {
+                                owner = scope:iram_dist_country
+                                has_city_status = no
+                                num_of_slave_mine_building > 0
+                            }
+                            while = {
+                                count = 10
+                                limit = { scope:iram_dist_country = { num_of_slaves >= 1 } }
+                                scope:iram_dist_country = {
+                                    random_pops_in_province = {
+                                        limit = { pop_type = slaves }
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                        every_area_province = {
+                            limit = {
+                                owner = scope:iram_dist_country
+                                has_city_status = no
+                                num_of_basic_settlement_infratructure_building > 0
+                            }
+                            while = {
+                                count = 10
+                                limit = { scope:iram_dist_country = { num_of_slaves >= 1 } }
+                                scope:iram_dist_country = {
+                                    random_pops_in_province = {
+                                        limit = { pop_type = slaves }
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                        every_area_province = {
+                            limit = {
+                                owner = scope:iram_dist_country
+                                has_city_status = no
+                                num_of_latifundia_building > 0
+                            }
+                            while = {
+                                count = 15
+                                limit = { scope:iram_dist_country = { num_of_slaves >= 1 } }
+                                scope:iram_dist_country = {
+                                    random_pops_in_province = {
+                                        limit = { pop_type = slaves }
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                set_variable = { name = iram_optimize_global_done value = 1 }
+            }
+
+            # ── BLOQUE 3 ─────────────────────────────────────────────
+            random_owned_province = {
+                limit = {
+                    is_state_capital = yes
+                    OR = {
+                        has_province_rank = city
+                        has_province_rank = city_metropolis
+                    }
+                    NOT = { is_capital = yes }
+                    NOT = { has_variable = iram_optimize_global_done }
+                    area = {
+                        NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                    }
+                }
+                save_scope_as = iram_dist_country
+                if = {
+                    limit = { num_of_slaves >= iram_optimize_threshold }
+                    area = {
+                        every_area_province = {
+                            limit = {
+                                owner = scope:iram_dist_country
+                                has_city_status = no
+                                num_of_slave_mine_building > 0
+                            }
+                            while = {
+                                count = 10
+                                limit = { scope:iram_dist_country = { num_of_slaves >= 1 } }
+                                scope:iram_dist_country = {
+                                    random_pops_in_province = {
+                                        limit = { pop_type = slaves }
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                        every_area_province = {
+                            limit = {
+                                owner = scope:iram_dist_country
+                                has_city_status = no
+                                num_of_basic_settlement_infratructure_building > 0
+                            }
+                            while = {
+                                count = 10
+                                limit = { scope:iram_dist_country = { num_of_slaves >= 1 } }
+                                scope:iram_dist_country = {
+                                    random_pops_in_province = {
+                                        limit = { pop_type = slaves }
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                        every_area_province = {
+                            limit = {
+                                owner = scope:iram_dist_country
+                                has_city_status = no
+                                num_of_latifundia_building > 0
+                            }
+                            while = {
+                                count = 15
+                                limit = { scope:iram_dist_country = { num_of_slaves >= 1 } }
+                                scope:iram_dist_country = {
+                                    random_pops_in_province = {
+                                        limit = { pop_type = slaves }
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                set_variable = { name = iram_optimize_global_done value = 1 }
+            }
+
+            # ── BLOQUE 4 ─────────────────────────────────────────────
+            random_owned_province = {
+                limit = {
+                    is_state_capital = yes
+                    OR = {
+                        has_province_rank = city
+                        has_province_rank = city_metropolis
+                    }
+                    NOT = { is_capital = yes }
+                    NOT = { has_variable = iram_optimize_global_done }
+                    area = {
+                        NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                    }
+                }
+                save_scope_as = iram_dist_country
+                if = {
+                    limit = { num_of_slaves >= iram_optimize_threshold }
+                    area = {
+                        every_area_province = {
+                            limit = {
+                                owner = scope:iram_dist_country
+                                has_city_status = no
+                                num_of_slave_mine_building > 0
+                            }
+                            while = {
+                                count = 10
+                                limit = { scope:iram_dist_country = { num_of_slaves >= 1 } }
+                                scope:iram_dist_country = {
+                                    random_pops_in_province = {
+                                        limit = { pop_type = slaves }
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                        every_area_province = {
+                            limit = {
+                                owner = scope:iram_dist_country
+                                has_city_status = no
+                                num_of_basic_settlement_infratructure_building > 0
+                            }
+                            while = {
+                                count = 10
+                                limit = { scope:iram_dist_country = { num_of_slaves >= 1 } }
+                                scope:iram_dist_country = {
+                                    random_pops_in_province = {
+                                        limit = { pop_type = slaves }
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                        every_area_province = {
+                            limit = {
+                                owner = scope:iram_dist_country
+                                has_city_status = no
+                                num_of_latifundia_building > 0
+                            }
+                            while = {
+                                count = 15
+                                limit = { scope:iram_dist_country = { num_of_slaves >= 1 } }
+                                scope:iram_dist_country = {
+                                    random_pops_in_province = {
+                                        limit = { pop_type = slaves }
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                set_variable = { name = iram_optimize_global_done value = 1 }
+            }
+
+            # ── BLOQUE 5 ─────────────────────────────────────────────
+            random_owned_province = {
+                limit = {
+                    is_state_capital = yes
+                    OR = {
+                        has_province_rank = city
+                        has_province_rank = city_metropolis
+                    }
+                    NOT = { is_capital = yes }
+                    NOT = { has_variable = iram_optimize_global_done }
+                    area = {
+                        NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                    }
+                }
+                save_scope_as = iram_dist_country
+                if = {
+                    limit = { num_of_slaves >= iram_optimize_threshold }
+                    area = {
+                        every_area_province = {
+                            limit = {
+                                owner = scope:iram_dist_country
+                                has_city_status = no
+                                num_of_slave_mine_building > 0
+                            }
+                            while = {
+                                count = 10
+                                limit = { scope:iram_dist_country = { num_of_slaves >= 1 } }
+                                scope:iram_dist_country = {
+                                    random_pops_in_province = {
+                                        limit = { pop_type = slaves }
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                        every_area_province = {
+                            limit = {
+                                owner = scope:iram_dist_country
+                                has_city_status = no
+                                num_of_basic_settlement_infratructure_building > 0
+                            }
+                            while = {
+                                count = 10
+                                limit = { scope:iram_dist_country = { num_of_slaves >= 1 } }
+                                scope:iram_dist_country = {
+                                    random_pops_in_province = {
+                                        limit = { pop_type = slaves }
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                        every_area_province = {
+                            limit = {
+                                owner = scope:iram_dist_country
+                                has_city_status = no
+                                num_of_latifundia_building > 0
+                            }
+                            while = {
+                                count = 15
+                                limit = { scope:iram_dist_country = { num_of_slaves >= 1 } }
+                                scope:iram_dist_country = {
+                                    random_pops_in_province = {
+                                        limit = { pop_type = slaves }
+                                        move_pop = prev
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                set_variable = { name = iram_optimize_global_done value = 1 }
+            }
+
+            # ── CLEANUP — si no quedan áreas sin procesar ─────────────
+            if = {
+                limit = {
+                    NOT = {
+                        any_owned_province = {
+                            is_state_capital = yes
+                            OR = {
+                                has_province_rank = city
+                                has_province_rank = city_metropolis
+                            }
+                            NOT = { is_capital = yes }
+                            NOT = { has_variable = iram_optimize_global_done }
+                            area = {
+                                NOT = { any_area_province = { NOT = { owner = ROOT } } }
+                            }
+                        }
+                    }
+                }
+                trigger_event = { id = iram.3 }
+                iram_cleanup_exodos = yes
+            }
+        }
+    }
+}
+

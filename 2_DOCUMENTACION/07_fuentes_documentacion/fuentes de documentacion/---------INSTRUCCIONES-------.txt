@@ -1,0 +1,36 @@
+Lo que pegás como mensaje (no adjuntás):
+El bloque completo del PROMPT_DOCUMENTACION_IRAM_v1_1.md — ese es el que tiene que llegar como texto, no como archivo.
+Lo que siempre adjuntás (pequeño, esencial):
+
+SESSION_LOG_DOCUMENTACION_2026-06-10.md (4 KB) — le dice al próximo Claude qué se hizo y qué falta
+IRAM_hitos_metodologicos_2026-06-10.md (51 KB) — el checklist con fechas preliminares
+
+Lo que adjuntás según la tarea:
+
+WIKI_ACTIVE_v3_10 (95 KB) — para cualquier tarea que necesite referencia técnica
+Los 5 zips de Claude (7 MB c/u) — si vas a hacer Plantilla B (gaps) o revisión manual de hitos
+process_iram_v2.py + generate_iram_docs.py — los scripts de esta sesión; el próximo Claude los puede reusar o 
+mejorar sin reescribir desde cero
+
+Lo que no necesitás adjuntar:
+
+IRAM_historial_unificado_2026-06-10.md (3.6 MB) — demasiado grande, y el próximo Claude puede regenerarlo en 2 minutos 
+con los scripts + zips
+WIKI_ARCHIVE (163 KB) — solo si la tarea lo pide explícitamente
+SESSION_LOG_v5_6 del mod — solo si vas a hacer trabajo de código al mismo tiempo
+
+Resumen para tu carpeta:
+SIEMPRE:
+  → PROMPT_DOCUMENTACION_IRAM_v1_1.md   ← pegar como mensaje
+  → SESSION_LOG_DOCUMENTACION_2026-06-10.md
+  → IRAM_hitos_metodologicos_2026-06-10.md
+
+PARA PLANTILLA B (gaps) o revisión de hitos:
+  + los 5 zips de Claude
+  + process_iram_v2.py
+  + generate_iram_docs.py
+  + WIKI_ACTIVE_v3_10
+
+PARA PLANTILLA C (skill):
+  + lo de arriba
+  + WIKI_ACTIVE_v3_10

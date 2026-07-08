@@ -1,0 +1,35 @@
+﻿country_decisions = {
+
+    iram_exodos_menu_open = {
+        potential = {
+            is_ai = no
+            NOT = { has_variable = iram_exodos_menu }
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            always = yes
+        }
+        effect = {
+            set_variable = { name = iram_exodos_menu value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    iram_exodos_menu_close = {
+        potential = {
+            is_ai = no
+            has_variable = iram_exodos_menu
+            NOT = { has_variable = iram_transfer_pending }
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            always = yes
+        }
+        effect = {
+            iram_cleanup_exodos_menu = yes
+        }
+        ai_will_do = { factor = 0 }
+    }
+}

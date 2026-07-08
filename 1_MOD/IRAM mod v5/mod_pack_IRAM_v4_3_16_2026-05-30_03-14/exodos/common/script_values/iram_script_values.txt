@@ -1,0 +1,94 @@
+﻿# ================================================================
+# IRAM — SCRIPT VALUES
+# Thresholds para iram_11 (Distribute Global) e iram_13 (Optimize Global)
+# ================================================================
+#
+# Evaluados desde scope province (el ancla = state capital del área)
+# scope:exodos_dist_country debe estar guardado antes de evaluar
+#
+# Opción B — if/else inline (base ciudad:40 / metrópolis:80)
+# Si el engine no soporta if/else en script_value: recae en 6 valores
+# separados (R1_city, R1_metro, etc.) — verificar antes de usar.
+# ================================================================
+
+# ── DISTRIBUTE GLOBAL — thresholds de calificación del ancla ────
+
+iram_dist_threshold_r1 = {       # 4 pops × provinces del área
+    if = {
+        limit = { has_province_rank = city_metropolis }
+        add = 80
+    }
+    else = { add = 40 }
+    area = {
+        every_area_province = {
+            limit = {
+                owner = scope:exodos_dist_country
+            }
+            add = 4
+        }
+    }
+}
+
+iram_dist_threshold_r2 = {       # 9 pops × provinces del área
+    if = {
+        limit = { has_province_rank = city_metropolis }
+        add = 80
+    }
+    else = { add = 40 }
+    area = {
+        every_area_province = {
+            limit = {
+                owner = scope:exodos_dist_country
+            }
+            add = 9
+        }
+    }
+}
+
+iram_dist_threshold_r3 = {       # 14 pops × provinces del área
+    if = {
+        limit = { has_province_rank = city_metropolis }
+        add = 80
+    }
+    else = { add = 40 }
+    area = {
+        every_area_province = {
+            limit = {
+                owner = scope:exodos_dist_country
+            }
+            add = 14
+        }
+    }
+}
+
+# ── OPTIMIZE GLOBAL — threshold de slaves necesarios en el ancla ─
+# Suma la demanda real de slaves de todos los settlements del área
+
+iram_optimize_threshold = {
+    area = {
+        every_area_province = {
+            limit = {
+                owner = scope:exodos_dist_country
+                has_city_status = no
+                num_of_slave_mine_building > 0
+            }
+            add = 10
+        }
+        every_area_province = {
+            limit = {
+                owner = scope:exodos_dist_country
+                has_city_status = no
+                num_of_basic_settlement_infratructure_building > 0
+            }
+            add = 10
+        }
+        every_area_province = {
+            limit = {
+                owner = scope:exodos_dist_country
+                has_city_status = no
+                num_of_latifundia_building > 0
+            }
+            add = 15
+        }
+    }
+}

@@ -1,0 +1,20 @@
+﻿iram_divine_relic = {
+    global_pop_conversion_speed = 50
+    global_pop_assimilation_speed = 50
+}
+
+iram_migracion_forzada = {
+    global_pop_migration_speed = 100
+}
+
+# TESTEO PENDIENTE: global_pop_promotion_speed y global_pop_demotion_speed
+# usan sistema de threshold (PROMOTE_DEMOTE_THRESHOLD = 0.005), no barra 0->100
+# Comportamiento con value = 100 sin verificar en engine
+
+iram_ascenso_forzado = {
+    global_pop_promotion_speed = 100
+}
+
+iram_descenso_forzado = {
+    global_pop_demotion_speed = 100
+}

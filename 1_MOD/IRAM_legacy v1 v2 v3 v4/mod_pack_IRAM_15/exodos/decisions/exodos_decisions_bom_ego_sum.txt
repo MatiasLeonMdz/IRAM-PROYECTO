@@ -1,0 +1,124 @@
+﻿country_decisions = {
+
+    # SUB-DECISIÓN 1 — Filius Martis (+10 martial)
+    bom_ego_sum_mars = {
+        potential = {
+            is_ai = no
+            NOT = { has_variable = bom_ego_sum_mars_used }
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            NOT = { has_variable = bom_ego_sum_mars_used }
+        }
+        effect = {
+            set_variable = { name = bom_ego_sum_mars_used value = 1 }
+            every_character = {
+                limit = { is_ruler = yes }
+                remove_trait = energetic
+                add_trait = energetic
+                remove_trait = ambitious
+                add_trait = reckless
+                add_trait = ambitious
+                add_trait = original_thinker
+                add_trait = confident
+                add_trait = tactician
+                add_trait = disciplined
+                add_trait = steadfast
+                add_trait = aggressive
+                add_trait = brave
+            }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    # SUB-DECISIÓN 2 — Filius Iovis (+10 zeal)
+    bom_ego_sum_iovis = {
+        potential = {
+            is_ai = no
+            NOT = { has_variable = bom_ego_sum_iovis_used }
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            NOT = { has_variable = bom_ego_sum_iovis_used }
+        }
+        effect = {
+            set_variable = { name = bom_ego_sum_iovis_used value = 1 }
+            every_character = {
+                limit = { is_ruler = yes }
+                add_trait = lunatic
+                add_trait = epileptic
+                add_trait = pious
+                add_trait = zealous
+                add_trait = self_controlled
+                add_trait = obsessive
+                remove_trait = ambitious
+                add_trait = ambitious
+                add_trait = improviser
+            }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    # SUB-DECISIÓN 3 — Filius Mercurii (+10 charisma)
+    bom_ego_sum_mercurii = {
+        potential = {
+            is_ai = no
+            NOT = { has_variable = bom_ego_sum_mercurii_used }
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            NOT = { has_variable = bom_ego_sum_mercurii_used }
+        }
+        effect = {
+            set_variable = { name = bom_ego_sum_mercurii_used value = 1 }
+            every_character = {
+                limit = { is_ruler = yes }
+                add_trait = silver_tongued
+                add_trait = merciful
+                add_trait = humble
+                add_trait = modest
+                add_trait = loving
+                add_trait = secure
+                remove_trait = ambitious
+                add_trait = ambitious
+                add_trait = squadron_leader
+                add_trait = orator
+            }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    # SUB-DECISIÓN 4 — Filius Minervae (+10 finesse)
+    bom_ego_sum_minervae = {
+        potential = {
+            is_ai = no
+            NOT = { has_variable = bom_ego_sum_minervae_used }
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            NOT = { has_variable = bom_ego_sum_minervae_used }
+        }
+        effect = {
+            set_variable = { name = bom_ego_sum_minervae_used value = 1 }
+            every_character = {
+                limit = { is_ruler = yes }
+                add_trait = crafty
+                add_trait = just
+                add_trait = narrowminded
+                add_trait = intelligent
+                add_trait = deceitful
+                remove_trait = energetic
+                add_trait = energetic
+                remove_trait = ambitious
+                add_trait = ambitious
+                add_trait = wise
+                add_trait = princeps
+            }
+        }
+        ai_will_do = { factor = 0 }
+    }
+}

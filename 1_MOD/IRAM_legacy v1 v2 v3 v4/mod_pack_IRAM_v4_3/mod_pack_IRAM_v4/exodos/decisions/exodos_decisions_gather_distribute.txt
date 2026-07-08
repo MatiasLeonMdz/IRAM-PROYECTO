@@ -1,0 +1,108 @@
+﻿country_decisions = {
+
+    # ================================================================
+    # GATHER — confirm siempre visible, en gris hasta tener ancla
+    # ================================================================
+
+    exodos_confirm_gather = {
+        potential = {
+            is_ai = no
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            NOT = { has_variable = exodos_operation_active }
+            NOT = { has_variable = exodos_optimize_active }
+            any_unit = { has_variable = exodos_unit_anchor }
+            custom_tooltip = exodos_tt_area_owner
+            any_unit = {
+                has_variable = exodos_unit_anchor
+                unit_location = {
+                    area = {
+                        NOT = {
+                            any_area_province = {
+                                NOT = { owner = ROOT }
+                            }
+                        }
+                    }
+                }
+            }
+            treasury >= 1000
+            manpower >= 5
+            tyranny <= 90
+        }
+        effect = {
+            add_treasury = -1000
+            add_manpower = -5
+            add_tyranny = 10
+            every_unit = {
+                limit = { has_variable = exodos_unit_anchor }
+                unit_location = {
+                    ROOT = {
+                        set_variable = {
+                            name = exodos_anchor_province
+                            value = prev
+                        }
+                    }
+                    set_variable = { name = exodos_is_anchor  value = 1 }
+                }
+            }
+            set_variable = { name = exodos_operation_active  value = 1 }
+            set_variable = { name = exodos_gather_active     value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    # ================================================================
+    # DISTRIBUTE — confirm siempre visible, en gris hasta tener ancla
+    # ================================================================
+
+    exodos_confirm_distribute = {
+        potential = {
+            is_ai = no
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            NOT = { has_variable = exodos_operation_active }
+            NOT = { has_variable = exodos_optimize_active }
+            any_unit = { has_variable = exodos_unit_anchor }
+            custom_tooltip = exodos_tt_area_owner
+            any_unit = {
+                has_variable = exodos_unit_anchor
+                unit_location = {
+                    area = {
+                        NOT = {
+                            any_area_province = {
+                                NOT = { owner = ROOT }
+                            }
+                        }
+                    }
+                }
+            }
+            treasury >= 1000
+            manpower >= 5
+            tyranny <= 90
+        }
+        effect = {
+            add_treasury = -1000
+            add_manpower = -5
+            add_tyranny = 10
+            every_unit = {
+                limit = { has_variable = exodos_unit_anchor }
+                unit_location = {
+                    ROOT = {
+                        set_variable = {
+                            name = exodos_anchor_province
+                            value = prev
+                        }
+                    }
+                    set_variable = { name = exodos_is_anchor  value = 1 }
+                }
+            }
+            set_variable = { name = exodos_operation_active    value = 1 }
+            set_variable = { name = exodos_distribute_active   value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+}

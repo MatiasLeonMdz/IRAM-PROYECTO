@@ -1,0 +1,212 @@
+﻿country_decisions = {
+
+    # ================================================================
+    # MENÚ PRINCIPAL BOM
+    # ================================================================
+
+    iram_bom_menu_open = {
+        potential = {
+            is_ai = no
+            NOT = { has_variable = iram_bom_menu }
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            always = yes
+        }
+        effect = {
+            set_variable = { name = iram_bom_menu value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    iram_bom_menu_close = {
+        potential = {
+            is_ai = no
+            has_variable = iram_bom_menu
+            NOT = { has_variable = iram_bom_menu_bom }
+            NOT = { has_variable = iram_bom_menu_demo }
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            always = yes
+        }
+        effect = {
+            iram_cleanup_bom_menu = yes
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    # ================================================================
+    # SUBMENÚ — ACCIONES POLÍTICAS
+    # ================================================================
+
+    iram_bom_menu_bom_open = {
+        potential = {
+            is_ai = no
+            has_variable = iram_bom_menu
+            NOT = { has_variable = iram_bom_menu_bom }
+            NOT = { has_variable = iram_bom_menu_demo }
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            always = yes
+        }
+        effect = {
+            set_variable = { name = iram_bom_menu_bom value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    iram_bom_menu_bom_close = {
+        potential = {
+            is_ai = no
+            has_variable = iram_bom_menu_bom
+            NOT = { has_variable = iram_bom_menu_ego }
+            NOT = { has_variable = iram_bom_menu_heir }
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            always = yes
+        }
+        effect = {
+            remove_variable = iram_bom_menu_bom
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    # ================================================================
+    # SUBMENÚ — EGO SUM
+    # ================================================================
+
+    iram_bom_menu_ego_open = {
+        potential = {
+            is_ai = no
+            has_variable = iram_bom_menu_bom
+            NOT = { has_variable = iram_bom_menu_ego }
+            NOT = { has_variable = iram_bom_menu_heir }
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            always = yes
+        }
+        effect = {
+            set_variable = { name = iram_bom_menu_ego value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    iram_bom_menu_ego_close = {
+        potential = {
+            is_ai = no
+            has_variable = iram_bom_menu_ego
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            always = yes
+        }
+        effect = {
+            remove_variable = iram_bom_menu_ego
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    # ================================================================
+    # SUBMENÚ — HEREDERO DEL RIVAL
+    # ================================================================
+
+    iram_bom_menu_heir_open = {
+        potential = {
+            is_ai = no
+            has_variable = iram_bom_menu_bom
+            NOT = { has_variable = iram_bom_menu_heir }
+            NOT = { has_variable = iram_bom_menu_ego }
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            always = yes
+        }
+        effect = {
+            set_variable = { name = iram_bom_menu_heir value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    iram_bom_menu_heir_close = {
+        potential = {
+            is_ai = no
+            has_variable = iram_bom_menu_heir
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            always = yes
+        }
+        effect = {
+            remove_variable = iram_bom_menu_heir
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    # ================================================================
+    # SUBMENÚ — DEMOGRAFÍA
+    # ================================================================
+
+    iram_bom_menu_demo_open = {
+        potential = {
+            is_ai = no
+            has_variable = iram_bom_menu
+            NOT = { has_variable = iram_bom_menu_demo }
+            NOT = { has_variable = iram_bom_menu_bom }
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            always = yes
+        }
+        effect = {
+            set_variable = { name = iram_bom_menu_demo value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    iram_bom_menu_demo_close = {
+        potential = {
+            is_ai = no
+            has_variable = iram_bom_menu_demo
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            always = yes
+        }
+        effect = {
+            remove_variable = iram_bom_menu_demo
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    # ================================================================
+    # CANCEL — siempre visible
+    # ================================================================
+
+    iram_bom_cancel_all = {
+        potential = {
+            is_ai = no
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            always = yes
+        }
+        effect = {
+            iram_cleanup_bom = yes
+        }
+        ai_will_do = { factor = 0 }
+    }
+}

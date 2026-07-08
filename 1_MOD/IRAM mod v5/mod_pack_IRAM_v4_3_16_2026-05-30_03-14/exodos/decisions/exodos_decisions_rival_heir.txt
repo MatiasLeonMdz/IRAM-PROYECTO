@@ -1,0 +1,197 @@
+﻿country_decisions = {
+
+    # ================================================================
+    # HEREDERO DEL RIVAL — hijo varon
+    # ================================================================
+
+    iram_22_spawn_rival_son = {
+        potential = {
+            is_ai = no
+            has_variable = iram_rival_heir_open
+            any_character = {
+                is_ruler = yes
+                num_of_rivals >= 1
+                NOT = { num_of_rivals >= 2 }
+                any_rival = {
+                    employer = ROOT
+                    is_male = yes
+                    age >= 16
+                }
+            }
+        }
+
+        allow = {
+            is_ai = no
+            custom_tooltip = exodos_tt_rival_unique
+            any_character = {
+                is_ruler = yes
+                num_of_rivals >= 1
+                NOT = { num_of_rivals >= 2 }
+                any_rival = {
+                    employer = ROOT
+                    is_male = yes
+                    age >= 16
+                }
+            }
+        }
+
+        effect = {
+            every_character = {
+                limit = { is_ruler = yes }
+                every_rival = {
+                    limit = {
+                        employer = ROOT
+                        is_male = yes
+                        age >= 16
+                    }
+                    save_scope_as = exodos_rival
+                    if = {
+                        limit = { is_married = yes }
+                        spouse = { save_scope_as = exodos_rival_spouse }
+                    }
+                }
+            }
+            if = {
+                limit = { exists = scope:exodos_rival_spouse }
+                create_character = {
+                    age = 0
+                    female = no
+                    save_scope_as = exodos_newborn
+                    family = scope:exodos_rival.family
+                    religion = scope:exodos_rival.religion
+                    culture = scope:exodos_rival.culture
+                    father = scope:exodos_rival
+                    mother = scope:exodos_rival_spouse
+                }
+            }
+            else = {
+                create_character = {
+                    age = 0
+                    female = no
+                    save_scope_as = exodos_newborn
+                    family = scope:exodos_rival.family
+                    religion = scope:exodos_rival.religion
+                    culture = scope:exodos_rival.culture
+                    father = scope:exodos_rival
+                }
+            }
+            scope:exodos_newborn = {
+                if = { limit = { scope:exodos_rival = { has_trait = antigonids  } } add_trait = antigonids  }
+                if = { limit = { scope:exodos_rival = { has_trait = antipatrid  } } add_trait = antipatrid  }
+                if = { limit = { scope:exodos_rival = { has_trait = lagids      } } add_trait = lagids      }
+                if = { limit = { scope:exodos_rival = { has_trait = seleucids   } } add_trait = seleucids   }
+                if = { limit = { scope:exodos_rival = { has_trait = argeads     } } add_trait = argeads     }
+                if = { limit = { scope:exodos_rival = { has_trait = aeacidae    } } add_trait = aeacidae    }
+                if = { limit = { scope:exodos_rival = { has_trait = alcimachid  } } add_trait = alcimachid  }
+                # Matrilineal — madre (todos los traits, igual que argeads en vanilla)
+                if = { limit = { exists = scope:exodos_rival_spouse  scope:exodos_rival_spouse = { has_trait = antigonids  } } add_trait = antigonids  }
+                if = { limit = { exists = scope:exodos_rival_spouse  scope:exodos_rival_spouse = { has_trait = antipatrid  } } add_trait = antipatrid  }
+                if = { limit = { exists = scope:exodos_rival_spouse  scope:exodos_rival_spouse = { has_trait = lagids      } } add_trait = lagids      }
+                if = { limit = { exists = scope:exodos_rival_spouse  scope:exodos_rival_spouse = { has_trait = seleucids   } } add_trait = seleucids   }
+                if = { limit = { exists = scope:exodos_rival_spouse  scope:exodos_rival_spouse = { has_trait = argeads     } } add_trait = argeads     }
+                if = { limit = { exists = scope:exodos_rival_spouse  scope:exodos_rival_spouse = { has_trait = aeacidae    } } add_trait = aeacidae    }
+                if = { limit = { exists = scope:exodos_rival_spouse  scope:exodos_rival_spouse = { has_trait = alcimachid  } } add_trait = alcimachid  }
+            }
+        }
+
+        ai_will_do = { factor = 0 }
+    }
+
+    # ================================================================
+    # HEREDERO DEL RIVAL — hija mujer
+    # ================================================================
+
+    iram_23_spawn_rival_daughter = {
+        potential = {
+            is_ai = no
+            has_variable = iram_rival_heir_open
+            any_character = {
+                is_ruler = yes
+                num_of_rivals >= 1
+                NOT = { num_of_rivals >= 2 }
+                any_rival = {
+                    employer = ROOT
+                    is_male = yes
+                    age >= 16
+                }
+            }
+        }
+
+        allow = {
+            is_ai = no
+            custom_tooltip = exodos_tt_rival_unique
+            any_character = {
+                is_ruler = yes
+                num_of_rivals >= 1
+                NOT = { num_of_rivals >= 2 }
+                any_rival = {
+                    employer = ROOT
+                    is_male = yes
+                    age >= 16
+                }
+            }
+        }
+
+        effect = {
+            every_character = {
+                limit = { is_ruler = yes }
+                every_rival = {
+                    limit = {
+                        employer = ROOT
+                        is_male = yes
+                        age >= 16
+                    }
+                    save_scope_as = exodos_rival
+                    if = {
+                        limit = { is_married = yes }
+                        spouse = { save_scope_as = exodos_rival_spouse }
+                    }
+                }
+            }
+            if = {
+                limit = { exists = scope:exodos_rival_spouse }
+                create_character = {
+                    age = 0
+                    female = yes
+                    save_scope_as = exodos_newborn
+                    family = scope:exodos_rival.family
+                    religion = scope:exodos_rival.religion
+                    culture = scope:exodos_rival.culture
+                    father = scope:exodos_rival
+                    mother = scope:exodos_rival_spouse
+                }
+            }
+            else = {
+                create_character = {
+                    age = 0
+                    female = yes
+                    save_scope_as = exodos_newborn
+                    family = scope:exodos_rival.family
+                    religion = scope:exodos_rival.religion
+                    culture = scope:exodos_rival.culture
+                    father = scope:exodos_rival
+                }
+            }
+            scope:exodos_newborn = {
+                # Patrilineal — padre
+                if = { limit = { scope:exodos_rival = { has_trait = antigonids  } } add_trait = antigonids  }
+                if = { limit = { scope:exodos_rival = { has_trait = antipatrid  } } add_trait = antipatrid  }
+                if = { limit = { scope:exodos_rival = { has_trait = lagids      } } add_trait = lagids      }
+                if = { limit = { scope:exodos_rival = { has_trait = seleucids   } } add_trait = seleucids   }
+                if = { limit = { scope:exodos_rival = { has_trait = argeads     } } add_trait = argeads     }
+                if = { limit = { scope:exodos_rival = { has_trait = aeacidae    } } add_trait = aeacidae    }
+                if = { limit = { scope:exodos_rival = { has_trait = alcimachid  } } add_trait = alcimachid  }
+                # Matrilineal — madre (todos los traits, igual que argeads en vanilla)
+                if = { limit = { exists = scope:exodos_rival_spouse  scope:exodos_rival_spouse = { has_trait = antigonids  } } add_trait = antigonids  }
+                if = { limit = { exists = scope:exodos_rival_spouse  scope:exodos_rival_spouse = { has_trait = antipatrid  } } add_trait = antipatrid  }
+                if = { limit = { exists = scope:exodos_rival_spouse  scope:exodos_rival_spouse = { has_trait = lagids      } } add_trait = lagids      }
+                if = { limit = { exists = scope:exodos_rival_spouse  scope:exodos_rival_spouse = { has_trait = seleucids   } } add_trait = seleucids   }
+                if = { limit = { exists = scope:exodos_rival_spouse  scope:exodos_rival_spouse = { has_trait = argeads     } } add_trait = argeads     }
+                if = { limit = { exists = scope:exodos_rival_spouse  scope:exodos_rival_spouse = { has_trait = aeacidae    } } add_trait = aeacidae    }
+                if = { limit = { exists = scope:exodos_rival_spouse  scope:exodos_rival_spouse = { has_trait = alcimachid  } } add_trait = alcimachid  }
+            }
+        }
+
+        ai_will_do = { factor = 0 }
+    }
+}

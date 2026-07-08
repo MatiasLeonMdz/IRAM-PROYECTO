@@ -1,0 +1,69 @@
+﻿l_spanish:
+ # Botones scripted_gui
+ exodos_spawn_anchor_button:0 "Exodos: Crear Ancla"
+ exodos_spawn_destination_button:0 "Exodos: Crear Destino"
+
+ # Confirms — siempre visibles, en gris hasta tener ancla
+ exodos_confirm_gather:0 "Exodos: Concentración"
+ exodos_confirm_gather_desc:0 "Concentra toda la población del área en el territorio ancla. Para habilitar esta operación, creá el ancla desde el panel de tácticas de provincia en el territorio de destino."
+ exodos_confirm_distribute:0 "Exodos: Distribución"
+ exodos_confirm_distribute_desc:0 "Distribuye la población del territorio ancla hacia todo el área. Para habilitar esta operación, creá el ancla desde el panel de tácticas de provincia en el territorio a vaciar."
+ exodos_confirm_optimize:0 "Exodos: Optimizar"
+ exodos_confirm_optimize_desc:0 "Redistribuye los pops del área de manera óptima para conversión religiosa y asimilación cultural. Para habilitar esta operación, creá el ancla desde el panel de tácticas en la ciudad principal del área. SIN COSTO — abre el menú de rangos."
+ exodos_confirm_transfer:0 "Exodos: Transferencia"
+ exodos_confirm_transfer_desc:0 "Transfiere pops entre dos territorios durante diez meses. Para habilitar, creá el ancla en el territorio origen y el destino en el territorio destino desde el panel de tácticas de provincia."
+
+ # Decisiones de rango — Optimize
+ exodos_opt_range_03:0 "Optimizar — Rango 3 (45–58 pops)"
+ exodos_opt_range_04:0 "Optimizar — Rango 4 (59–73 pops)"
+ exodos_opt_range_05:0 "Optimizar — Rango 5 (74–88 pops)"
+ exodos_opt_range_06:0 "Optimizar — Rango 6 (89–103 pops)"
+ exodos_opt_range_07:0 "Optimizar — Rango 7 (104–117 pops)"
+ exodos_opt_range_08:0 "Optimizar — Rango 8 (118–132 pops)"
+ exodos_opt_range_09:0 "Optimizar — Rango 9 (133–147 pops)"
+ exodos_opt_range_10:0 "Optimizar — Rango 10 (148–162 pops)"
+ exodos_opt_range_11:0 "Optimizar — Rango 11 (163–176 pops)"
+ exodos_opt_range_12:0 "Optimizar — Rango 12 (177–192 pops)"
+ exodos_opt_range_13:0 "Optimizar — Rango 13 (193–209 pops)"
+ exodos_opt_range_14:0 "Optimizar — Rango 14 (210–223 pops)"
+ exodos_opt_range_15:0 "Optimizar — Rango 15 (224–238 pops)"
+ exodos_opt_range_16:0 "Optimizar — Rango 16 (239–254 pops)"
+ exodos_opt_range_17:0 "Optimizar — Rango 17 (255–268 pops)"
+ exodos_opt_range_18:0 "Optimizar — Rango 18 (269–284 pops)"
+ exodos_opt_range_19:0 "Optimizar — Rango 19 (285–300 pops)"
+ exodos_opt_range_03_desc:0 "Verificá el total de pops del área antes de confirmar. ESTA ACCIÓN NO PUEDE DESHACERSE NI REEMBOLSARSE Y PUEDE TARDAR VARIOS MESES. GUARDÁ LA PARTIDA Y HACÉ UNA COPIA DE RESPALDO."
+ exodos_opt_range_04_desc:0 "Verificá el total de pops del área antes de confirmar. ESTA ACCIÓN NO PUEDE DESHACERSE NI REEMBOLSARSE Y PUEDE TARDAR VARIOS MESES. GUARDÁ LA PARTIDA Y HACÉ UNA COPIA DE RESPALDO."
+ exodos_opt_range_05_desc:0 "Verificá el total de pops del área antes de confirmar. ESTA ACCIÓN NO PUEDE DESHACERSE NI REEMBOLSARSE Y PUEDE TARDAR VARIOS MESES. GUARDÁ LA PARTIDA Y HACÉ UNA COPIA DE RESPALDO."
+ exodos_opt_range_06_desc:0 "Verificá el total de pops del área antes de confirmar. ESTA ACCIÓN NO PUEDE DESHACERSE NI REEMBOLSARSE Y PUEDE TARDAR VARIOS MESES. GUARDÁ LA PARTIDA Y HACÉ UNA COPIA DE RESPALDO."
+ exodos_opt_range_07_desc:0 "Verificá el total de pops del área antes de confirmar. ESTA ACCIÓN NO PUEDE DESHACERSE NI REEMBOLSARSE Y PUEDE TARDAR VARIOS MESES. GUARDÁ LA PARTIDA Y HACÉ UNA COPIA DE RESPALDO."
+ exodos_opt_range_08_desc:0 "Verificá el total de pops del área antes de confirmar. ESTA ACCIÓN NO PUEDE DESHACERSE NI REEMBOLSARSE Y PUEDE TARDAR VARIOS MESES. GUARDÁ LA PARTIDA Y HACÉ UNA COPIA DE RESPALDO."
+ exodos_opt_range_09_desc:0 "Verificá el total de pops del área antes de confirmar. ESTA ACCIÓN NO PUEDE DESHACERSE NI REEMBOLSARSE Y PUEDE TARDAR VARIOS MESES. GUARDÁ LA PARTIDA Y HACÉ UNA COPIA DE RESPALDO."
+ exodos_opt_range_10_desc:0 "Verificá el total de pops del área antes de confirmar. ESTA ACCIÓN NO PUEDE DESHACERSE NI REEMBOLSARSE Y PUEDE TARDAR VARIOS MESES. GUARDÁ LA PARTIDA Y HACÉ UNA COPIA DE RESPALDO."
+ exodos_opt_range_11_desc:0 "Verificá el total de pops del área antes de confirmar. ESTA ACCIÓN NO PUEDE DESHACERSE NI REEMBOLSARSE Y PUEDE TARDAR VARIOS MESES. GUARDÁ LA PARTIDA Y HACÉ UNA COPIA DE RESPALDO."
+ exodos_opt_range_12_desc:0 "Verificá el total de pops del área antes de confirmar. ESTA ACCIÓN NO PUEDE DESHACERSE NI REEMBOLSARSE Y PUEDE TARDAR VARIOS MESES. GUARDÁ LA PARTIDA Y HACÉ UNA COPIA DE RESPALDO."
+ exodos_opt_range_13_desc:0 "Verificá el total de pops del área antes de confirmar. ESTA ACCIÓN NO PUEDE DESHACERSE NI REEMBOLSARSE Y PUEDE TARDAR VARIOS MESES. GUARDÁ LA PARTIDA Y HACÉ UNA COPIA DE RESPALDO."
+ exodos_opt_range_14_desc:0 "Verificá el total de pops del área antes de confirmar. ESTA ACCIÓN NO PUEDE DESHACERSE NI REEMBOLSARSE Y PUEDE TARDAR VARIOS MESES. GUARDÁ LA PARTIDA Y HACÉ UNA COPIA DE RESPALDO."
+ exodos_opt_range_15_desc:0 "Verificá el total de pops del área antes de confirmar. ESTA ACCIÓN NO PUEDE DESHACERSE NI REEMBOLSARSE Y PUEDE TARDAR VARIOS MESES. GUARDÁ LA PARTIDA Y HACÉ UNA COPIA DE RESPALDO."
+ exodos_opt_range_16_desc:0 "Verificá el total de pops del área antes de confirmar. ESTA ACCIÓN NO PUEDE DESHACERSE NI REEMBOLSARSE Y PUEDE TARDAR VARIOS MESES. GUARDÁ LA PARTIDA Y HACÉ UNA COPIA DE RESPALDO."
+ exodos_opt_range_17_desc:0 "Verificá el total de pops del área antes de confirmar. ESTA ACCIÓN NO PUEDE DESHACERSE NI REEMBOLSARSE Y PUEDE TARDAR VARIOS MESES. GUARDÁ LA PARTIDA Y HACÉ UNA COPIA DE RESPALDO."
+ exodos_opt_range_18_desc:0 "Verificá el total de pops del área antes de confirmar. ESTA ACCIÓN NO PUEDE DESHACERSE NI REEMBOLSARSE Y PUEDE TARDAR VARIOS MESES. GUARDÁ LA PARTIDA Y HACÉ UNA COPIA DE RESPALDO."
+ exodos_opt_range_19_desc:0 "Verificá el total de pops del área antes de confirmar. ESTA ACCIÓN NO PUEDE DESHACERSE NI REEMBOLSARSE Y PUEDE TARDAR VARIOS MESES. GUARDÁ LA PARTIDA Y HACÉ UNA COPIA DE RESPALDO."
+
+ # Cancel
+ exodos_cancel_all:0 "Cancelar Todo"
+ exodos_cancel_all_desc:0 "Rescinde todos los decretos activos del estado. Limpia toda operación en curso y cualquier estado residual de instalaciones anteriores del mod. Los costos ya pagados no serán reembolsados. Usar como primer paso al migrar desde una instalación anterior."
+
+ # Evento de fallo
+ exodos.1.t:0 "El Exodo Ha Fracasado"
+ exodos.1.d:0 "El movimiento del pueblo ha llegado a un abrupto fin. Los esfuerzos del estado han sido en vano."
+ exodos.1.ok:0 "Que así sea."
+
+ # Heredero del Rival
+ exodos_spawn_rival_son:0 "Heredero del Rival — Hijo"
+ exodos_spawn_rival_son_desc:0 "El rival deja un heredero varón. Hereda los rasgos dinásticos del padre y de la madre."
+ exodos_spawn_rival_daughter:0 "Heredero del Rival — Hija"
+ exodos_spawn_rival_daughter_desc:0 "El rival deja una heredera. Hereda los rasgos dinásticos del padre y de la madre."
+
+ # Custom tooltips
+ exodos_tt_rival_unique:0 "Requiere exactamente un rival varón, mayor de 16 años, de tu nación."
+ exodos_tt_area_owner:0 "El área completa debe estar bajo la autoridad del estado. (Área no controlada en su totalidad)"

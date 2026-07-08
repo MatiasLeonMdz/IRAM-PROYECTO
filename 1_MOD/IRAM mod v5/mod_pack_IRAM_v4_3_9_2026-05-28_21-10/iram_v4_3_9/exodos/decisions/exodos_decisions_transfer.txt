@@ -1,0 +1,102 @@
+﻿country_decisions = {
+
+    iram_08_activate_transfer = {
+        potential = {
+            is_ai = no
+            has_variable = iram_menu_management_open
+            NOT = { has_variable = exodos_transfer_pending }
+            NOT = { has_variable = exodos_gather_pending }
+            NOT = { has_variable = exodos_distribute_pending }
+            NOT = { has_variable = exodos_operation_active }
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+        }
+        effect = {
+            create_unit = {
+                name = "Exodos - Origen"
+                location = capital_scope
+                sub_unit = exodos_marker
+                save_scope_as = exodos_origin_scope
+            }
+            scope:exodos_origin_scope = {
+                set_variable = { name = exodos_unit_transfer_origin value = 1 }
+            }
+            create_unit = {
+                name = "Exodos - Destino"
+                location = capital_scope
+                sub_unit = exodos_marker
+                save_scope_as = exodos_dest_scope
+            }
+            scope:exodos_dest_scope = {
+                set_variable = { name = exodos_unit_transfer_dest value = 1 }
+            }
+            set_variable = { name = exodos_transfer_pending value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    iram_09_confirm_transfer = {
+        potential = {
+            is_ai = no
+            has_variable = exodos_transfer_pending
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            custom_tooltip = exodos_tt_unit_stopped
+            NOT = {
+                any_unit = {
+                    has_variable = exodos_unit_transfer_origin
+                    is_moving = yes
+                }
+            }
+            NOT = {
+                any_unit = {
+                    has_variable = exodos_unit_transfer_dest
+                    is_moving = yes
+                }
+            }
+            custom_tooltip = exodos_tt_owner
+            any_unit = {
+                has_variable = exodos_unit_transfer_origin
+                unit_location = { owner = ROOT }
+            }
+            any_unit = {
+                has_variable = exodos_unit_transfer_dest
+                unit_location = { owner = ROOT }
+            }
+        }
+        effect = {
+            every_unit = {
+                limit = { has_variable = exodos_unit_transfer_origin }
+                unit_location = {
+                    ROOT = {
+                        set_variable = {
+                            name = exodos_anchor_province
+                            value = prev
+                        }
+                    }
+                    set_variable = { name = exodos_is_anchor value = 1 }
+                }
+            }
+            every_unit = {
+                limit = { has_variable = exodos_unit_transfer_dest }
+                unit_location = {
+                    ROOT = {
+                        set_variable = {
+                            name = exodos_destination_province
+                            value = prev
+                        }
+                    }
+                    set_variable = { name = exodos_is_destination value = 1 }
+                }
+            }
+            set_variable = { name = exodos_pulse_counter value = 10 }
+            remove_variable = exodos_transfer_pending
+            set_variable = { name = exodos_operation_active value = 1 }
+            set_variable = { name = exodos_transfer_active value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+}

@@ -1,0 +1,143 @@
+﻿country_decisions = {
+
+    # ================================================================
+    # RELIQUIA — Un Pueblo, Una Fe (toggle permanente)
+    # ================================================================
+
+    iram_15_create_divine_relic = {
+        potential = {
+            is_ai = no
+            has_variable = iram_menu_behavior_open
+        }
+
+        allow = {
+            is_ai = no
+            NOT = { has_country_modifier = iram_divine_relic }
+        }
+
+        effect = {
+            add_country_modifier = {
+                name = iram_divine_relic
+                duration = -1
+            }
+
+            set_variable = {
+                name = iram_divine_relic_active
+                value = 1
+            }
+        }
+
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+
+    # ================================================================
+    # MIGRACION FORZADA (toggle permanente)
+    # Modifier: global_pop_migration_speed = 100
+    # Esclavos no afectados — hardcoded en el engine
+    # ================================================================
+
+    iram_16_activate_migracion = {
+        potential = {
+            is_ai = no
+            has_variable = iram_menu_behavior_open
+            NOT = { has_country_modifier = iram_migracion_forzada }
+        }
+
+        allow = {
+            is_ai = no
+            NOT = { has_country_modifier = iram_migracion_forzada }
+        }
+
+        effect = {
+            add_country_modifier = {
+                name = iram_migracion_forzada
+                duration = -1
+            }
+
+            set_variable = {
+                name = iram_migracion_forzada_active
+                value = 1
+            }
+        }
+
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+
+    # ================================================================
+    # ASCENSO FORZADO (toggle permanente)
+    # Modifier: global_pop_promotion_speed = 100
+    # TESTEO PENDIENTE: sistema usa threshold, no barra 0->100
+    # ================================================================
+
+    iram_17_activate_ascenso = {
+        potential = {
+            is_ai = no
+            has_variable = iram_menu_behavior_open
+            NOT = { has_country_modifier = iram_ascenso_forzado }
+        }
+
+        allow = {
+            is_ai = no
+            NOT = { has_country_modifier = iram_ascenso_forzado }
+        }
+
+        effect = {
+            add_country_modifier = {
+                name = iram_ascenso_forzado
+                duration = -1
+            }
+
+            set_variable = {
+                name = iram_ascenso_forzado_active
+                value = 1
+            }
+        }
+
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+
+    # ================================================================
+    # DESCENSO FORZADO (toggle permanente)
+    # Modifier: global_pop_demotion_speed = 100
+    # TESTEO PENDIENTE: sistema usa threshold, no barra 0->100
+    # ================================================================
+
+    iram_18_activate_descenso = {
+        potential = {
+            is_ai = no
+            has_variable = iram_menu_behavior_open
+            NOT = { has_country_modifier = iram_descenso_forzado }
+        }
+
+        allow = {
+            is_ai = no
+            NOT = { has_country_modifier = iram_descenso_forzado }
+        }
+
+        effect = {
+            add_country_modifier = {
+                name = iram_descenso_forzado
+                duration = -1
+            }
+
+            set_variable = {
+                name = iram_descenso_forzado_active
+                value = 1
+            }
+        }
+
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+}

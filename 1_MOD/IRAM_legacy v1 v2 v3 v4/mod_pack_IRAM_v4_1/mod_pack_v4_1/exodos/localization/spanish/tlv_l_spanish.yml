@@ -1,0 +1,6 @@
+﻿l_spanish:
+ tlv_confirm:0 "The Last Vote: Disolver la Republica"
+ tlv_confirm_desc:0 "El pueblo ha hablado. Con apoyo suficiente y la autoridad para actuar, disuelve las instituciones de la republica y toma el poder. No habra vuelta atras. Costo: 2000 oro, 50 estabilidad, 40 tirania."
+ tlv.2.t:0 "La Republica Ha Muerto"
+ tlv.2.d:0 "El ultimo voto ha sido emitido. El senado esta disuelto. El poder descansa en un solo par de manos."
+ tlv.2.ok:0 "Como siempre estuvo destinado a ser."

@@ -1,0 +1,55 @@
+﻿l_spanish:
+ # ── TRANSFER ──────────────────────────────────────────────────────
+ exodos_activate_transfer:0 "Exodos: Transferencia"
+ exodos_activate_transfer_desc:0 "Por decreto del estado, el pueblo sera trasladado. Despliega las unidades Origen y Destino para marcar los territorios de origen y destino, luego confirma la operacion. Ambas unidades deben estar estacionarias y posicionadas en territorios bajo tu control. El costo se cobra al confirmar. (La operacion sera cancelada si una unidad es destruida o alguno de los territorios es perdido.)"
+ exodos_confirm_transfer:0 "Exodos: Confirmar Transferencia"
+ exodos_confirm_transfer_desc:0 "La orden esta dada. El pueblo marchara durante diez meses. Costo: 2000 oro, 5000 soldados, 20 tirania. Ambas unidades deben estar estacionarias antes de que la operacion pueda comenzar."
+
+ # ── GATHER / DISTRIBUTE legacy ────────────────────────────────────
+ exodos_activate_gather:0 "Exodos: Concentracion"
+ exodos_activate_gather_desc:0 "Los dispersos seran reunidos. Recluta un ejercito o leva bajo el mando del rival del gobernante en el territorio donde quieras concentrar la poblacion — la unidad marcadora sera posicionada ahi automaticamente. Podes moverla antes de confirmar. El costo se cobra al confirmar. (La operacion sera cancelada si la unidad es destruida o cualquier territorio del area es perdido.)"
+ exodos_confirm_gather:0 "Exodos: Confirmar Concentracion"
+ exodos_confirm_gather_desc:0 "Suena el llamado. Los dispersos convergaran en un solo mes. Costo: 1000 oro, 2500 soldados, 10 tirania. La unidad debe estar estacionaria y el area completa bajo tu control."
+ exodos_activate_distribute:0 "Exodos: Distribucion"
+ exodos_activate_distribute_desc:0 "Los hacinados seran dispersados por la tierra. Recluta un ejercito o leva bajo el mando del rival del gobernante en el territorio que quieras vaciar — la unidad marcadora sera posicionada ahi automaticamente. Podes moverla antes de confirmar. El costo se cobra al confirmar. (La operacion sera cancelada si la unidad es destruida o cualquier territorio del area es perdido.)"
+ exodos_confirm_distribute:0 "Exodos: Confirmar Distribucion"
+ exodos_confirm_distribute_desc:0 "Se abren las puertas. El pueblo se extendera por la tierra en un solo mes. Costo: 1000 oro, 2500 soldados, 10 tirania. La unidad debe estar estacionaria y el area completa bajo tu control."
+
+ # ── OPTIMIZAR ─────────────────────────────────────────────────────
+ exodos_activate_optimize:0 "Exodos: Optimizar"
+ exodos_activate_optimize_desc:0 "Se redistribuiran los pops de la provincia de manera optima para la conversion religiosa y asimilacion cultural. Recluta o mueve un ejercito o leva bajo el mando del rival del gobernante en cualquier territorio de la provincia — la unidad marcadora sera generada ahi automaticamente, usala para marcar tu ciudad principal en la provincia. Podes moverla antes de elegir el rango, el costo de la operacion se cobra en la siguiente decision."
+ exodos_opt_range_04:0 "Entre 45 y 107 pops en la provincia"
+ exodos_opt_range_04_desc:0 "Verifica el total de pops de la provincia antes de confirmar — panel de provincia, entre el boton de gobernador y el de procuradores, o en Resumen / Administracion / Gobernaciones.\n\nSi la unidad marcadora es destruida o cualquier territorio de la provincia es perdido, la operacion sera cancelada.\n\nESTA ACCION NO PUEDE DESHACERSE NI REEMBOLSARSE Y PUEDE TARDAR VARIOS MESES. GUARDA LA PARTIDA Y HAZ UNA COPIA DE RESPALDO."
+ exodos_opt_range_09:0 "Entre 108 y 171 pops en la provincia"
+ exodos_opt_range_09_desc:0 "Verifica el total de pops de la provincia antes de confirmar — panel de provincia, entre el boton de gobernador y el de procuradores, o en Resumen / Administracion / Gobernaciones.\n\nSi la unidad marcadora es destruida o cualquier territorio de la provincia es perdido, la operacion sera cancelada.\n\nESTA ACCION NO PUEDE DESHACERSE NI REEMBOLSARSE Y PUEDE TARDAR VARIOS MESES. GUARDA LA PARTIDA Y HAZ UNA COPIA DE RESPALDO."
+ exodos_opt_range_14:0 "Entre 172 y 235 pops en la provincia"
+ exodos_opt_range_14_desc:0 "Verifica el total de pops de la provincia antes de confirmar — panel de provincia, entre el boton de gobernador y el de procuradores, o en Resumen / Administracion / Gobernaciones.\n\nSi la unidad marcadora es destruida o cualquier territorio de la provincia es perdido, la operacion sera cancelada.\n\nESTA ACCION NO PUEDE DESHACERSE NI REEMBOLSARSE Y PUEDE TARDAR VARIOS MESES. GUARDA LA PARTIDA Y HAZ UNA COPIA DE RESPALDO."
+ exodos_opt_range_19:0 "Entre 236 y 300 pops en la provincia"
+ exodos_opt_range_19_desc:0 "Verifica el total de pops de la provincia antes de confirmar — panel de provincia, entre el boton de gobernador y el de procuradores, o en Resumen / Administracion / Gobernaciones.\n\nSi la unidad marcadora es destruida o cualquier territorio de la provincia es perdido, la operacion sera cancelada.\n\nESTA ACCION NO PUEDE DESHACERSE NI REEMBOLSARSE Y PUEDE TARDAR VARIOS MESES. GUARDA LA PARTIDA Y HAZ UNA COPIA DE RESPALDO."
+
+
+ # ── GATHER GLOBAL ─────────────────────────────────────────
+ exodos_confirm_gather_global:0 "Exodos: Gather Global"
+ exodos_confirm_gather_global_desc:0 "Concentra todos los pops de cada provincia en su capital de estado. Las provincias parcialmente controladas y las capitales sin rango de ciudad son omitidas. La operacion procesa diez provincias por mes sin intervencion. ESTA ACCION NO PUEDE DESHACERSE NI REEMBOLSARSE."
+
+ # ── CANCELAR TODO ─────────────────────────────────────────────────
+ exodos_cancel_all:0 "Cancelar Todo"
+ exodos_cancel_all_desc:0 "Rescinde todos los decretos activos del estado. Limpia toda operacion en curso — Exodos, transferencias, y cualquier estado residual de instalaciones anteriores del mod. Los costos ya pagados no seran reembolsados. Usar como primer paso al migrar desde una instalacion anterior."
+
+ # ── EVENTO DE FALLO ───────────────────────────────────────────────
+ exodos.1.t:0 "El Exodo Ha Fracasado"
+ exodos.1.d:0 "El movimiento del pueblo ha llegado a un abrupto fin. Los esfuerzos del estado han sido en vano."
+ exodos.1.ok:0 "Que asi sea."
+
+ # ── CUSTOM TOOLTIPS ───────────────────────────────────────────────
+ exodos_tt_unit_stopped:0 "Las unidades deben llegar a su destino antes de que la operacion pueda comenzar. (Unidad en movimiento)"
+ exodos_tt_owner:0 "Ambos territorios deben estar bajo la autoridad del estado. (Territorio no controlado)"
+ exodos_tt_area_owner:0 "El area completa debe estar bajo la autoridad del estado. (Area no controlada en su totalidad)"
+ exodos_tt_rival_commander:0 "Se requiere exactamente un rival del gobernante del mismo estado, al mando de un ejercito o leva activa. Recluta primero una leva del rival en el territorio destino. (Condicion de rival no cumplida)"
+
+ # ── HEREDERO DEL RIVAL ────────────────────────────────────────────
+ exodos_spawn_rival_son:0 "Exodos: Hijo del Rival"
+ exodos_spawn_rival_son_desc:0 "Nacera un hijo varon del rival del gobernante. El nino heredara la familia, religion y cultura del rival — y los rasgos dinasticos de ambos padres si los tienen. Su nombre sera asignado segun la cultura."
+ exodos_spawn_rival_daughter:0 "Exodos: Hija del Rival"
+ exodos_spawn_rival_daughter_desc:0 "Nacera una hija mujer del rival del gobernante. La nina heredara la familia, religion y cultura del rival — y los rasgos dinasticos de ambos padres si los tienen. Su nombre sera asignado segun la cultura."
+ exodos_tt_rival_unique:0 "Se requiere exactamente un rival del gobernante al servicio del jugador, mayor de 16 anos. (Condicion de rival no cumplida)"

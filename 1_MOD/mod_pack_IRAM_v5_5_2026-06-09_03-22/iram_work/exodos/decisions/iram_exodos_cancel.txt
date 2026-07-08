@@ -1,0 +1,16 @@
+﻿country_decisions = {
+
+    iram_exodos_cancel_all = {
+        potential = {
+            is_ai = no
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            always = yes
+        }
+        effect = {
+            iram_cleanup_exodos = yes
+        }
+        ai_will_do = { factor = 0 }
+    }
+}

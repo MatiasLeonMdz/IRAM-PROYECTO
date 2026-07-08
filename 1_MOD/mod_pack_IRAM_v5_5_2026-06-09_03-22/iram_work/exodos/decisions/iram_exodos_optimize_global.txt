@@ -1,0 +1,24 @@
+﻿country_decisions = {
+
+    # ================================================================
+    # OPTIMIZE GLOBAL — Fase 1 gather + Fase 2 distribute automático
+    # ================================================================
+
+    iram_exodos_optimize_global = {
+        potential = {
+            is_ai = no
+            has_variable = iram_exodos_menu
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            custom_tooltip = iram_tt_exodos_sin_op
+            NOT = { has_variable = iram_operation_active }
+        }
+        effect = {
+            set_variable = { name = iram_optimize_global_active value = 1 }
+            set_variable = { name = iram_operation_active value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+}

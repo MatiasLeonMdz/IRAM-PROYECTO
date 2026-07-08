@@ -1,0 +1,61 @@
+﻿exodos_spawn_anchor_button = {
+    scope = province
+    saved_scopes = { player }
+
+    is_shown = {
+        owner = scope:player
+        scope:player = { is_ai = no }
+    }
+
+    is_valid = {
+        scope:player = {
+            NOT = { has_variable = exodos_operation_active }
+            NOT = { has_variable = exodos_optimize_active }
+            NOT = { any_unit = { has_variable = exodos_unit_anchor } }
+        }
+    }
+
+    effect = {
+        create_unit = {
+            name = "Exodos - Ancla"
+            location = ROOT
+            sub_unit = exodos_anchor
+            save_scope_as = exodos_anchor_scope
+        }
+        scope:exodos_anchor_scope = {
+            set_variable = { name = exodos_unit_anchor  value = 1 }
+        }
+    }
+}
+
+exodos_spawn_destination_button = {
+    scope = province
+    saved_scopes = { player }
+
+    is_shown = {
+        owner = scope:player
+        scope:player = {
+            is_ai = no
+            any_unit = { has_variable = exodos_unit_anchor }
+        }
+    }
+
+    is_valid = {
+        scope:player = {
+            NOT = { has_variable = exodos_operation_active }
+            NOT = { any_unit = { has_variable = exodos_unit_destination } }
+        }
+    }
+
+    effect = {
+        create_unit = {
+            name = "Exodos - Destino"
+            location = ROOT
+            sub_unit = exodos_marker
+            save_scope_as = exodos_dest_scope
+        }
+        scope:exodos_dest_scope = {
+            set_variable = { name = exodos_unit_destination  value = 1 }
+        }
+    }
+}

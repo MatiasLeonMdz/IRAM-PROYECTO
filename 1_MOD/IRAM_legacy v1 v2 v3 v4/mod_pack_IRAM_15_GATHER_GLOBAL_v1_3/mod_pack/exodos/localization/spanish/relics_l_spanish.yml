@@ -1,0 +1,9 @@
+﻿l_spanish:
+ iram_create_divine_relic:0 "Un Pueblo, una Fe"
+ iram_create_divine_relic_desc:0 "El estado impondrá una identidad espiritual y cultural unificada sobre todo el imperio."
+
+ iram_remove_divine_relic:0 "Disolver la Reliquia"
+ iram_remove_divine_relic_desc:0 "La estructura espiritual centralizada será desmantelada."
+
+ iram_divine_relic:0 "Un Pueblo, una Fe"
+ iram_divine_relic_desc:0 "La conversión religiosa y la asimilación cultural avanzan a velocidad extraordinaria en todo el imperio."

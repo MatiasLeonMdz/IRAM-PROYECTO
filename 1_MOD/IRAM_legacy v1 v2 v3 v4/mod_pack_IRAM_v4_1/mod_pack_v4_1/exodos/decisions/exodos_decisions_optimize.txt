@@ -1,0 +1,299 @@
+﻿country_decisions = {
+
+    # ================================================================
+    # OPTIMIZAR — activate
+    # ================================================================
+
+    exodos_activate_optimize = {
+        potential = {
+            is_ai = no
+            NOT = { has_variable = exodos_transfer_pending }
+            NOT = { has_variable = exodos_gather_pending }
+            NOT = { has_variable = exodos_distribute_pending }
+            NOT = { has_variable = exodos_optimize_pending }
+            NOT = { has_variable = exodos_operation_active }
+            any_character = {
+                is_ruler = yes
+                num_of_rivals >= 1
+                NOT = { num_of_rivals >= 2 }
+                any_rival = {
+                    employer = ROOT
+                    in_command = yes
+                }
+            }
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            custom_tooltip = exodos_tt_rival_commander
+            any_character = {
+                is_ruler = yes
+                num_of_rivals >= 1
+                NOT = { num_of_rivals >= 2 }
+                any_rival = {
+                    employer = ROOT
+                    in_command = yes
+                }
+            }
+        }
+        effect = {
+            every_character = {
+                limit = { is_ruler = yes }
+                every_rival = {
+                    limit = {
+                        employer = ROOT
+                        in_command = yes
+                    }
+                    save_scope_as = exodos_rival
+                }
+            }
+            random_unit = {
+                limit = {
+                    commander = scope:exodos_rival
+                }
+                unit_location = { save_scope_as = exodos_rival_loc }
+            }
+            create_unit = {
+                name = "Exodos - Optimizar"
+                location = scope:exodos_rival_loc
+                sub_unit = exodos_marker
+                save_scope_as = exodos_optimize_scope
+            }
+            scope:exodos_optimize_scope = {
+                set_variable = { name = exodos_unit_optimize value = 1 }
+            }
+            set_variable = { name = exodos_optimize_pending value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    # ================================================================
+    # OPTIMIZAR — decisiones de rango (4 rangos)
+    # Cortes: 107/108 | 171/172 | 235/236
+    # ================================================================
+
+    exodos_opt_range_04 = {
+        potential = {
+            is_ai = no
+            has_variable = exodos_optimize_pending
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            custom_tooltip = exodos_tt_unit_stopped
+            NOT = {
+                any_unit = {
+                    has_variable = exodos_unit_optimize
+                    is_moving = yes
+                }
+            }
+            custom_tooltip = exodos_tt_area_owner
+            any_unit = {
+                has_variable = exodos_unit_optimize
+                unit_location = {
+                    area = {
+                        NOT = {
+                            any_area_province = {
+                                NOT = { owner = ROOT }
+                            }
+                        }
+                    }
+                }
+            }
+            treasury >= 2000
+            manpower >= 10
+            tyranny <= 90
+        }
+        effect = {
+            add_treasury = -2000
+            add_manpower = -10
+            add_tyranny = 10
+            every_unit = {
+                limit = { has_variable = exodos_unit_optimize }
+                unit_location = {
+                    ROOT = {
+                        set_variable = {
+                            name = exodos_anchor_province
+                            value = prev
+                        }
+                    }
+                    set_variable = { name = exodos_is_anchor value = 1 }
+                }
+            }
+            set_variable = { name = exodos_optimize_count value = 4 }
+            remove_variable = exodos_optimize_pending
+            set_variable = { name = exodos_operation_active value = 1 }
+            set_variable = { name = exodos_optimize_active value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    exodos_opt_range_09 = {
+        potential = {
+            is_ai = no
+            has_variable = exodos_optimize_pending
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            custom_tooltip = exodos_tt_unit_stopped
+            NOT = {
+                any_unit = {
+                    has_variable = exodos_unit_optimize
+                    is_moving = yes
+                }
+            }
+            custom_tooltip = exodos_tt_area_owner
+            any_unit = {
+                has_variable = exodos_unit_optimize
+                unit_location = {
+                    area = {
+                        NOT = {
+                            any_area_province = {
+                                NOT = { owner = ROOT }
+                            }
+                        }
+                    }
+                }
+            }
+            treasury >= 2000
+            manpower >= 10
+            tyranny <= 90
+        }
+        effect = {
+            add_treasury = -2000
+            add_manpower = -10
+            add_tyranny = 10
+            every_unit = {
+                limit = { has_variable = exodos_unit_optimize }
+                unit_location = {
+                    ROOT = {
+                        set_variable = {
+                            name = exodos_anchor_province
+                            value = prev
+                        }
+                    }
+                    set_variable = { name = exodos_is_anchor value = 1 }
+                }
+            }
+            set_variable = { name = exodos_optimize_count value = 9 }
+            remove_variable = exodos_optimize_pending
+            set_variable = { name = exodos_operation_active value = 1 }
+            set_variable = { name = exodos_optimize_active value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    exodos_opt_range_14 = {
+        potential = {
+            is_ai = no
+            has_variable = exodos_optimize_pending
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            custom_tooltip = exodos_tt_unit_stopped
+            NOT = {
+                any_unit = {
+                    has_variable = exodos_unit_optimize
+                    is_moving = yes
+                }
+            }
+            custom_tooltip = exodos_tt_area_owner
+            any_unit = {
+                has_variable = exodos_unit_optimize
+                unit_location = {
+                    area = {
+                        NOT = {
+                            any_area_province = {
+                                NOT = { owner = ROOT }
+                            }
+                        }
+                    }
+                }
+            }
+            treasury >= 2000
+            manpower >= 10
+            tyranny <= 90
+        }
+        effect = {
+            add_treasury = -2000
+            add_manpower = -10
+            add_tyranny = 10
+            every_unit = {
+                limit = { has_variable = exodos_unit_optimize }
+                unit_location = {
+                    ROOT = {
+                        set_variable = {
+                            name = exodos_anchor_province
+                            value = prev
+                        }
+                    }
+                    set_variable = { name = exodos_is_anchor value = 1 }
+                }
+            }
+            set_variable = { name = exodos_optimize_count value = 14 }
+            remove_variable = exodos_optimize_pending
+            set_variable = { name = exodos_operation_active value = 1 }
+            set_variable = { name = exodos_optimize_active value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    exodos_opt_range_19 = {
+        potential = {
+            is_ai = no
+            has_variable = exodos_optimize_pending
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            custom_tooltip = exodos_tt_unit_stopped
+            NOT = {
+                any_unit = {
+                    has_variable = exodos_unit_optimize
+                    is_moving = yes
+                }
+            }
+            custom_tooltip = exodos_tt_area_owner
+            any_unit = {
+                has_variable = exodos_unit_optimize
+                unit_location = {
+                    area = {
+                        NOT = {
+                            any_area_province = {
+                                NOT = { owner = ROOT }
+                            }
+                        }
+                    }
+                }
+            }
+            treasury >= 2000
+            manpower >= 10
+            tyranny <= 90
+        }
+        effect = {
+            add_treasury = -2000
+            add_manpower = -10
+            add_tyranny = 10
+            every_unit = {
+                limit = { has_variable = exodos_unit_optimize }
+                unit_location = {
+                    ROOT = {
+                        set_variable = {
+                            name = exodos_anchor_province
+                            value = prev
+                        }
+                    }
+                    set_variable = { name = exodos_is_anchor value = 1 }
+                }
+            }
+            set_variable = { name = exodos_optimize_count value = 19 }
+            remove_variable = exodos_optimize_pending
+            set_variable = { name = exodos_operation_active value = 1 }
+            set_variable = { name = exodos_optimize_active value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+}

@@ -1,0 +1,350 @@
+﻿country_decisions = {
+
+    # ================================================================
+    # NIVEL 0 — Siempre visibles
+    # potential = { is_ai = no }
+    # ================================================================
+
+    iram_01_menu_open = {
+        potential = {
+            is_ai = no
+            NOT = { has_variable = iram_menu_open }
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            always = yes
+        }
+        effect = {
+            set_variable = { name = iram_menu_open value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    # ================================================================
+    # NIVEL 1 — Visible con iram_menu_open
+    # potential = { is_ai = no; has_variable = iram_menu_open }
+    # ================================================================
+
+    iram_03_menu_management = {
+        potential = {
+            is_ai = no
+            has_variable = iram_menu_open
+            NOT = { has_variable = iram_menu_management_open }
+            NOT = { has_variable = iram_menu_behavior_open }
+            NOT = { has_variable = iram_menu_political_open }
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            NOT = { has_variable = exodos_operation_active }
+        }
+        effect = {
+            set_variable = { name = iram_menu_management_open value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    iram_04_menu_behavior = {
+        potential = {
+            is_ai = no
+            has_variable = iram_menu_open
+            NOT = { has_variable = iram_menu_management_open }
+            NOT = { has_variable = iram_menu_behavior_open }
+            NOT = { has_variable = iram_menu_political_open }
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            always = yes
+        }
+        effect = {
+            set_variable = { name = iram_menu_behavior_open value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    iram_05_menu_political = {
+        potential = {
+            is_ai = no
+            has_variable = iram_menu_open
+            NOT = { has_variable = iram_menu_management_open }
+            NOT = { has_variable = iram_menu_behavior_open }
+            NOT = { has_variable = iram_menu_political_open }
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            always = yes
+        }
+        effect = {
+            set_variable = { name = iram_menu_political_open value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    iram_06_cerrar_menu = {
+        potential = {
+            is_ai = no
+            has_variable = iram_menu_open
+            NOT = { has_variable = iram_menu_management_open }
+            NOT = { has_variable = iram_menu_behavior_open }
+            NOT = { has_variable = iram_menu_political_open }
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            always = yes
+        }
+        effect = {
+            iram_cleanup_menu = yes
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    # ================================================================
+    # iram_11 — Distribute Global
+    # Redistribuye población de la capital de estado de cada área
+    # hacia sus provincias. Opera en 5 áreas por mes.
+    # Auto-rango: el on_action prueba R3→R2→R1→saltea por área.
+    # ================================================================
+
+    iram_11_distribute_global = {
+        potential = {
+            is_ai = no
+            has_variable = iram_menu_management_open
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            NOT = { has_variable = exodos_operation_active }
+        }
+        effect = {
+            set_variable = { name = exodos_distribute_global_active value = 1 }
+            set_variable = { name = exodos_operation_active value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    # ================================================================
+    # iram_12 — Constructor Automático
+    # Itera every_owned_province con has_city_status = no
+    # y NOT = { num_of_fortress_building > 0 }
+    # FASE 1: demoler con 7 if independientes + guard num_of_X > 0
+    # FASE 2: if/else_if con trade_goods = X → add_building_level
+    # INSTANTÁNEO — todo en el effect, sin pulso mensual
+    # ================================================================
+
+    iram_12_constructor_auto = {
+        potential = {
+            is_ai = no
+            has_variable = iram_menu_management_open
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            NOT = { has_variable = exodos_operation_active }
+        }
+        effect = {
+            every_owned_province = {
+                limit = {
+                    has_city_status = no
+                    NOT = { num_of_fortress_building > 0 }
+                }
+
+                # ── FASE 1 — DEMOLER (if independientes — demoler TODOS) ──
+
+                if = { limit = { num_of_barracks_building > 0 }
+                    remove_building_level = barracks_building }
+                if = { limit = { num_of_slave_mine_building > 0 }
+                    remove_building_level = slave_mine_building }
+                if = { limit = { num_of_latifundia_building > 0 }
+                    remove_building_level = latifundia_building }
+                if = { limit = { num_of_basic_settlement_infratructure_building > 0 }
+                    remove_building_level = basic_settlement_infratructure_building }
+                if = { limit = { num_of_local_forum_building > 0 }
+                    remove_building_level = local_forum_building }
+                if = { limit = { num_of_port_building > 0 }
+                    remove_building_level = port_building }
+                if = { limit = { num_of_hill_fort > 0 }
+                    remove_building_level = hill_fort }
+
+                # ── FASE 2 — CONSTRUIR según trade good ──────────────────
+
+                # Farming Settlement — grain, fish, cattle, vegetables
+                if = { limit = { trade_goods = grain }
+                    add_building_level = basic_settlement_infratructure_building }
+                else_if = { limit = { trade_goods = fish }
+                    add_building_level = basic_settlement_infratructure_building }
+                else_if = { limit = { trade_goods = cattle }
+                    add_building_level = basic_settlement_infratructure_building }
+                else_if = { limit = { trade_goods = vegetables }
+                    add_building_level = basic_settlement_infratructure_building }
+
+                # Mine — iron, precious_metals, base_metals, marble
+                else_if = { limit = { trade_goods = iron }
+                    add_building_level = slave_mine_building }
+                else_if = { limit = { trade_goods = precious_metals }
+                    add_building_level = slave_mine_building }
+                else_if = { limit = { trade_goods = base_metals }
+                    add_building_level = slave_mine_building }
+                else_if = { limit = { trade_goods = marble }
+                    add_building_level = slave_mine_building }
+
+                # Provincial Legation — wine, leather, hemp, dates, stone,
+                #                       olive, wild_game, fur, woad
+                else_if = { limit = { trade_goods = wine }
+                    add_building_level = local_forum_building }
+                else_if = { limit = { trade_goods = leather }
+                    add_building_level = local_forum_building }
+                else_if = { limit = { trade_goods = hemp }
+                    add_building_level = local_forum_building }
+                else_if = { limit = { trade_goods = dates }
+                    add_building_level = local_forum_building }
+                else_if = { limit = { trade_goods = stone }
+                    add_building_level = local_forum_building }
+                else_if = { limit = { trade_goods = olive }
+                    add_building_level = local_forum_building }
+                else_if = { limit = { trade_goods = wild_game }
+                    add_building_level = local_forum_building }
+                else_if = { limit = { trade_goods = fur }
+                    add_building_level = local_forum_building }
+                else_if = { limit = { trade_goods = woad }
+                    add_building_level = local_forum_building }
+
+                # Slave Estate — todos los demás (salt, honey, papyrus, cloth,
+                #   dye, incense, silk, amber, spices, earthware, gems, glass,
+                #   horses, wood, elephants, steppe_horses, camel)
+                else_if = { limit = { trade_goods = salt }
+                    add_building_level = latifundia_building }
+                else_if = { limit = { trade_goods = honey }
+                    add_building_level = latifundia_building }
+                else_if = { limit = { trade_goods = papyrus }
+                    add_building_level = latifundia_building }
+                else_if = { limit = { trade_goods = cloth }
+                    add_building_level = latifundia_building }
+                else_if = { limit = { trade_goods = dye }
+                    add_building_level = latifundia_building }
+                else_if = { limit = { trade_goods = incense }
+                    add_building_level = latifundia_building }
+                else_if = { limit = { trade_goods = silk }
+                    add_building_level = latifundia_building }
+                else_if = { limit = { trade_goods = amber }
+                    add_building_level = latifundia_building }
+                else_if = { limit = { trade_goods = spices }
+                    add_building_level = latifundia_building }
+                else_if = { limit = { trade_goods = earthware }
+                    add_building_level = latifundia_building }
+                else_if = { limit = { trade_goods = gems }
+                    add_building_level = latifundia_building }
+                else_if = { limit = { trade_goods = glass }
+                    add_building_level = latifundia_building }
+                else_if = { limit = { trade_goods = horses }
+                    add_building_level = latifundia_building }
+                else_if = { limit = { trade_goods = wood }
+                    add_building_level = latifundia_building }
+                else_if = { limit = { trade_goods = elephants }
+                    add_building_level = latifundia_building }
+                else_if = { limit = { trade_goods = steppe_horses }
+                    add_building_level = latifundia_building }
+                else_if = { limit = { trade_goods = camel }
+                    add_building_level = latifundia_building }
+            }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    # ================================================================
+    # NIVEL 2 — Cierre de categorias
+    # ================================================================
+
+    iram_07_cerrar_management = {
+        potential = {
+            is_ai = no
+            has_variable = iram_menu_management_open
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            always = yes
+        }
+        effect = {
+            remove_variable = iram_menu_management_open
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    iram_14_cerrar_behavior = {
+        potential = {
+            is_ai = no
+            has_variable = iram_menu_behavior_open
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            always = yes
+        }
+        effect = {
+            remove_variable = iram_menu_behavior_open
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    iram_19_cerrar_political = {
+        potential = {
+            is_ai = no
+            has_variable = iram_menu_political_open
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            always = yes
+        }
+        effect = {
+            remove_variable = iram_menu_political_open
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    # ================================================================
+    # SUBMENU HEREDERO DEL RIVAL
+    # ================================================================
+
+    iram_20_rival_heir_open = {
+        potential = {
+            is_ai = no
+            has_variable = iram_menu_political_open
+            NOT = { has_variable = iram_rival_heir_open }
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            custom_tooltip = iram_tt_rival_none
+            any_character = {
+                is_ruler = yes
+                num_of_rivals >= 1
+                NOT = { num_of_rivals >= 2 }
+            }
+        }
+        effect = {
+            set_variable = { name = iram_rival_heir_open value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    iram_21_cerrar_rival_heir = {
+        potential = {
+            is_ai = no
+            has_variable = iram_rival_heir_open
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            always = yes
+        }
+        effect = {
+            remove_variable = iram_rival_heir_open
+        }
+        ai_will_do = { factor = 0 }
+    }
+}

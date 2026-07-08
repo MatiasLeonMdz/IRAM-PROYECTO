@@ -1,0 +1,52 @@
+﻿country_decisions = {
+
+    iram_create_divine_relic = {
+        potential = {
+            is_ai = no
+        }
+
+        allow = {
+            is_ai = no
+            treasury >= 5000
+            NOT = { has_country_modifier = iram_divine_relic }
+        }
+
+        effect = {
+            add_treasury = -5000
+
+            add_country_modifier = {
+                name = iram_divine_relic
+                duration = -1
+            }
+
+            set_variable = {
+                name = iram_divine_relic_active
+                value = 1
+            }
+        }
+
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+    iram_remove_divine_relic = {
+        potential = {
+            is_ai = no
+        }
+
+        allow = {
+            is_ai = no
+            has_country_modifier = iram_divine_relic
+        }
+
+        effect = {
+            remove_country_modifier = iram_divine_relic
+            remove_variable = iram_divine_relic_active
+        }
+
+        ai_will_do = {
+            factor = 0
+        }
+    }
+}

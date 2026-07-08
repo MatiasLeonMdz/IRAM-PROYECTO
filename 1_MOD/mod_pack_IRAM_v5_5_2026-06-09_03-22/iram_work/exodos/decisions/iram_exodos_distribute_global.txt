@@ -1,0 +1,27 @@
+﻿country_decisions = {
+
+    # ================================================================
+    # iram_11 — Distribute Global
+    # Redistribuye población de la capital de estado de cada área
+    # hacia sus provincias. Opera en 5 áreas por mes.
+    # Auto-rango: el on_action prueba R3→R2→R1→saltea por área.
+    # ================================================================
+
+    iram_exodos_distribute_global = {
+        potential = {
+            is_ai = no
+            has_variable = iram_exodos_menu
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            custom_tooltip = iram_tt_exodos_sin_op
+            NOT = { has_variable = iram_operation_active }
+        }
+        effect = {
+            set_variable = { name = iram_distribute_global_active value = 1 }
+            set_variable = { name = iram_operation_active value = 1 }
+        }
+        ai_will_do = { factor = 0 }
+    }
+}

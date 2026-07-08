@@ -1,0 +1,28 @@
+﻿l_english:
+ iram_bom_demo_migracion:0 "Forced Migration Decree"
+ iram_bom_demo_migracion_desc:0 "The state will mobilize the free population for resettlement according to the needs of the empire. Migration speed for all pops will increase permanently."
+
+
+ iram_migracion_forzada:0 "Forced Migration"
+ iram_migracion_forzada_desc:0 "The state actively directs the movement of free population. Migration speed increased empire-wide."
+
+ iram_bom_demo_ascenso:0 "Forced Promotion Decree"
+ iram_bom_demo_ascenso_desc:0 "The state will actively promote the social advancement of the free population. Promotion speed for all pops will increase permanently."
+
+
+ iram_ascenso_forzado:0 "Forced Promotion"
+ iram_ascenso_forzado_desc:0 "The state drives the social advancement of the free population. Promotion speed increased empire-wide."
+
+ iram_bom_demo_descenso:0 "Forced Demotion Decree"
+ iram_bom_demo_descenso_desc:0 "The state will apply status reductions to surplus population. Demotion speed for all pops will increase permanently."
+
+
+ iram_descenso_forzado:0 "Forced Demotion"
+ iram_descenso_forzado_desc:0 "The state actively reduces the status of surplus population. Demotion speed increased empire-wide."
+
+ # ── TOOLTIPS RD1 (T10) ─────────────────────────────────────────────────
+ iram_tt_bom_demo_relic_activa:0      "The Divine Relic modifier is not yet active."
+ iram_tt_bom_demo_migracion_activa:0  "Forced Migration is not yet active."
+ iram_tt_bom_demo_ascenso_activo:0    "Forced Promotion is not yet active."
+ iram_tt_bom_demo_descenso_activo:0   "Forced Demotion is not yet active."
+

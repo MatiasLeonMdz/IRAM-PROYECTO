@@ -1,0 +1,124 @@
+﻿country_decisions = {
+
+    # ================================================================
+    # IRAM COMPATIBILITY STUBS
+    # Decisiones legacy de versiones anteriores al mod.
+    # potential = { always = no } — nunca visibles al jugador.
+    # Existen solo para que el engine no reporte
+    # 'Failed to read key reference' al cargar saves antiguas.
+    # NO MODIFICAR ni eliminar.
+    # ================================================================
+
+    tgl_purchase_all_innovations = {
+        potential = { always = no }
+        allow = { always = no }
+        effect = {}
+        ai_will_do = { factor = 0 }
+    }
+
+    bom_ego_sum_mars = {
+        potential = { always = no }
+        allow = { always = no }
+        effect = {}
+        ai_will_do = { factor = 0 }
+    }
+
+    bom_ego_sum_minervae = {
+        potential = { always = no }
+        allow = { always = no }
+        effect = {}
+        ai_will_do = { factor = 0 }
+    }
+
+    bom_ego_sum_mercurii = {
+        potential = { always = no }
+        allow = { always = no }
+        effect = {}
+        ai_will_do = { factor = 0 }
+    }
+
+    bom_ego_sum_iovis = {
+        potential = { always = no }
+        allow = { always = no }
+        effect = {}
+        ai_will_do = { factor = 0 }
+    }
+
+    exodos_activate_gather = {
+        potential = { always = no }
+        allow = { always = no }
+        effect = {}
+        ai_will_do = { factor = 0 }
+    }
+
+    exodos_activate_transfer = {
+        potential = { always = no }
+        allow = { always = no }
+        effect = {}
+        ai_will_do = { factor = 0 }
+    }
+
+    exodos_activate_distribute = {
+        potential = { always = no }
+        allow = { always = no }
+        effect = {}
+        ai_will_do = { factor = 0 }
+    }
+
+    exodos_spawn_rival_son = {
+        potential = { always = no }
+        allow = { always = no }
+        effect = {}
+        ai_will_do = { factor = 0 }
+    }
+
+    exodos_spawn_rival_daughter = {
+        potential = { always = no }
+        allow = { always = no }
+        effect = {}
+        ai_will_do = { factor = 0 }
+    }
+
+    iram_remove_divine_relic = {
+        potential = { always = no }
+        allow = { always = no }
+        effect = {}
+        ai_will_do = { factor = 0 }
+    }
+
+    bom_confirm = {
+        potential = { always = no }
+        allow = { always = no }
+        effect = {}
+        ai_will_do = { factor = 0 }
+    }
+
+    bom_bacanal = {
+        potential = { always = no }
+        allow = { always = no }
+        effect = {}
+        ai_will_do = { factor = 0 }
+    }
+
+    bom_kill_ruler = {
+        potential = { always = no }
+        allow = { always = no }
+        effect = {}
+        ai_will_do = { factor = 0 }
+    }
+
+    iha_seize_holdings = {
+        potential = { always = no }
+        allow = { always = no }
+        effect = {}
+        ai_will_do = { factor = 0 }
+    }
+
+    iha_fill_the_void = {
+        potential = { always = no }
+        allow = { always = no }
+        effect = {}
+        ai_will_do = { factor = 0 }
+    }
+
+}

@@ -1,0 +1,46 @@
+﻿exodos_cleanup_effect = {
+
+    # Variables de operacion
+    remove_variable = exodos_operation_active
+    remove_variable = exodos_gather_active
+    remove_variable = exodos_transfer_active
+    remove_variable = exodos_distribute_active
+    remove_variable = exodos_transfer_pending
+    remove_variable = exodos_gather_pending
+    remove_variable = exodos_distribute_pending
+    remove_variable = exodos_anchor_province
+    remove_variable = exodos_destination_province
+    remove_variable = exodos_pulse_counter
+
+    # Variables Optimizar (IRAM)
+    remove_variable = exodos_optimize_pending
+    remove_variable = exodos_optimize_active
+    remove_variable = exodos_optimize_gather_done
+    remove_variable = exodos_optimize_count
+
+    # Limpiar variables de province
+    every_owned_province = {
+        limit = {
+            OR = {
+                has_variable = exodos_is_anchor
+                has_variable = exodos_is_destination
+            }
+        }
+        remove_variable = exodos_is_anchor
+        remove_variable = exodos_is_destination
+    }
+
+    # Disolver unidades Exodos
+    every_unit = {
+        limit = {
+            OR = {
+                has_variable = exodos_unit_transfer_origin
+                has_variable = exodos_unit_transfer_dest
+                has_variable = exodos_unit_concentrate
+                has_variable = exodos_unit_distribute
+                has_variable = exodos_unit_optimize
+            }
+        }
+        destroy_unit = yes
+    }
+}

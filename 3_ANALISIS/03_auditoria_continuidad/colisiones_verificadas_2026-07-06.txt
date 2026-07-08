@@ -1,0 +1,212 @@
+Grupos con nombre base repetido en la misma carpeta: 76
+De esos, con CONTENIDO DISTINTO pese al nombre similar: 43
+
+(Esto no es necesariamente un error -- puede ser una colision de nomenclatura
+ legitima, p.ej. por un sistema que no incluye la hora local en el nombre.
+ Pero significa que NO son duplicados seguros de descartar sin revisar.)
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO | nombre base: SESSION_LOG_REPLANTEO_2026-07-03_17-58.md ---
+   949be4fa3f310578029f3ae17f1dd118      14832B  IRAM_PROYECTO_REORGANIZADO/SESSION_LOG_REPLANTEO_2026-07-03_17-58 2.md
+   e911a3e204b058b238997d050e8f930b      14476B  IRAM_PROYECTO_REORGANIZADO/SESSION_LOG_REPLANTEO_2026-07-03_17-58.md
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/01_logs_replanteo | nombre base: SESSION_LOG_REPLANTEO_2026-06-19.md ---
+   eb3eff613ee7c1dca83bd85774897f51      12518B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/01_logs_replanteo/SESSION_LOG_REPLANTEO_2026-06-19 2.md
+   8d7c605cbc27e753b8b9d0d1ecff4747       7623B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/01_logs_replanteo/SESSION_LOG_REPLANTEO_2026-06-19.md
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/01_logs_replanteo | nombre base: SESSION_LOG_REPLANTEO_2026-06-20.md ---
+   566679a753caec9dbc290d1bcc0abeda      12879B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/01_logs_replanteo/SESSION_LOG_REPLANTEO_2026-06-20 3.md
+   566679a753caec9dbc290d1bcc0abeda      12879B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/01_logs_replanteo/SESSION_LOG_REPLANTEO_2026-06-20 4.md
+   60c062442447838b688823d41e0059d0      16083B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/01_logs_replanteo/SESSION_LOG_REPLANTEO_2026-06-20 5.md
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/01_logs_replanteo | nombre base: SESSION_LOG_REPLANTEO_2026-07-03.md ---
+   980f9ec9d8a005232d5ebfc240fb4097      20368B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/01_logs_replanteo/SESSION_LOG_REPLANTEO_2026-07-03 2.md
+   4d75c066e10fb575a4eba5e823e8158f      16314B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/01_logs_replanteo/SESSION_LOG_REPLANTEO_2026-07-03.md
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/01_logs_replanteo | nombre base: SESSION_LOG_REPLANTEO_2026-07-03_17-58.md ---
+   949be4fa3f310578029f3ae17f1dd118      14832B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/01_logs_replanteo/SESSION_LOG_REPLANTEO_2026-07-03_17-58 2.md
+   e911a3e204b058b238997d050e8f930b      14476B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/01_logs_replanteo/SESSION_LOG_REPLANTEO_2026-07-03_17-58.md
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/02_charlas_y_resumenes | nombre base: CHARLA REPLANTEO.md ---
+   bb6d9335eeea6b967e3bd2fd4c248e03     266505B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/02_charlas_y_resumenes/CHARLA REPLANTEO 1.md
+   24535bb5f8e812f1bb283f9de0144c54     122572B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/02_charlas_y_resumenes/CHARLA REPLANTEO 2.md
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/05_corpus_B_crudo | nombre base: documentacion claude.zip ---
+   716a3f227fcaecd936019294bb8f9cdf    1655332B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/05_corpus_B_crudo/documentacion claude 1.zip
+   a61c6748c9af1b22959735fddccdcae6    2117929B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/05_corpus_B_crudo/documentacion claude 2.zip
+   2e362aea0f2ff8bc6c5a823fc37b536f    1893257B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/05_corpus_B_crudo/documentacion claude 3.zip
+   e442b012815ac5b492aa545b166f45ea    1913820B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/05_corpus_B_crudo/documentacion claude 4.zip
+   42eb8140deacfe716517a5383e2afd0c    1669826B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/05_corpus_B_crudo/documentacion claude 5.zip
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion | nombre base: IRAM_C1_s4_draft_s30.md ---
+   55558f5349fb8e8b818db27fafd905e6      11991B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/IRAM_C1_s4_draft_s30 (2).md
+   0ef3909b2e87bc337abb69be1b781f20      11748B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/IRAM_C1_s4_draft_s30.md
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion | nombre base: IRAM_paper_metodologia_v1_0.md ---
+   8d94ee1bdbfe23c83a492d16ee87b9c8      20390B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/IRAM_paper_metodologia_v1_0(1).md
+   16d9672ef624301d95b2a7ef7bb5f011      24362B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/IRAM_paper_metodologia_v1_0.md
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion | nombre base: IRAM_skill_desarrollo_ia_v2_0.md ---
+   18c7c4449b7674ede1ea513b1c9bc059       5237B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/IRAM_skill_desarrollo_ia_v2_0 (2).md
+   18c7c4449b7674ede1ea513b1c9bc059       5237B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/IRAM_skill_desarrollo_ia_v2_0 (3).md
+   060198aaddddc7ff4531267c90cea4be       4381B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/IRAM_skill_desarrollo_ia_v2_0.md
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion | nombre base: PROMPT_DOCUMENTACION_IRAM_v1_9.md ---
+   d35510189cf33f5ad6dadc0c436f7404      25827B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/PROMPT_DOCUMENTACION_IRAM_v1_9 (2).md
+   7ed0f7c684363ebf12a71dabc3acd1da      24418B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/PROMPT_DOCUMENTACION_IRAM_v1_9 (3).md
+   d35510189cf33f5ad6dadc0c436f7404      25827B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/PROMPT_DOCUMENTACION_IRAM_v1_9 (4).md
+   d35510189cf33f5ad6dadc0c436f7404      25827B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/PROMPT_DOCUMENTACION_IRAM_v1_9(1).md
+   7ed0f7c684363ebf12a71dabc3acd1da      24418B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/PROMPT_DOCUMENTACION_IRAM_v1_9.md
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion | nombre base: SESION FALLADA.md ---
+   a1ea4f178a6e88f0cd85670c5322f658      25629B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/SESION FALLADA 1.md
+   3611c4cb5aa6f108ab4c54328d205d4b      77455B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/SESION FALLADA 2.md
+   2700fc5d20006a3ce35b4f8818da871c      64134B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/SESION FALLADA 3.md
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion | nombre base: SESSION_LOG_ANALISIS_C1_2026-06-18_v2.md ---
+   56682c09a0377f8ec0fada0e55a2bdfb      20422B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/SESSION_LOG_ANALISIS_C1_2026-06-18_v2 (2).md
+   5f0f0d5b7cedffc5125d55fd44cb33d2      15024B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/SESSION_LOG_ANALISIS_C1_2026-06-18_v2.md
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion | nombre base: SESSION_LOG_DOCUMENTACION_2026-06-12_CONSOLIDADO.md ---
+   2830d4d0f97ca704e672ba10d1388f0c       7757B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/SESSION_LOG_DOCUMENTACION_2026-06-12_CONSOLIDADO (2).md
+   9da0baa6de9eef64e3cd708579ce65ae       9242B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/SESSION_LOG_DOCUMENTACION_2026-06-12_CONSOLIDADO(1).md
+   133b837ad53373049dc4040f4bbdb035      10426B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/SESSION_LOG_DOCUMENTACION_2026-06-12_CONSOLIDADO.md
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion | nombre base: SESSION_LOG_DOCUMENTACION_2026-06-12_CONSOLIDADO_s11.md ---
+   59dec7f62bc1a88504d72f2c87e7827e      14376B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/SESSION_LOG_DOCUMENTACION_2026-06-12_CONSOLIDADO_s11 (2).md
+   1bc857a8ecdffd18baa234dab0ebe968       8940B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/SESSION_LOG_DOCUMENTACION_2026-06-12_CONSOLIDADO_s11 (3).md
+   59dec7f62bc1a88504d72f2c87e7827e      14376B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/SESSION_LOG_DOCUMENTACION_2026-06-12_CONSOLIDADO_s11.md
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion | nombre base: SESSION_LOG_DOCUMENTACION_2026-06-16_CONSOLIDADO_s13.md ---
+   65323e217641bdd58a225a25a3bb1f2c      14434B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/SESSION_LOG_DOCUMENTACION_2026-06-16_CONSOLIDADO_s13 (1).md
+   c8743ea074954e0081dd114a3cf9cc59      15974B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/SESSION_LOG_DOCUMENTACION_2026-06-16_CONSOLIDADO_s13 (2).md
+   c8743ea074954e0081dd114a3cf9cc59      15974B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/SESSION_LOG_DOCUMENTACION_2026-06-16_CONSOLIDADO_s13 (3).md
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion | nombre base: SESSION_LOG_DOCUMENTACION_2026-06-17_CONSOLIDADO_s19.md ---
+   af87ba7dd42a30ff62c797d79a6deb0b      37388B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/SESSION_LOG_DOCUMENTACION_2026-06-17_CONSOLIDADO_s19 (2).md
+   d8ee227a418ea4badf6eaaee749d8798      36840B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/SESSION_LOG_DOCUMENTACION_2026-06-17_CONSOLIDADO_s19.md
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion | nombre base: correccion de documentacion.md ---
+   ab6ac2f0e5d91891f07ba2fc934d6f16      25908B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/correccion de documentacion 2.md
+   c7241de932cbcbbd05e31abf94859aae      22334B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/correccion de documentacion.md
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion | nombre base: failed.md ---
+   ca01ca8201e42eced01eecc348b80c05       5337B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/failed (2).md
+   ca01ca8201e42eced01eecc348b80c05       5337B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/failed (3).md
+   2d8c827fd067692c7dec062c4f5dd9e6     181781B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/failed 3.md
+   33dbc4559ec6082e33c282d40c21dbb1       6091B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/failed.md
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion | nombre base: s fallada 12-06.md ---
+   e310e53b4eb66f9af701159d7cfbd7fc      25274B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/s fallada 12-06 2.md
+   e87658d4b786606b0caf06f49a097bfe      57228B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/s fallada 12-06.md
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion | nombre base: sesion gap v4.1 - 4.3 parte.md ---
+   13c071a10df81074481e958c04af1e5b     169391B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/sesion gap v4.1 - 4.3 parte 1.md
+   1f13a213ac77d63c69dd6edfff6ed5bf       4913B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/sesion gap v4.1 - 4.3 parte 2.md
+   801fe7bbc113dbbab5654c99724a42ab      50461B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/sesion gap v4.1 - 4.3 parte 3.md
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion | nombre base: spec_c_zip_history.py ---
+   9a1b0d41225ddf87492827c956caf828      10594B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/spec_c_zip_history (2).py
+   9a1b0d41225ddf87492827c956caf828      10594B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/spec_c_zip_history (3).py
+   9a1b0d41225ddf87492827c956caf828      10594B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/spec_c_zip_history (4).py
+   40bda24a3c02ff2811e5a0c40d9fcbe4      11052B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/spec_c_zip_history.py
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion | nombre base: transcripcion de SESSION_LOG_CONSOLIDADO_2026-06-18 parte.md ---
+   7a8bca1b7b25df36b161342573bccec0      11823B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/transcripcion de SESSION_LOG_CONSOLIDADO_2026-06-18 parte 1.md
+   1e23b60f1a53beaecb177c0ad3bef601      29061B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/transcripcion de SESSION_LOG_CONSOLIDADO_2026-06-18 parte 2.md
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/08_documentacion_respaldo/DOCUMENTACION | nombre base: SESION FALLADA.md ---
+   a1ea4f178a6e88f0cd85670c5322f658      25629B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/08_documentacion_respaldo/DOCUMENTACION/SESION FALLADA 1.md
+   3611c4cb5aa6f108ab4c54328d205d4b      77455B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/08_documentacion_respaldo/DOCUMENTACION/SESION FALLADA 2.md
+   2700fc5d20006a3ce35b4f8818da871c      64134B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/08_documentacion_respaldo/DOCUMENTACION/SESION FALLADA 3.md
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/08_documentacion_respaldo/DOCUMENTACION | nombre base: SESSION_LOG_ANALISIS_C1_2026-06-18_v2.md ---
+   56682c09a0377f8ec0fada0e55a2bdfb      20422B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/08_documentacion_respaldo/DOCUMENTACION/SESSION_LOG_ANALISIS_C1_2026-06-18_v2 (2).md
+   5f0f0d5b7cedffc5125d55fd44cb33d2      15024B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/08_documentacion_respaldo/DOCUMENTACION/SESSION_LOG_ANALISIS_C1_2026-06-18_v2.md
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/08_documentacion_respaldo/DOCUMENTACION | nombre base: spec_c_zip_history.py ---
+   9a1b0d41225ddf87492827c956caf828      10594B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/08_documentacion_respaldo/DOCUMENTACION/spec_c_zip_history (2).py
+   9a1b0d41225ddf87492827c956caf828      10594B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/08_documentacion_respaldo/DOCUMENTACION/spec_c_zip_history (3).py
+   9a1b0d41225ddf87492827c956caf828      10594B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/08_documentacion_respaldo/DOCUMENTACION/spec_c_zip_history (4).py
+   40bda24a3c02ff2811e5a0c40d9fcbe4      11052B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/08_documentacion_respaldo/DOCUMENTACION/spec_c_zip_history.py
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/08_documentacion_respaldo/DOCUMENTACION | nombre base: transcripcion de SESSION_LOG_CONSOLIDADO_2026-06-18 parte.md ---
+   7a8bca1b7b25df36b161342573bccec0      11823B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/08_documentacion_respaldo/DOCUMENTACION/transcripcion de SESSION_LOG_CONSOLIDADO_2026-06-18 parte 1.md
+   1e23b60f1a53beaecb177c0ad3bef601      29061B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/2_DOCUMENTACION/08_documentacion_respaldo/DOCUMENTACION/transcripcion de SESSION_LOG_CONSOLIDADO_2026-06-18 parte 2.md
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada) | nombre base: IRAM_C1_s4_draft_s30.md ---
+   55558f5349fb8e8b818db27fafd905e6      11991B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/IRAM_C1_s4_draft_s30 (2).md
+   0ef3909b2e87bc337abb69be1b781f20      11748B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/IRAM_C1_s4_draft_s30.md
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada) | nombre base: IRAM_paper_metodologia_v1_0.md ---
+   8d94ee1bdbfe23c83a492d16ee87b9c8      20390B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/IRAM_paper_metodologia_v1_0(1).md
+   16d9672ef624301d95b2a7ef7bb5f011      24362B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/IRAM_paper_metodologia_v1_0.md
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada) | nombre base: IRAM_skill_desarrollo_ia_v2_0.md ---
+   18c7c4449b7674ede1ea513b1c9bc059       5237B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/IRAM_skill_desarrollo_ia_v2_0 (2).md
+   18c7c4449b7674ede1ea513b1c9bc059       5237B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/IRAM_skill_desarrollo_ia_v2_0 (3).md
+   060198aaddddc7ff4531267c90cea4be       4381B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/IRAM_skill_desarrollo_ia_v2_0.md
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada) | nombre base: PROMPT_DOCUMENTACION_IRAM_v1_9.md ---
+   d35510189cf33f5ad6dadc0c436f7404      25827B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/PROMPT_DOCUMENTACION_IRAM_v1_9 (2).md
+   7ed0f7c684363ebf12a71dabc3acd1da      24418B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/PROMPT_DOCUMENTACION_IRAM_v1_9 (3).md
+   d35510189cf33f5ad6dadc0c436f7404      25827B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/PROMPT_DOCUMENTACION_IRAM_v1_9 (4).md
+   d35510189cf33f5ad6dadc0c436f7404      25827B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/PROMPT_DOCUMENTACION_IRAM_v1_9(1).md
+   7ed0f7c684363ebf12a71dabc3acd1da      24418B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/PROMPT_DOCUMENTACION_IRAM_v1_9.md
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada) | nombre base: SESION FALLADA.md ---
+   a1ea4f178a6e88f0cd85670c5322f658      25629B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/SESION FALLADA 1.md
+   3611c4cb5aa6f108ab4c54328d205d4b      77455B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/SESION FALLADA 2.md
+   2700fc5d20006a3ce35b4f8818da871c      64134B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/SESION FALLADA 3.md
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada) | nombre base: SESSION_LOG_ANALISIS_C1_2026-06-18_v2.md ---
+   56682c09a0377f8ec0fada0e55a2bdfb      20422B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/SESSION_LOG_ANALISIS_C1_2026-06-18_v2 (2).md
+   5f0f0d5b7cedffc5125d55fd44cb33d2      15024B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/SESSION_LOG_ANALISIS_C1_2026-06-18_v2.md
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada) | nombre base: SESSION_LOG_DOCUMENTACION_2026-06-12_CONSOLIDADO.md ---
+   2830d4d0f97ca704e672ba10d1388f0c       7757B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/SESSION_LOG_DOCUMENTACION_2026-06-12_CONSOLIDADO (2).md
+   9da0baa6de9eef64e3cd708579ce65ae       9242B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/SESSION_LOG_DOCUMENTACION_2026-06-12_CONSOLIDADO(1).md
+   133b837ad53373049dc4040f4bbdb035      10426B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/SESSION_LOG_DOCUMENTACION_2026-06-12_CONSOLIDADO.md
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada) | nombre base: SESSION_LOG_DOCUMENTACION_2026-06-12_CONSOLIDADO_s11.md ---
+   59dec7f62bc1a88504d72f2c87e7827e      14376B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/SESSION_LOG_DOCUMENTACION_2026-06-12_CONSOLIDADO_s11 (2).md
+   1bc857a8ecdffd18baa234dab0ebe968       8940B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/SESSION_LOG_DOCUMENTACION_2026-06-12_CONSOLIDADO_s11 (3).md
+   59dec7f62bc1a88504d72f2c87e7827e      14376B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/SESSION_LOG_DOCUMENTACION_2026-06-12_CONSOLIDADO_s11.md
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada) | nombre base: SESSION_LOG_DOCUMENTACION_2026-06-16_CONSOLIDADO_s13.md ---
+   65323e217641bdd58a225a25a3bb1f2c      14434B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/SESSION_LOG_DOCUMENTACION_2026-06-16_CONSOLIDADO_s13 (1).md
+   c8743ea074954e0081dd114a3cf9cc59      15974B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/SESSION_LOG_DOCUMENTACION_2026-06-16_CONSOLIDADO_s13 (2).md
+   c8743ea074954e0081dd114a3cf9cc59      15974B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/SESSION_LOG_DOCUMENTACION_2026-06-16_CONSOLIDADO_s13 (3).md
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada) | nombre base: SESSION_LOG_DOCUMENTACION_2026-06-17_CONSOLIDADO_s19.md ---
+   af87ba7dd42a30ff62c797d79a6deb0b      37388B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/SESSION_LOG_DOCUMENTACION_2026-06-17_CONSOLIDADO_s19 (2).md
+   d8ee227a418ea4badf6eaaee749d8798      36840B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/SESSION_LOG_DOCUMENTACION_2026-06-17_CONSOLIDADO_s19.md
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada) | nombre base: correccion de documentacion.md ---
+   ab6ac2f0e5d91891f07ba2fc934d6f16      25908B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/correccion de documentacion 2.md
+   c7241de932cbcbbd05e31abf94859aae      22334B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/correccion de documentacion.md
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada) | nombre base: failed.md ---
+   ca01ca8201e42eced01eecc348b80c05       5337B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/failed (2).md
+   ca01ca8201e42eced01eecc348b80c05       5337B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/failed (3).md
+   2d8c827fd067692c7dec062c4f5dd9e6     181781B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/failed 3.md
+   33dbc4559ec6082e33c282d40c21dbb1       6091B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/failed.md
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada) | nombre base: s fallada 12-06.md ---
+   e310e53b4eb66f9af701159d7cfbd7fc      25274B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/s fallada 12-06 2.md
+   e87658d4b786606b0caf06f49a097bfe      57228B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/s fallada 12-06.md
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada) | nombre base: sesion gap v4.1 - 4.3 parte.md ---
+   13c071a10df81074481e958c04af1e5b     169391B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/sesion gap v4.1 - 4.3 parte 1.md
+   1f13a213ac77d63c69dd6edfff6ed5bf       4913B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/sesion gap v4.1 - 4.3 parte 2.md
+   801fe7bbc113dbbab5654c99724a42ab      50461B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/sesion gap v4.1 - 4.3 parte 3.md
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada) | nombre base: spec_c_zip_history.py ---
+   9a1b0d41225ddf87492827c956caf828      10594B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/spec_c_zip_history (2).py
+   9a1b0d41225ddf87492827c956caf828      10594B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/spec_c_zip_history (3).py
+   9a1b0d41225ddf87492827c956caf828      10594B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/spec_c_zip_history (4).py
+   40bda24a3c02ff2811e5a0c40d9fcbe4      11052B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/spec_c_zip_history.py
+
+--- carpeta: IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada) | nombre base: transcripcion de SESSION_LOG_CONSOLIDADO_2026-06-18 parte.md ---
+   7a8bca1b7b25df36b161342573bccec0      11823B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/transcripcion de SESSION_LOG_CONSOLIDADO_2026-06-18 parte 1.md
+   1e23b60f1a53beaecb177c0ad3bef601      29061B  IRAM_PROYECTO_REORGANIZADO/IRAM PROYECTO/_CUARENTENA_DUPLICADOS/fuentes de documentacion (subcopia anidada)/transcripcion de SESSION_LOG_CONSOLIDADO_2026-06-18 parte 2.md
+

@@ -1,0 +1,163 @@
+﻿country_decisions = {
+
+    bom_confirm = {
+        potential = {
+            is_ai = no
+            any_character = { is_ruler = yes  num_of_rivals >= 1 }
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            any_character = { is_ruler = yes  num_of_rivals >= 1 }
+            treasury >= 2000
+            manpower >= 1
+            tyranny <= 80
+        }
+        effect = {
+            add_treasury = -2000
+            add_manpower = -1
+            add_tyranny = 40
+            every_character = {
+                limit = { is_ruler = yes }
+                every_rival = {
+                    add_health = -100
+                }
+            }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    bom_bacanal = {
+        potential = {
+            is_ai = no
+            any_character = { is_ruler = yes  num_of_rivals >= 1 }
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            any_character = { is_ruler = yes  num_of_rivals >= 1 }
+            treasury >= 500
+            tyranny <= 90
+        }
+        effect = {
+            add_treasury = -500
+            add_tyranny = 10
+            every_character = {
+                limit = { is_ruler = yes }
+                every_rival = {
+                    remove_trait = chaste
+                    add_trait = lustful
+                }
+            }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    bom_kill_ruler = {
+        potential = {
+            is_ai = no
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            tyranny <= 60
+            stability >= 50
+            treasury >= 2000
+            manpower >= 1
+        }
+        effect = {
+            add_tyranny = 40
+            add_stability = -50
+            add_treasury = -2000
+            add_manpower = -1
+            every_character = {
+                limit = { is_ruler = yes }
+                add_health = -100
+            }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    iha_seize_holdings = {
+        potential = {
+            is_ai = no
+            any_character = {
+                is_ruler = yes
+                num_of_rivals >= 1
+                NOT = { num_of_rivals >= 2 }
+                any_rival = { employer = ROOT }
+            }
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            any_character = {
+                is_ruler = yes
+                num_of_rivals >= 1
+                NOT = { num_of_rivals >= 2 }
+                any_rival = { employer = ROOT }
+            }
+            treasury >= 2000
+            tyranny <= 60
+        }
+        effect = {
+            add_treasury = -2000
+            add_tyranny = 40
+            every_character = {
+                limit = { is_ruler = yes }
+                every_rival = {
+                    limit = { employer = ROOT }
+                    while = {
+                        limit = { num_holdings_owned > 0 }
+                        random_holdings = {
+                            save_scope_as = iha_holding
+                        }
+                        remove_holding = scope:iha_holding
+                    }
+                    add_loyalty = family_property_seized_l
+                }
+            }
+        }
+        ai_will_do = { factor = 0 }
+    }
+
+    iha_fill_the_void = {
+        potential = {
+            is_ai = no
+            any_character = {
+                is_ruler = yes
+                num_of_rivals >= 1
+                NOT = { num_of_rivals >= 2 }
+                any_rival = { employer = ROOT }
+            }
+        }
+        highlight = { scope:province = { always = yes } }
+        allow = {
+            is_ai = no
+            any_character = {
+                is_ruler = yes
+                num_of_rivals >= 1
+                NOT = { num_of_rivals >= 2 }
+                any_rival = { employer = ROOT }
+            }
+            treasury >= 2000
+            tyranny <= 60
+        }
+        effect = {
+            add_treasury = -2000
+            add_tyranny = 40
+            every_character = {
+                limit = { is_ruler = yes }
+                every_rival = {
+                    limit = { employer = ROOT }
+                    save_scope_as = iha_rival_scope
+                }
+            }
+            every_owned_province = {
+                limit = { NOT = { exists = holding_owner } }
+                scope:iha_rival_scope = { add_holding = PREV }
+            }
+        }
+        ai_will_do = { factor = 0 }
+    }
+}

@@ -1,0 +1,28 @@
+﻿l_spanish:
+ iram_bom_demo_migracion:0 "Decreto de Migración Forzada"
+ iram_bom_demo_migracion_desc:0 "El estado movilizará a la población libre para reubicarla según las necesidades del imperio. La velocidad de migración de todas las pops aumentará de forma permanente."
+
+
+ iram_migracion_forzada:0 "Migración Forzada"
+ iram_migracion_forzada_desc:0 "El estado dirige activamente el movimiento de la población libre. Velocidad de migración aumentada en todo el imperio."
+
+ iram_bom_demo_ascenso:0 "Decreto de Ascenso Forzado"
+ iram_bom_demo_ascenso_desc:0 "El estado promoverá activamente el ascenso social de la población libre. La velocidad de promoción de todas las pops aumentará de forma permanente."
+
+
+ iram_ascenso_forzado:0 "Ascenso Forzado"
+ iram_ascenso_forzado_desc:0 "El estado impulsa el ascenso social de la población libre. Velocidad de promoción aumentada en todo el imperio."
+
+ iram_bom_demo_descenso:0 "Decreto de Descenso Forzado"
+ iram_bom_demo_descenso_desc:0 "El estado aplicará una reducción de estatus a la población excedente. La velocidad de descenso de todas las pops aumentará de forma permanente."
+
+
+ iram_descenso_forzado:0 "Descenso Forzado"
+ iram_descenso_forzado_desc:0 "El estado reduce activamente el estatus de la población excedente. Velocidad de descenso aumentada en todo el imperio."
+
+ # ── TOOLTIPS RD1 (T10) ─────────────────────────────────────────────────
+ iram_tt_bom_demo_relic_activa:0      "El modificador Reliquia Divina no está activo todavía."
+ iram_tt_bom_demo_migracion_activa:0  "La Migración Forzada no está activa todavía."
+ iram_tt_bom_demo_ascenso_activo:0    "El Ascenso Forzado no está activo todavía."
+ iram_tt_bom_demo_descenso_activo:0   "El Descenso Forzado no está activo todavía."
+
