@@ -1241,6 +1241,179 @@ un commit único de git.
 - `3_ANALISIS/portafolio/` sigue vacía (pendiente desde §20.7).
 - Subida a GitHub (pendiente desde §22.6).
 
+## §25 — Seis sesiones de cierre (fix de encoding, resolución de rescatados, duplicados menores, auditoría, hallazgo y cierre de `08_documentacion_respaldo`, commit único) (2026-07-10, continuación)
+
+### §25.1 — Por qué esta sección existe
+
+Entre el cierre de §24 (que dejaba como único pendiente real "commitear el
+estado resultante de §22-§24") y el commit único de esta sección pasaron
+**seis sesiones** de trabajo real, documentadas cada una en su propio log de
+sesión (`LOG_SESION_2026-07-10_*.md`) pero nunca volcadas a este documento.
+Esta sección las consolida en un solo lugar, siguiendo la regla append-only
+(DR-42): no se reescribe nada de §1-§24, solo se agrega el registro de lo que
+pasó después.
+
+### §25.2 — Ítem #8: fix de encoding en `1_MOD/06_historial_desarrollo/`
+
+Mismo bug de "ñ" corrupta (`#U00f1`) ya diagnosticado y corregido antes en
+`3_ANALISIS/02_charlas_diseño_analisis/` (§24), reaparecido en una carpeta
+nueva. Se hizo `git mv` de los 2 archivos afectados
+(`IRAM_Diseñador1_Historial.md` y `..._LIMPIO.md`) al nombre UTF-8 correcto.
+Registrado como `R` (rename) en git, no como delete+add. Log fuente:
+`LOG_SESION_2026-07-10_fix-encoding-06-historial.md`.
+
+### §25.3 — Ítem #10: relación `rescatado__*` vs. batches originales en ambos corpus crudos
+
+Se investigó (comparación por UUID de conversación, y en un caso mensaje por
+mensaje) la relación entre cada batch oficial y su carpeta `rescatado__*`
+correspondiente:
+
+- **`1_MOD/corpus_A_crudo/`**: cada batch `data-*` estaba 100% contenido en
+  su `rescatado__*`; el contenido adicional era exclusivamente conversaciones
+  ajenas al proyecto IRAM (otros mods). Purga intencional confirmada por el
+  operador, ya ejecutada en sesión previa a §25 — esta sesión solo terminó de
+  documentar el motivo.
+- **`2_DOCUMENTACION/05_corpus_B_crudo/`**: `documentacion claude 3/conversations.json`
+  (22 conversaciones) resultó ser una exportación fallida/incompleta, no una
+  purga — las 22 están contenidas sin alteración en
+  `rescatado__documentacion_claude_3/conversations__4bff53c0.json` (104
+  conversaciones). Se reemplazó el contenido de `conversations.json` por el
+  del rescatado (registrado como `M`, preservando el nombre del archivo) y se
+  eliminó la carpeta `rescatado__documentacion_claude_3/` con `git rm`.
+
+READMEs de ambas carpetas actualizados con el motivo confirmado. Log fuente:
+`LOG_SESION_2026-07-10_resolucion-rescatados-corpus.md`.
+
+### §25.4 — Ítem #9: 3 casos de duplicados menores
+
+Revisados uno por uno, con autorización del operador en cada caso:
+
+1. `RESUMEN_CHARLAS_REPLANTEO_2026-06-19_20.md` (con y sin sufijo `" 2"`) —
+   duplicado exacto byte a byte (md5 idéntico). Se conservó la versión sin
+   sufijo.
+2. `IRAM_INSTRUCCIONES_HUMANO_2026-05-27_20-55.md` en `00_fuente_de_verdad/`
+   vs. `2_DOCUMENTACION/04_corpus_A_mod_docs/` — idénticos normalizando
+   CRLF/LF (no eran "idénticos" en diff crudo, como decía un log anterior;
+   corregido acá). Se conservó la copia de `00_fuente_de_verdad/`.
+3. Consignas sueltas en la raíz de `3_ANALISIS/tarea_UTN/` vs.
+   `tarea_UTN/consignas/` — mismo patrón CRLF/LF. Se conservó `consignas/`
+   (más completa, incluye los `.pdf`).
+
+Los 3 READMEs afectados (`02_charlas_y_resumenes`, `04_corpus_A_mod_docs`,
+`tarea_UTN`) actualizados. Log fuente:
+`LOG_SESION_2026-07-10_resolucion-duplicados-menores.md`.
+
+### §25.5 — Auditoría de verificación independiente (sin cambios de archivos)
+
+Sesión dedicada exclusivamente a re-verificar desde cero, sin asumir nada de
+los logs previos, que los ítems #9, #6 y #7 estuvieran en el estado que
+decían. Confirmado correcto en todos los casos. Se investigó y explicó por
+qué el conteo total de archivos de los logs (1958) no coincide con `find`
+(1839) ni con `git ls-tree HEAD` (1862): los logs llevan una cifra
+acumulativa del estado de trabajo post-cambios, mientras que `git ls-tree
+HEAD` mide el último commit real (anterior a todos los borrados/renombres
+sin commitear) — no es un error de conteo, son dos mediciones de cosas
+distintas. Log fuente:
+`LOG_SESION_2026-07-10_auditoria-verificacion-cierre.md`.
+
+### §25.6 — Hallazgo nuevo: `08_documentacion_respaldo/` tenía 3 carpetas que el propio §23.3 decía eliminadas, pero seguían físicamente presentes
+
+Al iniciar la sesión de cierre, comparando el README real dentro del zip
+contra un README suelto que el operador adjuntó, se encontró que §23.3 (más
+arriba en este mismo documento) afirma que `historiales_completos/`,
+`reorganizaciones/` y `borradores_planificacion/` (24 archivos en total)
+**se eliminaron enteras** — pero en el zip que circulaba hasta esta sesión
+seguían presentes y trackeados en git, sin ningún `D` en `git status`. A
+diferencia de `03_rescatados_274/` y `herramientas_backups_rescatados/`, que
+sí estaban correctamente borrados. Ninguno de los 6 logs de sesión
+posteriores a §23 (incluida la propia sesión de auditoría de §25.5) había
+detectado esta discrepancia.
+
+**Verificación antes de actuar (no se asumió que §23.3 tuviera razón, se
+re-comprobó por hash normalizado CRLF/LF archivo por archivo):**
+
+- `historiales_completos/` (15 archivos) → 11 idénticos por nombre a
+  `1_MOD/06_historial_desarrollo/` (incluidos los 2 con el bug de encoding
+  de §25.2, comparados contra su versión ya corregida); 3 idénticos a
+  `2_DOCUMENTACION/07_fuentes_documentacion/fuentes de documentacion/`
+  (`IRAM_HISTORIA_COMPLETA_v1_1.md`, `_v1_2.md`,
+  `IRAM_historial_unificado_2026-06-12.md`); 1 idéntico a
+  `1_MOD/IRAM_legacy v1 v2 v3 v4/IRAM_SUPERBACKUP_v2_1.md`. **15 de 15
+  confirmados redundantes.**
+- `reorganizaciones/` (4 archivos) → idénticos a los mismos 4 archivos que
+  vivían en `00_fuente_de_verdad/` hasta que se borraron de ahí por
+  duplicado (ver `PROMPT_CONTINUACION_2026-07-10.md`, punto #2, y la sesión
+  "continuación" que lo ejecutó). **4 de 4 confirmados redundantes.**
+- `borradores_planificacion/` (5 archivos) → idénticos a material en
+  `00b_descartables/` (2), `3_ANALISIS/04_prueba_fuga_memoria/` (2) y
+  `2_DOCUMENTACION/02_charlas_y_resumenes/` (1). **5 de 5 confirmados
+  redundantes.**
+
+Con los 24 confirmados 100% redundantes, se eliminaron con `git rm`. El
+README de `08_documentacion_respaldo/` se reescribió para reflejar el estado
+real (solo queda `readmes_indices_historicos/`, con el detalle de cada
+subcarpeta eliminada y su equivalente vigente).
+
+### §25.7 — Segundo hallazgo del mismo tipo: `datos_config_mod_rescatados/` seguía con 8 archivos, no 5
+
+En el mismo cruce de READMEs se encontró que `1_MOD/datos_config_mod_rescatados/`
+seguía teniendo sus 8 archivos originales, aunque `INDICE.md` y §23.3 ya
+decían "bajó de 8 a 5 archivos genuinos". Se verificó por hash normalizado
+contra **todo** el contenido de
+`1_MOD/IRAM_legacy v1 v2 v3 v4/mod_pack_IRAM_v4_1/mod_pack_v4_1/exodos/`
+(no solo por nombre parecido, ya que los nombres no coinciden 1:1): los 5
+`exodus_*` no tienen gemelo de contenido en ningún archivo de `exodos/`
+(únicos, se conservan); `tgl_decisions.txt`, `tlv_decisions.txt` y
+`tlv_events.txt` sí son duplicados exactos, con otro nombre
+(`exodos_decisions_tgl.txt`, `exodos_decisions_tlv.txt`,
+`events/tlv_events.txt` respectivamente). Se eliminaron los 3 con `git rm`.
+README de la carpeta actualizado.
+
+### §25.8 — Verificación de integridad antes del commit
+
+- git status tras §25.6 y §25.7: 33 borrados en stage (6 heredados de §25.3 +
+  27 nuevos de esta sesión: 24 de §25.6 + 3 de §25.7), 29 borrados sin stage
+  (sin cambios, heredados), 2 modificaciones (`M`: el `conversations.json`
+  de §25.3 + el README de `08_documentacion_respaldo` reescrito en §25.6),
+  2 renombres (`R`, de §25.2), 12 archivos/carpeta untracked (los READMEs de
+  segundo nivel que nunca se trackearon, incluido el nuevo de
+  `datos_config_mod_rescatados`).
+- git log: los mismos 4 commits intactos (`10240bb`, `1ee1018`, `5902c7e`,
+  `f43b2f9`), sin tocar hasta el commit de cierre de esta sección.
+- Conteo de archivos tras §25.6/§25.7: 1839 → 1812 (`find` sin `.git`),
+  diferencia de exactamente 27 (24 + 3), consistente con lo eliminado.
+
+### §25.9 — Commit único de cierre
+
+A pedido explícito del operador, se ejecuta en esta sesión el commit único
+que quedaba pendiente desde §24.5 (y re-confirmado pendiente en cada sesión
+intermedia desde entonces), incorporando también las correcciones de §25.2 a
+§25.7. Ver el mensaje de commit real en el historial de git para el detalle
+exacto de lo incluido.
+
+### §25.10 — Pendiente para la próxima sesión
+
+- `3_ANALISIS/portafolio/` sigue vacía (arrastrado desde §20.7) — contenido
+  faltante, no limpieza.
+- `.gitattributes` existe (`* text=auto`) pero nunca se aplicó el
+  renormalize retroactivo — 91 archivos `.md` en CRLF a la fecha de §25.5.
+  Acción de git del operador (`git add --renormalize .` + commit), no
+  resoluble manipulando archivos sueltos de forma confiable.
+- Subida a GitHub del commit de §25.9 (pendiente desde §22.6, ahora con
+  contenido real que subir).
+- **Planificación de los 4 productos del proyecto**, con base en `plan.md`
+  (v1.3, 2026-07-05) y esta fuente de verdad — declarada explícitamente
+  como tarea de la próxima sesión, no de esta. Punto de partida a tener en
+  cuenta: `plan.md` es anterior a la resolución de DR-54 (que sigue sin
+  resolver, ver §5 fila 1 y §9) y anterior a toda la reorganización de
+  §17-§24 — su Fase 0 (resolución de DR-54) sigue siendo el primer paso
+  real antes de poder ejecutar cualquier fase posterior tal como está
+  escrita. La estructura de carpetas que cita `plan.md` (Anexo A,
+  `3_PORTAFOLIO_UTN/`, `06_historial_desarrollo_mod/`, etc.) tampoco
+  coincide más con el árbol real de `IRAM_UNIFICADO/` — cotejar
+  nombre por nombre antes de usarlo como referencia operativa, no asumir
+  que la estructura sigue vigente tal cual.
+
 ---
 
 *Este documento (`_12`) reemplaza como punto de partida operativo a toda la cadena citada en el encabezado, incluidas las versiones `_2` a `_11` de sí mismo. Se mantiene la regla append-only (DR-42) hacia adelante: la próxima actualización de este documento debe cotejar ítem por ítem contra esta versión, no reescribir de memoria.*
