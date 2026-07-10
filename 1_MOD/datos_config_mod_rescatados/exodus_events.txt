@@ -1,0 +1,9 @@
+﻿namespace = exodus
+
+exodus.1 = {
+    type = country_event
+    title = "exodus.1.t"
+    desc = "exodus.1.d"
+    immediate = { exodus_cleanup_effect = yes }
+    option = { name = "exodus.1.ok" }
+}
